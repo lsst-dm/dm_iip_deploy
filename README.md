@@ -1,2 +1,2 @@
-# dm_iip_config
-configuration and system scripts used by IIP
+# dm_iip_deploy
+deployment and system scripts used by IIP
