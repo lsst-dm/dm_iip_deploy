@@ -4,6 +4,7 @@
 * curl=7.29.0
 * git=1.8.3
 * gcc-c++=4.8.5
+* erlang=22.7.0 (stripped down erlang for RabbitMQ from packagecloud.io)
  
 ## rabbitmq and redis
 * rabbitmq-server=3.7.16

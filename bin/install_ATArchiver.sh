@@ -5,4 +5,4 @@
 ./install_Redis.sh
 
 # Install python libraries
-# TODO
+/usr/bin/pip3 install -r ../docs/python_libs_versions.txt
