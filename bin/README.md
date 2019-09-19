@@ -12,6 +12,10 @@ Setup scripts are prepended with `setup`. They are used to create users,
 directories, setting up log files and permissions. Essentially, their role is 
 to make up everything that CTRL_IIP software needs.
 
+## Password
+Please set `IIP_RMQ_PWD` in `setup.env` file with whatever value sysadmin 
+pleases and that will be used as password for logging into RabbitMQ server.
+
 # Install
 * On ATArchiver machine, run as `root`
 ```
