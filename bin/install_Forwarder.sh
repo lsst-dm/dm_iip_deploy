@@ -34,14 +34,14 @@ make_install() {
 
 # boost
 cd $IIP_TMP_DIR
-curl -L $IIP_PACKAGE_REPO/boost_1_66_0.tar.gz -O
+curl -L $IIP_PACKAGE_REPO/boost/boost_1_66_0.tar.gz -O
 tar zxvf boost_1_66_0.tar.gz
 cd boost_1_66_0
 ./bootstrap.sh
 ./b2 --with-test --with-log install
 
 # C++ libraries
-cmake_install "$IIP_PACKAGE_REPO/yaml-cpp-0.5.3.tar.gz" "yaml-cpp-yaml-cpp-0.5.3"
-cmake_install "$IIP_PACKAGE_REPO/SimpleAmqpClient-2.4.0.tar.gz" "SimpleAmqpClient-2.4.0"
-cmake_install "$IIP_PACKAGE_REPO/cfitsio-3.450.tar.gz" "cfitsio"
-make_install "$IIP_PACKAGE_REPO/hiredis-0.14.0.tar.gz" "hiredis-0.14.0"
+cmake_install "$IIP_PACKAGE_REPO/yaml-cpp/yaml-cpp-0.5.3.tar.gz" "yaml-cpp-yaml-cpp-0.5.3"
+cmake_install "$IIP_PACKAGE_REPO/SimpleAmqpClient/SimpleAmqpClient-2.4.0.tar.gz" "SimpleAmqpClient-2.4.0"
+cmake_install "$IIP_PACKAGE_REPO/cfitsio/cfitsio-3.450.tar.gz" "cfitsio"
+make_install "$IIP_PACKAGE_REPO/hiredis/hiredis-0.14.0.tar.gz" "hiredis-0.14.0"
