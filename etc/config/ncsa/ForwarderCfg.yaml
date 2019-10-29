@@ -5,7 +5,7 @@ NAME: f99
 LOGGING_DIR: /var/log/iip
 
 # working directory where cfitio and header files are fetched/assembled
-WORK_DIR: /data
+WORK_DIR: /var/tmp/data
 
 # daq partition name
 PARTITION: ats
