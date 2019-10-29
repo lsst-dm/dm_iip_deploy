@@ -30,25 +30,28 @@ install -d %{buildroot}%{lsstpath}/etc/config
 install -d %{buildroot}%{lsstpath}/python 
 install -d %{buildroot}%{lsstpath}/python/lsst
 install -d %{buildroot}%{lsstpath}/python/lsst/dm
-install -d %{buildroot}%{lsstpath}/python/lsst/dm/csc
 install -d %{buildroot}%{lsstpath}/python/lsst/dm/ATArchiver
+install -d %{buildroot}%{lsstpath}/schema
 install -d %{buildroot}%{lsstpath}/ups
 
-install -m 755 -D python/lsst/dm/ATArchiver/*py %{buildroot}%{lsstpath}/python/lsst/dm/ATArchiver
-install -m 755 -D etc/config/atarchiver_config.yaml %{buildroot}%{lsstpath}/etc/config
 install -m 755 -D bin/run_at_archiver_csc.py %{buildroot}%{lsstpath}/bin
 install -m 755 -D bin/run_atarchive_controller.py %{buildroot}%{lsstpath}/bin
 install -m 755 -D bin/run_atarchive_controller.sh %{buildroot}%{lsstpath}/bin
 install -m 755 -D bin/run_atarchiver.sh %{buildroot}%{lsstpath}/bin
+install -m 755 -D bin/setup_atarchiver.sh %{buildroot}%{lsstpath}/bin
+install -m 755 -D etc/config/atarchiver_config.yaml %{buildroot}%{lsstpath}/etc/config
+install -m 755 -D python/lsst/dm/ATArchiver/*py %{buildroot}%{lsstpath}/python/lsst/dm/ATArchiver
+install -m 755 -D schema/* %{buildroot}%{lsstpath}/schema
 install -m 755 -D ups/* %{buildroot}%{lsstpath}/ups
 
 
 %files
 %defattr(755, %{user}, %{user}, 755)
 %{lsstpath}/bin/*
-%{lsstpath}/python/*
-%{lsstpath}/ups/*
 %{lsstpath}/etc/*
+%{lsstpath}/python/*
+%{lsstpath}/schema/*
+%{lsstpath}/ups/*
 
 %doc
 
