@@ -28,10 +28,11 @@ Configuration information used by the salobj csc classes for dm_ATArchiver
 
 
 %install
-install -d %{buildroot}%{lsstpath}/ATArchiver %{buildroot}%{lsstpath}/ATArchiver/v1
+install -d %{buildroot}%{lsstpath}/ATArchiver 
+install -d %{buildroot}%{lsstpath}/ATArchiver/v1
 install -d %{buildroot}%{lsstpath}/ups
 
-install -m 755 -D ATArchiver/v1/normal.yaml %{buildroot}%{lsstpath}/ATArchiver/v1
+install -m 755 -D ATArchiver/v1/*  %{buildroot}%{lsstpath}/ATArchiver/v1
 install -m 755 -D ups/* %{buildroot}%{lsstpath}/ups
 
 
