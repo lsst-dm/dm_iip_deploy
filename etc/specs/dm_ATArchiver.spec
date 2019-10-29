@@ -35,7 +35,7 @@ install -d %{buildroot}%{lsstpath}/python/lsst/dm/ATArchiver
 install -d %{buildroot}%{lsstpath}/ups
 
 install -m 755 -D python/lsst/dm/ATArchiver/*py %{buildroot}%{lsstpath}/python/lsst/dm/ATArchiver
-install -m 755 -D etc/atarchiver_config.yaml %{buildroot}%{lsstpath}/etc/config
+install -m 755 -D etc/config/atarchiver_config.yaml %{buildroot}%{lsstpath}/etc/config
 install -m 755 -D bin/run_at_archiver_csc.py %{buildroot}%{lsstpath}/bin
 install -m 755 -D bin/run_atarchive_controller.py %{buildroot}%{lsstpath}/bin
 install -m 755 -D bin/run_atarchive_controller.sh %{buildroot}%{lsstpath}/bin
