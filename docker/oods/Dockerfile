@@ -1,6 +1,4 @@
-ARG OODS_VERSION
 ARG LSST_STACK_VERSION
-
 FROM lsstsqre/centos:${LSST_STACK_VERSION}
 
 LABEL name="OODS Runtime Environment" \
@@ -14,9 +12,10 @@ RUN groupadd ARCHIVE && \
 
 WORKDIR /opt/lsst
 
+ARG OODS_VERSION
 RUN git clone https://github.com/lsst-dm/ctrl_oods && \
     cd /opt/lsst/ctrl_oods && \
-    git checkout tags/1.0.0-rc1 && \
+    git checkout tags/${OODS_VERSION} && \
     chown -R lsst.lsst /opt/lsst/ctrl_oods
 
 COPY run_oods.sh /opt/lsst
