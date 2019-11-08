@@ -1,0 +1,13 @@
+[Unit]
+Description=ATArchiveController Service
+PartOf=at-archiver.service
+After=at-archiver.service docker.service
+
+[Service]
+Type=simple
+User=ARC
+WorkingDirectory=/home/ARC
+ExecStart=/home/ARC/dm_iip_deploy/bin/run_atcontroller.sh
+
+[Install]
+WantedBy=at-archiver.service

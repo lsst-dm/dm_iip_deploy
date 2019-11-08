@@ -4,12 +4,52 @@ version: "3.7"
 # To run:
 # export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2019_44
 # export OODS_VERSION=1.0.0-rc1
+# export LSSTTS_DEPLOY_ENV_VERSION=sal_v4.0.0_salobj_v5.0.0
+# export LSSTTS_DEVELOP_ENV_VERSION=sal_v4.0.0_salobj_v5.0.0
+# export DM_CONFIG_AT_VERSION=1.0.0-rc4
+# export DM_ATARCHIVER_VERSION=1.0.0-rc4
+# export DM_CSC_BASE_VERSION=1.0.0-rc4
+# export DM_CSC_RELEASE=1.0.0-rc1
 
 services:
   oods:
-    image: oods:${OODS_VERSION}
+    image: lsstdm/oods:${OODS_VERSION}
     build:
       context: ./oods
       args:
         - LSST_STACK_VERSION
         - OODS_VERSION
+
+  base:
+    image: lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}
+    build:
+      context: ./base
+
+  atbase:
+    image: lsstdm/atbase:${DM_CSC_RELEASE}
+    build:
+      context: ./atbase
+      args:
+        - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CONFIG_AT_VERSION
+        - DM_ATARCHIVER_VERSION
+        - DM_CSC_BASE_VERSION
+        - DM_CSC_RELEASE
+
+  atarchiver:
+    image: lsstdm/atarchiver:${DM_CSC_RELEASE}
+    build:
+      context: ./atarchiver
+      args:
+        - DM_CSC_RELEASE
+    depends_on:
+      - atbase
+
+  atcontroller:
+    image: lsstdm/atcontroller:${DM_CSC_RELEASE}
+    build:
+      context: ./atcontroller
+      args:
+        - DM_CSC_RELEASE
+    depends_on:
+      - atbase
