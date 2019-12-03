@@ -5,7 +5,6 @@ LABEL name="ATArchiver CSC Runtime Environment" \
     vendor="LSST" \
     license="GPLv3"
 
-COPY run_atarchiver.sh /home/saluser/run_atarchiver.sh
+COPY run_atarchiver.sh /home/ARC/run_atarchiver.sh
 
-##ENTRYPOINT ["/bin/bash", "/home/saluser/run_atarchiver.sh"]
-
+ENTRYPOINT ["/bin/bash", "/home/ARC/run_atarchiver.sh"]

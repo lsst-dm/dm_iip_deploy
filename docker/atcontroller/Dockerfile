@@ -5,6 +5,6 @@ LABEL name="ATController Runtime Environment" \
     vendor="LSST" \
     license="GPLv3"
 
-COPY run_atcontroller.sh /home/saluser/run_atcontroller.sh
+COPY run_atcontroller.sh /home/ARC/run_atcontroller.sh
 
-##ENTRYPOINT ["/bin/bash", "/home/saluser/run_atcontroller.sh"]
+ENTRYPOINT ["/bin/bash", "/home/ARC/run_atcontroller.sh"]
