@@ -19,6 +19,7 @@ RUN git clone https://github.com/lsst-dm/ctrl_oods && \
     chown -R lsst.lsst /opt/lsst/ctrl_oods
 
 COPY run_oods.sh /opt/lsst
+COPY oods.yaml /opt/lsst
 RUN chmod a+rx /opt/lsst/run_oods.sh
 
 USER lsst
@@ -31,4 +32,4 @@ RUN source /opt/lsst/software/stack/loadLSST.bash && \
 
 USER ARC
 
-ENTRYPOINT ["/bin/bash", "/opt/lsst/run_oods.sh"]
+ENTRYPOINT ["/bin/bash", "/opt/lsst/run_oods.sh", "/opt/lsst/oods.yaml"]
