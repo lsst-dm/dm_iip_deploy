@@ -13,7 +13,7 @@ version: "3.7"
 
 services:
   oods:
-    image: lsstdm/oods:${OODS_VERSION}
+    image: lsstdm/oods:${OODS_CP_VERSION}
     build:
       context: ./oods
       args:
