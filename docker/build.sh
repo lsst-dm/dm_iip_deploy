@@ -6,5 +6,4 @@ export DM_CSC_BASE_VERSION=1.0.0-rc7
 export OODS_VERSION=1.0.0-rc2
 export DM_CSC_RELEASE=1.0.0-rc2
 export OODS_CP_VERSION=`echo $OODS_VERSION | cut -d"-" -f2`-`echo $LSST_STACK_VERSION | cut -d"-" -f4`
-#docker-compose build base atbase atarchiver atcontroller oods
-docker-compose build oods
+docker-compose build base atbase atarchiver atcontroller oods
