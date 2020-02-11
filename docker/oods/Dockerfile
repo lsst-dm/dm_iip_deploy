@@ -22,6 +22,13 @@ RUN git clone https://github.com/lsst-dm/ctrl_oods && \
     git checkout tags/${OODS_VERSION} && \
     chown -R lsst.lsst /opt/lsst/ctrl_oods
 
+ARG DM_CSC_BASE_VERSION
+RUN git clone https://github.com/lsst-dm/dm_csc_base && \
+    cd /opt/lsst/dm_csc_base && \
+    git checkout tags/${DM_CSC_BASE_VERSION} && \
+    chown -R lsst.lsst /opt/lsst/dm_csc_base
+
+
 COPY run_oods.sh /opt/lsst
 COPY oods.yaml /opt/lsst
 RUN chmod a+rx /opt/lsst/run_oods.sh && \
@@ -32,9 +39,11 @@ USER lsst
 WORKDIR /home/lsst
 
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
+    pip install redis pika asynctest && \
     setup sconsUtils && \
     setup utils && \
     setup -r /opt/lsst/ctrl_oods && \
+    setup -j -r /opt/lsst/dm_csc_base && \
     cd /opt/lsst/ctrl_oods && \
     scons
 

@@ -19,6 +19,7 @@ services:
       args:
         - LSST_STACK_VERSION
         - OODS_VERSION
+        - DM_CSC_BASE_VERSION
 
   base:
     image: lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}

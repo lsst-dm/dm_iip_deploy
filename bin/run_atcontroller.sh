@@ -20,4 +20,4 @@ docker run \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/atcontroller:1.0.0-rc2
+    lsstdm/atcontroller:1.0.0-rc10
