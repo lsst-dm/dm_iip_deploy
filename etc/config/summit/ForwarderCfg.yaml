@@ -30,7 +30,7 @@ ats: [ 00/0 ]
 comcam: [ 22/0, 22/1, 22/2 ]
 
 # rabbitMQ broker address
-BASE_BROKER_ADDR: 10.0.100.128:5672/%2ftest_at
+BASE_BROKER_ADDR: 139.229.170.34:5672/%2ftest_at
 
 # @deprecated_soon
 # forwarder queue to listen to RabbitMQ messages. This is static queue, meaning
@@ -45,7 +45,7 @@ ARCHIVE_QUEUE: archive_ctrl_consume
 TELEMETRY_QUEUE: telemetry_queue
 
 # redis database configuration for handling heartbeat and storing information
-REDIS_HOST: 10.0.100.128
+REDIS_HOST: 139.229.170.34
 REDIS_PORT: 6379
 REDIS_DB: 15
 
@@ -60,5 +60,5 @@ SECONDS_TO_EXPIRE: 10
 # -f, forces the copy
 # -n, does not use DNS to resolve IP address
 # -s, number of streams to use
-XFER_OPTION: bbcp -f -n -s 1 -i ~/.ssh/id_rsa
-#XFER_OPTION: scp -i ~/.ssh/id_rsa
+#XFER_OPTION: bbcp -f -n -s 1 -i ~/.ssh/id_rsa
+XFER_OPTION: scp -i ~/.ssh/id_rsa
