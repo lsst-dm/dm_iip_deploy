@@ -1,5 +1,5 @@
-ARG DM_CSC_RELEASE
-FROM lsstdm/atbase:${DM_CSC_RELEASE}
+ARG DM_CSC_BASE_VERSION
+FROM lsstdm/atbase:${DM_CSC_BASE_VERSION}
 
 LABEL name="ATController Runtime Environment" \
     vendor="LSST" \
@@ -7,4 +7,4 @@ LABEL name="ATController Runtime Environment" \
 
 COPY run_atcontroller.sh /home/ARC/run_atcontroller.sh
 
-ENTRYPOINT ["/bin/bash", "/home/ARC/run_atcontroller.sh"]
+#ENTRYPOINT ["/bin/bash", "/home/ARC/run_atcontroller.sh"]

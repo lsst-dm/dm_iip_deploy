@@ -19,6 +19,7 @@ services:
       args:
         - LSST_STACK_VERSION
         - OODS_VERSION
+        - DM_CSC_BASE_VERSION
 
   base:
     image: lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}
@@ -26,7 +27,7 @@ services:
       context: ./base
 
   atbase:
-    image: lsstdm/atbase:${DM_CSC_RELEASE}
+    image: lsstdm/atbase:${DM_CSC_BASE_VERSION}
     build:
       context: ./atbase
       args:
@@ -34,22 +35,49 @@ services:
         - DM_CONFIG_AT_VERSION
         - DM_ATARCHIVER_VERSION
         - DM_CSC_BASE_VERSION
-        - DM_CSC_RELEASE
 
   atarchiver:
-    image: lsstdm/atarchiver:${DM_CSC_RELEASE}
+    image: lsstdm/atarchiver:${DM_ATARCHIVER_VERSION}
     build:
       context: ./atarchiver
       args:
-        - DM_CSC_RELEASE
+        - DM_CSC_BASE_VERSION
     depends_on:
       - atbase
 
   atcontroller:
-    image: lsstdm/atcontroller:${DM_CSC_RELEASE}
+    image: lsstdm/atcontroller:${DM_ATARCHIVER_VERSION}
     build:
       context: ./atcontroller
       args:
-        - DM_CSC_RELEASE
+        - DM_CSC_BASE_VERSION
     depends_on:
       - atbase
+
+  ccbase:
+    image: lsstdm/ccbase:${DM_CSC_BASE_VERSION}
+    build:
+      context: ./ccbase
+      args:
+        - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CONFIG_CC_VERSION
+        - DM_CCARCHIVER_VERSION
+        - DM_CSC_BASE_VERSION
+
+  ccarchiver:
+    image: lsstdm/ccarchiver:${DM_CCARCHIVER_VERSION}
+    build:
+      context: ./ccarchiver
+      args:
+        - DM_CSC_BASE_VERSION
+    depends_on:
+      - ccbase
+
+  cccontroller:
+    image: lsstdm/cccontroller:${DM_CCARCHIVER_VERSION}
+    build:
+      context: ./cccontroller
+      args:
+        - DM_CSC_BASE_VERSION
+    depends_on:
+      - ccbase

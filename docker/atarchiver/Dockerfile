@@ -1,5 +1,5 @@
-ARG DM_CSC_RELEASE
-FROM lsstdm/atbase:${DM_CSC_RELEASE}
+ARG DM_CSC_BASE_VERSION
+FROM lsstdm/atbase:${DM_CSC_BASE_VERSION}
 
 LABEL name="ATArchiver CSC Runtime Environment" \
     vendor="LSST" \
@@ -7,4 +7,4 @@ LABEL name="ATArchiver CSC Runtime Environment" \
 
 COPY run_atarchiver.sh /home/ARC/run_atarchiver.sh
 
-ENTRYPOINT ["/bin/bash", "/home/ARC/run_atarchiver.sh"]
+#ENTRYPOINT ["/bin/bash", "/home/ARC/run_atarchiver.sh"]

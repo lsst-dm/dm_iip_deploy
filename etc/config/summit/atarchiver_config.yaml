@@ -29,10 +29,10 @@ ROOT:
         SECONDS_TO_EXPIRE: 10
         SECONDS_TO_UPDATE: 3
 
-  BASE_BROKER_ADDR: 141.142.238.15:5672/%2ftest_at
+  BASE_BROKER_ADDR: 139.229.170.34:5672/%2ftest_at
   ARCHIVE:
     ARCHIVE_LOGIN: ARC
-    ARCHIVE_IP: 141.142.238.15
+    ARCHIVE_IP: 139.227.170.34
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
     FORWARDER_STAGING: /data/staging/atforwarder
     OODS_STAGING: /data/staging/oods
