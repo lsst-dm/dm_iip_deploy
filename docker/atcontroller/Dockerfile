@@ -7,4 +7,4 @@ LABEL name="ATController Runtime Environment" \
 
 COPY run_atcontroller.sh /home/ARC/run_atcontroller.sh
 
-#ENTRYPOINT ["/bin/bash", "/home/ARC/run_atcontroller.sh"]
+ENTRYPOINT ["/bin/bash", "/home/ARC/run_atcontroller.sh"]

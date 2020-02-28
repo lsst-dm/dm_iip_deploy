@@ -7,4 +7,4 @@ LABEL name="CCArchiver CSC Runtime Environment" \
 
 COPY run_ccarchiver.sh /home/ARC/run_ccarchiver.sh
 
-#ENTRYPOINT ["/bin/bash", "/home/ARC/run_ccarchiver.sh"]
+ENTRYPOINT ["/bin/bash", "/home/ARC/run_ccarchiver.sh"]

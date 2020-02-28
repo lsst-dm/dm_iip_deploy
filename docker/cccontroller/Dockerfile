@@ -7,4 +7,4 @@ LABEL name="CCController Runtime Environment" \
 
 COPY run_cccontroller.sh /home/ARC/run_cccontroller.sh
 
-#ENTRYPOINT ["/bin/bash", "/home/ARC/run_cccontroller.sh"]
+ENTRYPOINT ["/bin/bash", "/home/ARC/run_cccontroller.sh"]

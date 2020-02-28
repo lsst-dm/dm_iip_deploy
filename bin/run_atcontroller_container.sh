@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [ -z $1 ];
+then
+    echo "$0: missing argument: container_version"
+    exit 1
+fi
+
+container_version=$1
+
 docker run \
     -u `id -u ARC`:`id -g ARC` \
     --network=host \
@@ -10,4 +18,4 @@ docker run \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/atcontroller:1.0.0-rc11
+    lsstdm/atcontroller:$container_version

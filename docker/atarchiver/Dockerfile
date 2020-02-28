@@ -7,4 +7,4 @@ LABEL name="ATArchiver CSC Runtime Environment" \
 
 COPY run_atarchiver.sh /home/ARC/run_atarchiver.sh
 
-#ENTRYPOINT ["/bin/bash", "/home/ARC/run_atarchiver.sh"]
+ENTRYPOINT ["/bin/bash", "/home/ARC/run_atarchiver.sh"]

@@ -2,7 +2,7 @@
 #
 # set all the git tags or tickets for the versions you want to use for the containers
 export DM_CONFIG_AT_GIT=tags/1.0.0-rc10
-export DM_ATARCHIVER_GIT=tags/1.0.0-rc11
+export DM_ATARCHIVER_GIT=tickets/DM-23676
 export DM_CSC_BASE_GIT=tickets/DM-23022
 export CTRL_OODS_GIT=tickets/DM-23662
 export DM_CONFIG_CC_GIT=tags/1.0.0-rc1
