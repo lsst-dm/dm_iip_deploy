@@ -13,13 +13,13 @@ version: "3.7"
 
 services:
   oods:
-    image: lsstdm/oods:${OODS_CP_VERSION}
+    image: lsstdm/oods:${OODS_CONTAINER_VERSION}
     build:
       context: ./oods
       args:
         - LSST_STACK_VERSION
-        - OODS_VERSION
-        - DM_CSC_BASE_VERSION
+        - CTRL_OODS_GIT
+        - DM_CSC_BASE_GIT
 
   base:
     image: lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}
@@ -32,9 +32,9 @@ services:
       context: ./atbase
       args:
         - LSSTTS_DEPLOY_ENV_VERSION
-        - DM_CONFIG_AT_VERSION
-        - DM_ATARCHIVER_VERSION
-        - DM_CSC_BASE_VERSION
+        - DM_CONFIG_AT_GIT
+        - DM_ATARCHIVER_GIT
+        - DM_CSC_BASE_GIT
 
   atarchiver:
     image: lsstdm/atarchiver:${DM_ATARCHIVER_VERSION}
@@ -60,9 +60,9 @@ services:
       context: ./ccbase
       args:
         - LSSTTS_DEPLOY_ENV_VERSION
-        - DM_CONFIG_CC_VERSION
-        - DM_CCARCHIVER_VERSION
-        - DM_CSC_BASE_VERSION
+        - DM_CONFIG_CC_GIT
+        - DM_CCARCHIVER_GIT
+        - DM_CSC_BASE_GIT
 
   ccarchiver:
     image: lsstdm/ccarchiver:${DM_CCARCHIVER_VERSION}

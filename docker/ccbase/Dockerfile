@@ -16,20 +16,19 @@ RUN source /home/ARC/miniconda3/bin/activate && \
 RUN chmod 777 /home/ARC
 
 WORKDIR /home/ARC
-ARG DM_CONFIG_CC_VERSION
-#RUN git clone https://github.com/lsst-dm/dm_config_cc && \
-#    cd dm_config_cc && \
-#    git checkout tickets/${DM_CONFIG_CC_VERSION}
-RUN git clone https://github.com/lsst-dm/dm_config_cc
+ARG DM_CONFIG_CC_GIT
+RUN git clone https://github.com/lsst-dm/dm_config_cc && \
+    cd dm_config_cc && \
+    git checkout ${DM_CONFIG_CC_GIT}
 
 WORKDIR /home/ARC
-ARG DM_CSC_BASE_VERSION
+ARG DM_CSC_BASE_GIT
 RUN git clone https://github.com/lsst-dm/dm_csc_base && \
     cd dm_csc_base && \
-    git checkout tags/${DM_CSC_BASE_VERSION}
+    git checkout ${DM_CSC_BASE_GIT}
 
 WORKDIR /home/ARC
-ARG DM_CCARCHIVER_VERSION
+ARG DM_CCARCHIVER_GIT
 RUN git clone https://github.com/lsst-dm/dm_CCArchiver && \
     cd dm_CCArchiver && \
-    git checkout tickets/${DM_CCARCHIVER_VERSION}
+    git checkout ${DM_CCARCHIVER_GIT}

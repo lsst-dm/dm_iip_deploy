@@ -20,16 +20,16 @@ RUN chmod 755 /home/lsst
 
 WORKDIR /opt/lsst
 
-ARG OODS_VERSION
+ARG CTRL_OODS_GIT
 RUN git clone https://github.com/lsst-dm/ctrl_oods && \
     cd /opt/lsst/ctrl_oods && \
-    git checkout tags/${OODS_VERSION} && \
+    git checkout ${CTRL_OODS_GIT} && \
     chown -R lsst.lsst /opt/lsst/ctrl_oods
 
-ARG DM_CSC_BASE_VERSION
+ARG DM_CSC_BASE_GIT
 RUN git clone https://github.com/lsst-dm/dm_csc_base && \
     cd /opt/lsst/dm_csc_base && \
-    git checkout tags/${DM_CSC_BASE_VERSION} && \
+    git checkout ${DM_CSC_BASE_GIT} && \
     chown -R lsst.lsst /opt/lsst/dm_csc_base
     
 
