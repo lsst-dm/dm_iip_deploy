@@ -8,7 +8,7 @@ fi
 
 container_version=$1
 
-docker run \
+nohup docker run \
     -u `id -u ARC`:`id -g ARC` \
     --network=host \
     -e "IIP_CONFIG_DIR=/home/ARC/config" \
@@ -18,4 +18,4 @@ docker run \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/atarchiver:$container_version
+    lsstdm/atarchiver:$container_version >>/var/log/iip/atarchiver_container.log &

@@ -8,14 +8,14 @@ fi
 
 container_version=$1
 
-docker run \
+nohup docker run \
     -u `id -u ARC`:`id -g ARC` \
     --network=host \
     -e "IIP_CONFIG_DIR=/home/ARC/config" \
     -e "IIP_CREDENTIAL_DIR=/home/ARC/.lsst" \
-    -e "LSST_DDS_DOMAIN=auxtelpath" \
+    -e "LSST_DDS_DOMAIN=comcampath" \
     -v /home/ARC/config:/home/ARC/config \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/cccontroller:$container_version
+    lsstdm/cccontroller:$container_version >>/var/log/iip/cccontroller_container.log

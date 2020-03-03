@@ -7,8 +7,6 @@ ENV OSPL_HOME=/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux
 ENV LSST_DDS_DOMAIN=citest
 ENV PYTHON_BUILD_VERSION=${PYTHON_VERSION}
 ENV PYTHON_BUILD_LOCATION=/home/ARC/miniconda3
-#ENV TS_IDL_DIR=/home/ARC/repos/ts_idl/
-#ENV TS_XML_VERSION=${xml_branch}
 
 USER root
 
@@ -33,7 +31,10 @@ WORKDIR /home/ARC
 
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && chmod +x miniconda.sh && ./miniconda.sh -b
 
-RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-salobj="v5.4.1_RC1" cython ts-idl="v1.1.1_v4.6.0" 
+ARG TS_SALOBJ_VERSION
+ARG TS_IDL_VERSION
+ARG TS_XML_VERSION
+RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-salobj="v${TS_SALOBJ_VERSION}" cython ts-idl="v${TS_IDL_VERSION}_${TS_XML_VERSION}"
 
 RUN source ~/miniconda3/bin/activate && \
     source $OSPL_HOME/release.com && \

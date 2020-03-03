@@ -11,10 +11,20 @@ services:
         - CTRL_OODS_GIT
         - DM_CSC_BASE_GIT
 
+  at-oods:
+    image: lsstdm/oods:${OODS_CONTAINER_VERSION}
+
+  cc-oods:
+    image: lsstdm/oods:${OODS_CONTAINER_VERSION}
+
   base:
     image: lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./base
+      args:
+        - TS_SALOBJ_VERSION
+        - TS_IDL_VERSION
+        - TS_XML_VERSION
 
   atbase:
     image: lsstdm/atbase:${DM_CSC_BASE_VERSION}
