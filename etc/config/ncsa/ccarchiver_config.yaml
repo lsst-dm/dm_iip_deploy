@@ -34,9 +34,9 @@ ROOT:
     ARCHIVE_LOGIN: ARC
     ARCHIVE_IP: 141.142.238.15
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
-    FORWARDER_STAGING: /data/staging/ccforwarder
-    OODS_STAGING: /data/staging/oods
-    DBB_STAGING: /data/staging/dbb
+    FORWARDER_STAGING: /data/staging/cc_forwarder
+    OODS_STAGING: /data/staging/cc_oods
+    DBB_STAGING: /data/staging/cc_dbb
   ATS:
     WFS_RAFT: "00"
     WFS_CCD: [ "00" ]
