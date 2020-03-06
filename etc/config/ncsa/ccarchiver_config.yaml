@@ -39,4 +39,4 @@ ROOT:
     DBB_STAGING: /data/staging/cc_dbb
   ATS:
     WFS_RAFT: "00"
-    WFS_CCD: [ "00" ]
+    WFS_CCD: [ "22/0", "22/1", "22/2" ]
