@@ -18,4 +18,4 @@ nohup docker run \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/cccontroller:$container_version >>/var/log/iip/cccontroller_container.log
+    lsstdm/cccontroller:$container_version >>/var/log/iip/cccontroller_container.log &
