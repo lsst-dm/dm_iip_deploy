@@ -60,5 +60,5 @@ SECONDS_TO_EXPIRE: 10
 # -f, forces the copy
 # -n, does not use DNS to resolve IP address
 # -s, number of streams to use
-XFER_OPTION: bbcp -f -n -s 1 -i ~/.ssh/id_rsa
-#XFER_OPTION: scp -i ~/.ssh/id_rsa
+#XFER_OPTION: bbcp -f -n -s 1 -i ~/.ssh/id_rsa
+XFER_OPTION: scp -i ~/.ssh/id_rsa
