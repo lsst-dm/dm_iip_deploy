@@ -8,11 +8,11 @@ fi
 
 container_version=$1
 
-nohup docker run \
+docker run -d \
     -u `id -u ARC`:`id -g ARC` \
     --network host \
     -e "OODS_CONFIG_FILE=/home/ARC/config/at_oods.yaml" \
     -v /data:/data \
     -v /home/ARC/config:/home/ARC/config \
-    lsstdm/at-oods:$container_version 2>&1 >/var/log/iip/at_oods.log&
+    lsstdm/at-oods:$container_version
 

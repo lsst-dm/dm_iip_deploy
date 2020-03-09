@@ -8,7 +8,7 @@ fi
 
 container_version=$1
 
-nohup docker run \
+docker run -d \
     -u `id -u ARC`:`id -g ARC` \
     --network=host \
     -e "IIP_CONFIG_DIR=/home/ARC/config" \
@@ -18,4 +18,4 @@ nohup docker run \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/ccarchiver:$container_version >>/var/log/iip/ccarchiver_container.log &
+    lsstdm/ccarchiver:$container_version

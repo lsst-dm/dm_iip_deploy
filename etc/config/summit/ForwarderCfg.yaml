@@ -20,7 +20,7 @@ SEGMENT_ORDER: [ 10, 11, 12, 13, 14, 15, 16, 17, 07, 06, 05, 04, 03, 02, 01, 00 
 ITL: [ 00, 01, 02, 03, 04, 05, 06, 07, 10, 11, 12, 13, 14, 15, 16, 17 ]
 E2V: [ 10, 11, 12, 13, 14, 15, 16, 17, 07, 06, 05, 04, 03, 02, 01, 01 ]
 STA: [ 00, 01, 02, 03, 04, 05, 06, 07, 10, 11, 12, 13, 14, 15, 16, 17 ]
-WFS: [ 00, 01, 02, 03, 04, 05, 06, 07, 10, 11, 12, 13, 14, 15, 16, 17 ]
+WFS: [ 00, 01, 02, 03, 04, 05, 06, 07, 17, 16, 15, 14, 13, 12, 11, 10 ]
 
 # daq location patterns in the hardware. These values are pre-defined here so
 # that forwarder can throw exception when someone gives wrong "raft/ccd"
