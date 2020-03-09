@@ -1,5 +1,5 @@
-ARG DM_CSC_RELEASE
-FROM lsstdm/atbase:${DM_CSC_RELEASE}
+ARG DM_CSC_BASE_VERSION
+FROM lsstdm/atbase:${DM_CSC_BASE_VERSION}
 
 LABEL name="ATArchiver CSC Runtime Environment" \
     vendor="LSST" \

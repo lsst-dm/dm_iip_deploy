@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -z $1 ];
+then
+    echo "$0: missing argument: container_version"
+    exit 1
+fi
+
+container_version=$1
+
+docker run -d \
+    -u `id -u ARC`:`id -g ARC` \
+    --network=host \
+    -e "IIP_CONFIG_DIR=/home/ARC/config" \
+    -e "IIP_CREDENTIAL_DIR=/home/ARC/.lsst" \
+    -e "LSST_DDS_DOMAIN=comcampath" \
+    -v /home/ARC/config:/home/ARC/config \
+    -v /home/ARC/.lsst:/home/ARC/.lsst \
+    -v /var/log/iip:/var/log/iip \
+    -v /data:/data \
+    lsstdm/ccarchiver:$container_version

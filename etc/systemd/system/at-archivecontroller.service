@@ -1,13 +1,16 @@
 [Unit]
 Description=ATArchiveController Service
 PartOf=at-archiver.service
-After=at-archiver.service docker.service
+After=at-archiver.service
 
 [Service]
 Type=simple
 User=ARC
-WorkingDirectory=/home/ARC
-ExecStart=/home/ARC/dm_iip_deploy/bin/run_atcontroller.sh
+Environment="DM_ATARCHIVER_DIR=/opt/lsst/dm_ATArchiver"
+PassEnvironment=DM_ATARCHIVER_DIR
+WorkingDirectory=/opt/lsst/dm_ATArchiver
+ExecStart=/opt/lsst/dm_ATArchiver/bin/atarchive_controller_service.sh
+Restart=always
 
 [Install]
 WantedBy=at-archiver.service

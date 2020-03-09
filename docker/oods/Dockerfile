@@ -7,6 +7,10 @@ LABEL name="OODS Runtime Environment" \
 
 USER root
 
+COPY lsst-ts.repo /tmp/lsst-ts.repo
+
+RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf
+
 RUN groupadd ARCHIVE && \
     useradd -G ARCHIVE ARC
 
@@ -16,11 +20,18 @@ RUN chmod 755 /home/lsst
 
 WORKDIR /opt/lsst
 
-ARG OODS_VERSION
+ARG CTRL_OODS_GIT
 RUN git clone https://github.com/lsst-dm/ctrl_oods && \
     cd /opt/lsst/ctrl_oods && \
-    git checkout tags/${OODS_VERSION} && \
+    git checkout ${CTRL_OODS_GIT} && \
     chown -R lsst.lsst /opt/lsst/ctrl_oods
+
+ARG DM_CSC_BASE_GIT
+RUN git clone https://github.com/lsst-dm/dm_csc_base && \
+    cd /opt/lsst/dm_csc_base && \
+    git checkout ${DM_CSC_BASE_GIT} && \
+    chown -R lsst.lsst /opt/lsst/dm_csc_base
+    
 
 COPY run_oods.sh /opt/lsst
 COPY oods.yaml /opt/lsst
@@ -32,8 +43,10 @@ USER lsst
 WORKDIR /home/lsst
 
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
+    pip install redis pika asynctest && \
     setup sconsUtils && \
     setup utils && \
+    setup -j -r /opt/lsst/dm_csc_base && \
     setup -r /opt/lsst/ctrl_oods && \
     cd /opt/lsst/ctrl_oods && \
     scons

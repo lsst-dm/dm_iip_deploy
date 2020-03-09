@@ -5,15 +5,18 @@ defaultInterval: &interval
     seconds: 0
 
 ingester:
+    FILE_INGEST_REQUEST: CC_FILE_INGEST_REQUEST
+    CONSUME_QUEUE: cc_publish_to_oods
+    PUBLISH_QUEUE: oods_publish_to_cc
     directories:
-        - /data/staging/oods
-    baseBrokerAddr: localhost/%2ftest_at
-    badFileDirectory: /data/staging/badfiles
+        - /data/staging/cc_oods
+    baseBrokerAddr: localhost/%2ftest_cc
+    badFileDirectory: /data/staging/cc_badfiles
     butler:
         class:
             import : lsst.ctrl.oods.gen2ButlerIngester
             name : Gen2ButlerIngester
-        repoDirectory : /data/butler/repo
+        repoDirectory : /data/butler/cc_repo
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -21,7 +24,7 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/butler/repo/raw
+        - /data/butler/cc_repo/raw
     scanInterval:
         <<: *interval
         seconds: 30
