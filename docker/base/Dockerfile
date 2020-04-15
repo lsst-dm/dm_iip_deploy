@@ -34,7 +34,8 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
 ARG TS_SALOBJ_VERSION
 ARG TS_IDL_VERSION
 ARG TS_XML_VERSION
-RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-salobj="v${TS_SALOBJ_VERSION}" cython ts-idl="v${TS_IDL_VERSION}_${TS_XML_VERSION}"
+#RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-salobj="v${TS_SALOBJ_VERSION}" cython ts-idl="v${TS_IDL_VERSION}_${TS_XML_VERSION}"
+RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-salobj="${TS_SALOBJ_VERSION}" cython ts-idl="${TS_IDL_VERSION}_${TS_XML_VERSION}"
 
 RUN source ~/miniconda3/bin/activate && \
     source $OSPL_HOME/release.com && \
