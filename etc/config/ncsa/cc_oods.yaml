@@ -9,14 +9,14 @@ ingester:
     CONSUME_QUEUE: cc_publish_to_oods
     PUBLISH_QUEUE: oods_publish_to_cc
     directories:
-        - /data/staging/cc_oods
+        - /data/staging/comcam/oods
     baseBrokerAddr: localhost/%2ftest_cc
-    badFileDirectory: /data/staging/cc_badfiles
+    badFileDirectory: /data/lsstdata/NTS/comcam/oods/badfiles
     butler:
         class:
             import : lsst.ctrl.oods.gen2ButlerIngester
             name : Gen2ButlerIngester
-        repoDirectory : /data/butler/cc_repo
+        repoDirectory : /data/lsstdata/NTS/comcam/oods/butler/repo
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -24,7 +24,9 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/butler/cc_repo/raw
+        - /data/lsstdata/NTS/comcam/oods/butler/repo/raw
+        - /data/lsstdata/NTS/comcam/oods/badfiles
+        - /data/staging/cc_oods
     scanInterval:
         <<: *interval
         seconds: 30
@@ -33,4 +35,4 @@ cacheCleaner:
         days: 30 
     directoriesEmptyForMoreThan:
         <<: *interval
-        days: 1
+        days: 2

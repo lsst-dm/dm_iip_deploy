@@ -9,14 +9,14 @@ ingester:
     CONSUME_QUEUE: at_publish_to_oods
     PUBLISH_QUEUE: oods_publish_to_at
     directories:
-        - /data/staging/oods
+        - /data/staging/auxTel/oods
     baseBrokerAddr: localhost/%2ftest_at
-    badFileDirectory: /data/staging/badfiles
+    badFileDirectory: /data/lsstdata/NTS/auxTel/oods/badfiles
     butler:
         class:
             import : lsst.ctrl.oods.gen2ButlerIngester
             name : Gen2ButlerIngester
-        repoDirectory : /data/butler/repo
+        repoDirectory : /data/lsstdata/NTS/auxTel/oods/butler/repo
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -24,7 +24,9 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/butler/repo/raw
+        - /data/lsstdata/NTS/auxTel/oods/butler/repo/raw
+        - /data/lsstdata/NTS/auxTel/oods/badfiles
+        - /data/staging/at_oods
     scanInterval:
         <<: *interval
         seconds: 30
@@ -33,4 +35,4 @@ cacheCleaner:
         days: 30 
     directoriesEmptyForMoreThan:
         <<: *interval
-        days: 1
+        days: 2
