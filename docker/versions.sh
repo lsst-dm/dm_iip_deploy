@@ -2,8 +2,8 @@
 #
 # set the ts_salobj, ts_idl, ts_xml versions
 export TS_SALOBJ_VERSION="5.10.0"
-export TS_IDL_VERSION="1.1.3"
-export TS_XML_VERSION="5.0.0"
+export TS_IDL_VERSION="1.2.0"
+export TS_XML_VERSION="5.1.0"
 # set an alias for this combination
 
 # set all the git tags or tickets for the versions you want to use for the containers
@@ -12,12 +12,12 @@ export DM_CSC_BASE_GIT=tags/2.0.0
 export DM_CONFIG_AT_GIT=tags/2.0.0
 export DM_ATARCHIVER_GIT=tags/2.1.0
 #
-export CTRL_OODS_GIT=tags/2.1.0-rc3
+export CTRL_OODS_GIT=tags/2.2.0
 #
 export DM_CONFIG_CC_GIT=tags/1.0.0-rc1
 export DM_CCARCHIVER_GIT=tags/1.1.0
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_10
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_16
 export LSSTTS_DEPLOY_ENV_VERSION=salobj_${TS_SALOBJ_VERSION}_idl_${TS_IDL_VERSION}_xml_${TS_XML_VERSION}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
