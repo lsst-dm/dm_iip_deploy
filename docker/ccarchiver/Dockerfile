@@ -1,5 +1,5 @@
 ARG DM_CSC_BASE_VERSION
-FROM lsstdm/ccbase:${DM_CSC_BASE_VERSION}
+FROM lsstts/ccbase:${DM_CSC_BASE_VERSION}
 
 LABEL name="CCArchiver CSC Runtime Environment" \
     vendor="LSST" \

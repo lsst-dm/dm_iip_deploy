@@ -1,5 +1,5 @@
 ARG LSSTTS_DEPLOY_ENV_VERSION
-FROM lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}
+FROM lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
 
 LABEL name="ATArchiver Runtime Environment" \
     vendor="LSST" \

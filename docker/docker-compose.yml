@@ -3,7 +3,7 @@ version: "3.7"
 
 services:
   oods:
-    image: lsstdm/oods:${OODS_CONTAINER_VERSION}
+    image: lsstts/oods:${OODS_CONTAINER_VERSION}
     build:
       context: ./oods
       args:
@@ -12,13 +12,13 @@ services:
         - DM_CSC_BASE_GIT
 
   at-oods:
-    image: lsstdm/oods:${OODS_CONTAINER_VERSION}
+    image: lsstts/oods:${OODS_CONTAINER_VERSION}
 
   cc-oods:
-    image: lsstdm/oods:${OODS_CONTAINER_VERSION}
+    image: lsstts/oods:${OODS_CONTAINER_VERSION}
 
   base:
-    image: lsstdm/base:${LSSTTS_DEPLOY_ENV_VERSION}
+    image: lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./base
       args:
@@ -27,7 +27,7 @@ services:
         - TS_XML_VERSION
 
   atbase:
-    image: lsstdm/atbase:${DM_CSC_BASE_VERSION}
+    image: lsstts/atbase:${DM_CSC_BASE_VERSION}
     build:
       context: ./atbase
       args:
@@ -37,7 +37,7 @@ services:
         - DM_CSC_BASE_GIT
 
   atarchiver:
-    image: lsstdm/atarchiver:${DM_ATARCHIVER_VERSION}
+    image: lsstts/atarchiver:${DM_ATARCHIVER_VERSION}
     build:
       context: ./atarchiver
       args:
@@ -46,7 +46,7 @@ services:
       - atbase
 
   atcontroller:
-    image: lsstdm/atcontroller:${DM_ATARCHIVER_VERSION}
+    image: lsstts/atcontroller:${DM_ATARCHIVER_VERSION}
     build:
       context: ./atcontroller
       args:
@@ -55,7 +55,7 @@ services:
       - atbase
 
   ccbase:
-    image: lsstdm/ccbase:${DM_CSC_BASE_VERSION}
+    image: lsstts/ccbase:${DM_CSC_BASE_VERSION}
     build:
       context: ./ccbase
       args:
@@ -65,7 +65,7 @@ services:
         - DM_CSC_BASE_GIT
 
   ccarchiver:
-    image: lsstdm/ccarchiver:${DM_CCARCHIVER_VERSION}
+    image: lsstts/ccarchiver:${DM_CCARCHIVER_VERSION}
     build:
       context: ./ccarchiver
       args:
@@ -74,7 +74,7 @@ services:
       - ccbase
 
   cccontroller:
-    image: lsstdm/cccontroller:${DM_CCARCHIVER_VERSION}
+    image: lsstts/cccontroller:${DM_CCARCHIVER_VERSION}
     build:
       context: ./cccontroller
       args:

@@ -14,5 +14,5 @@ docker run -d \
     -e "OODS_CONFIG_FILE=/home/ARC/config/at_oods.yaml" \
     -v /data:/data \
     -v /home/ARC/config:/home/ARC/config \
-    lsstdm/at-oods:$container_version
+    lsstts/at-oods:$container_version
 

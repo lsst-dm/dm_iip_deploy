@@ -25,4 +25,4 @@ docker run -d \
     -v /home/ARC/.lsst:/home/ARC/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstdm/atcontroller:$container_version
+    lsstts/atcontroller:$container_version

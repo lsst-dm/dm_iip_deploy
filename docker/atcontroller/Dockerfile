@@ -1,5 +1,5 @@
 ARG DM_CSC_BASE_VERSION
-FROM lsstdm/atbase:${DM_CSC_BASE_VERSION}
+FROM lsstts/atbase:${DM_CSC_BASE_VERSION}
 
 LABEL name="ATController Runtime Environment" \
     vendor="LSST" \
