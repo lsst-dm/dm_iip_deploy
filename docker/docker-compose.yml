@@ -42,6 +42,7 @@ services:
       context: ./atarchiver
       args:
         - DM_CSC_BASE_VERSION
+        - LSSTTS_DEPLOY_ENV_VERSION
     depends_on:
       - atbase
 
@@ -51,6 +52,7 @@ services:
       context: ./atcontroller
       args:
         - DM_CSC_BASE_VERSION
+        - LSSTTS_DEPLOY_ENV_VERSION
     depends_on:
       - atbase
 
@@ -70,6 +72,7 @@ services:
       context: ./ccarchiver
       args:
         - DM_CSC_BASE_VERSION
+        - LSSTTS_DEPLOY_ENV_VERSION
     depends_on:
       - ccbase
 
@@ -79,5 +82,6 @@ services:
       context: ./cccontroller
       args:
         - DM_CSC_BASE_VERSION
+        - LSSTTS_DEPLOY_ENV_VERSION
     depends_on:
       - ccbase

@@ -1,9 +1,15 @@
 ARG LSST_STACK_VERSION
 FROM lsstsqre/centos:${LSST_STACK_VERSION}
 
+ARG LSST_STACK_VERSION
+ARG CTRL_OODS_GIT
+ARG DM_CSC_BASE_GIT
 LABEL name="OODS Runtime Environment" \
     vendor="LSST" \
-    license="GPLv3"
+    license="GPLv3" \
+    lsst_stack_version=$LSST_STACK_VERSION \
+    ctrl_oods_git=$CTRL_OODS_GIT \
+    dm_csc_base_git=$DM_CSC_BASE_GIT
 
 USER root
 
@@ -54,4 +60,4 @@ RUN source /opt/lsst/software/stack/loadLSST.bash && \
 USER ARC
 
 
-ENTRYPOINT ["/bin/bash", "/opt/lsst/run_oods.sh", "/opt/lsst/oods.yaml"]
+ENTRYPOINT ["/bin/bash", "/opt/lsst/run_oods.sh"]

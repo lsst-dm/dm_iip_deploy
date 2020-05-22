@@ -1,9 +1,15 @@
 ARG LSSTTS_DEPLOY_ENV_VERSION
 FROM lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
 
+ARG DM_CONFIG_CC_GIT
+ARG DM_CSC_BASE_GIT
+ARG DM_CCARCHIVER_GIT
 LABEL name="CCArchiver Runtime Environment" \
     vendor="LSST" \
-    license="GPLv3"
+    license="GPLv3" \
+    dm_config_cc_git=$DM_CONFIG_CC_GIT \
+    dm_csc_base_git=$DM_CSC_BASE_GIT \
+    dm_ccarchiver_git=$DM_CCARCHIVER_GIT
 
 USER root
 RUN yum install -y which file

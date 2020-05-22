@@ -8,6 +8,13 @@ ENV LSST_DDS_DOMAIN=citest
 ENV PYTHON_BUILD_VERSION=${PYTHON_VERSION}
 ENV PYTHON_BUILD_LOCATION=/home/ARC/miniconda3
 
+ARG TS_SALOBJ_VERSION
+ARG TS_IDL_VERSION
+ARG TS_XML_VERSION
+LABEL ts_salobj_version=$TS_SALOBJ_VERSION \
+      ts_idl_version=$TS_IDL_VERSION \
+      ts_xml_version=$TS_XML_VERSION
+
 USER root
 
 RUN adduser -u 1004 -m -s /bin/bash ARC

@@ -9,4 +9,5 @@ export DM_CONFIG_CC_DIR=/home/ARC/dm_config_cc
 LOGPATH=/tmp/ospl_logs.$$
 mkdir $LOGPATH
 export OSPL_LOGPATH=$LOGPATH
+export HOME=/tmp
 run_cc_archiver_csc.py

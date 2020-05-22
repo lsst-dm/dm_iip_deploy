@@ -1,9 +1,16 @@
 ARG LSSTTS_DEPLOY_ENV_VERSION
 FROM lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
 
+ARG DM_CONFIG_AT_GIT
+ARG DM_CSC_BASE_GIT
+ARG DM_ATARCHIVER_GIT
 LABEL name="ATArchiver Runtime Environment" \
     vendor="LSST" \
-    license="GPLv3"
+    license="GPLv3" \
+    lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION} \
+    dm_config_at=$DM_CONFIG_AT_GIT \
+    dm_csc_base_git=$DM_CSC_BASE_GIT \
+    dm_atarchiver_git=$DM_ATARCHIVER_GIT
 
 USER root
 RUN yum install -y which file

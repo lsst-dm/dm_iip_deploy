@@ -1,4 +1,6 @@
 #!/bin/bash
+loc="`dirname \"$0\"`"
+source $loc/base_init.sh
 
 if [ -z $1 ];
 then
@@ -9,10 +11,10 @@ fi
 container_version=$1
 
 docker run -d \
-    -u `id -u ARC`:`id -g ARC` \
+    -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
     --network host \
-    -e "OODS_CONFIG_FILE=/home/ARC/config/at_oods.yaml" \
+    -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/at_oods.yaml" \
     -v /data:/data \
-    -v /home/ARC/config:/home/ARC/config \
+    -v /home/$ARCHIVE_USER/config:/home/$ARCHIVE_USER/config \
     lsstts/at-oods:$container_version
 
