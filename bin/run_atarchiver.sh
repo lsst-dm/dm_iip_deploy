@@ -17,7 +17,7 @@ fi
 lsst_dds_domain=$1
 container_version=$2
 
-echo docker run -d \
+docker run -d \
     -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
     --network=host \
     -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config" \
