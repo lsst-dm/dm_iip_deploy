@@ -1,9 +1,11 @@
 ARG DM_CSC_BASE_VERSION
 FROM lsstts/ccbase:${DM_CSC_BASE_VERSION}
 
+ARG LSSTTS_DEPLOY_ENV_VERSION
 LABEL name="CCArchiver CSC Runtime Environment" \
     vendor="LSST" \
-    license="GPLv3"
+    license="GPLv3" \
+    lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION}
 
 COPY run_ccarchiver.sh /home/ARC/run_ccarchiver.sh
 

@@ -8,4 +8,5 @@ export DM_ATARCHIVER_DIR=/home/ARC/dm_ATArchiver
 LOGPATH=/tmp/ospl_logs.$$
 mkdir $LOGPATH
 export OSPL_LOGPATH=$LOGPATH
+export HOME=/tmp
 run_atarchive_controller.py
