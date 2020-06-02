@@ -11,6 +11,14 @@ services:
         - CTRL_OODS_GIT
         - DM_CSC_BASE_GIT
 
+  test_oods:
+    image: lsstts/test_oods
+    build:
+      context: ./test_oods
+      args:
+        - LSST_STACK_VERSION
+        - DM_CSC_BASE_GIT
+
   at-oods:
     image: lsstts/oods:${OODS_CONTAINER_VERSION}
 
