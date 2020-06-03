@@ -17,7 +17,7 @@ export CTRL_OODS_GIT=tags/2.2.0
 export DM_CONFIG_CC_GIT=tags/1.0.0-rc1
 export DM_CCARCHIVER_GIT=tags/1.1.0
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_16
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_22
 export LSSTTS_DEPLOY_ENV_VERSION=salobj_${TS_SALOBJ_VERSION}_idl_${TS_IDL_VERSION}_xml_${TS_XML_VERSION}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
