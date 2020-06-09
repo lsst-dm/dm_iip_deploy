@@ -93,3 +93,40 @@ services:
         - LSSTTS_DEPLOY_ENV_VERSION
     depends_on:
       - ccbase
+
+  catchupbase:
+    image: lsstts/catchupbase:${DM_CSC_BASE_VERSION}
+    build:
+      context: ./catchupbase
+      args:
+        - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CONFIG_CATCHUP_GIT
+        - DM_CATCHUPARCHIVER_GIT
+        - DM_CSC_BASE_GIT
+
+  catchuparchiver:
+    image: lsstts/catchuparchiver:${DM_CATCHUPARCHIVER_VERSION}
+    container_name: catchuparchiver
+    build:
+      context: ./catchuparchiver
+      args:
+        - DM_CSC_BASE_VERSION
+        - LSSTTS_DEPLOY_ENV_VERSION
+    environment:
+        - IIP_CONFIG_DIR=/home/${USER}/config
+        - IIP_CREDENTIAL_DIR=/home/${USER}/.lsst
+        - LSST_DDS_DOMAIN
+    volumes:
+      - /home/${USER}/config:/home/${USER}/config
+      - /home/${USER}/.lsst:/home/${USER}/.lsst
+      - /var/log/iip:/var/log/iip
+      - /data:/data
+    networks:
+      hostnet: {}
+    depends_on:
+      - catchupbase
+
+networks:
+  hostnet:
+    external: true
+    name: host
