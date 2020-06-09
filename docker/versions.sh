@@ -17,6 +17,9 @@ export CTRL_OODS_GIT=tags/2.2.0
 export DM_CONFIG_CC_GIT=tags/1.0.0-rc1
 export DM_CCARCHIVER_GIT=tags/1.1.0
 #
+export DM_CONFIG_CATCHUP_GIT=tickets/DM-24077
+export DM_CATCHUPARCHIVER_GIT=tickets/DM-24077
+#
 export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_22
 export LSSTTS_DEPLOY_ENV_VERSION=salobj_${TS_SALOBJ_VERSION}_idl_${TS_IDL_VERSION}_xml_${TS_XML_VERSION}
 #
@@ -29,5 +32,8 @@ export DM_CSC_BASE_VERSION=${DM_CSC_BASE_GIT#*/}
 export OODS_VERSION=${CTRL_OODS_GIT#*/}
 export DM_CONFIG_CC_VERSION=${DM_CONFIG_CC_GIT#*/}
 export DM_CCARCHIVER_VERSION=${DM_CCARCHIVER_GIT#*/}
+
+export DM_CONFIG_CATCHUP_VERSION=${DM_CONFIG_CATCHUP_GIT#*/}
+export DM_CATCHUPARCHIVER_VERSION=${DM_CATCHUPARCHIVER_GIT#*/}
 # the OODS container is tagged with the OODS version and the version of the LSST stack the OODS uses
 export OODS_CONTAINER_VERSION=${OODS_VERSION}-${LSST_STACK_VERSION#*-*-lsst_distrib-}
