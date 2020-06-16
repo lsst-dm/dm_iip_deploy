@@ -7,6 +7,7 @@ LABEL name="CCArchiver CSC Runtime Environment" \
     license="GPLv3" \
     lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION}
 
+COPY mod_ospl.py /home/ARC/mod_ospl.py
 COPY run_ccarchiver.sh /home/ARC/run_ccarchiver.sh
 
 ENTRYPOINT ["/bin/bash", "/home/ARC/run_ccarchiver.sh"]

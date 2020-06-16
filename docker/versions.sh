@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # set the ts_salobj, ts_idl, ts_xml versions
-export TS_SALOBJ_VERSION="5.11.0"
+export TS_SALOBJ_VERSION="5.14.0"
 export TS_IDL_VERSION="1.2.0"
 export TS_XML_VERSION="5.1.0"
 # set an alias for this combination
