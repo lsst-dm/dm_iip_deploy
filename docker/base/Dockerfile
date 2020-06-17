@@ -33,6 +33,9 @@ COPY setup.sh /home/ARC/setup.sh
 
 RUN chown ARC /home/ARC/setup.sh
 
+COPY mod_ospl.py /home/ARC/mod_ospl.py
+RUN chown ARC /home/ARC/mod_ospl.py
+
 USER ARC
 WORKDIR /home/ARC
 
