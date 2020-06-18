@@ -7,7 +7,7 @@ export TS_XML_VERSION="5.1.0"
 # set an alias for this combination
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tags/2.1.0
+export DM_CSC_BASE_GIT=tags/2.1.1
 #
 export DM_CONFIG_AT_GIT=tags/2.0.0
 export DM_ATARCHIVER_GIT=tags/2.1.0
