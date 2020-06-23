@@ -35,7 +35,7 @@ services:
         - TS_XML_VERSION
 
   atbase:
-    image: lsstts/atbase:${DM_CSC_BASE_VERSION}
+    image: lsstts/atbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./atbase
       args:
@@ -45,7 +45,7 @@ services:
         - DM_CSC_BASE_GIT
 
   atarchiver:
-    image: lsstts/atarchiver:${DM_ATARCHIVER_VERSION}
+    image: lsstts/atarchiver:${DM_ATARCHIVER_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./atarchiver
       args:
@@ -55,7 +55,7 @@ services:
       - atbase
 
   atcontroller:
-    image: lsstts/atcontroller:${DM_ATARCHIVER_VERSION}
+    image: lsstts/atcontroller:${DM_ATARCHIVER_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./atcontroller
       args:
@@ -65,7 +65,7 @@ services:
       - atbase
 
   ccbase:
-    image: lsstts/ccbase:${DM_CSC_BASE_VERSION}
+    image: lsstts/ccbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./ccbase
       args:
@@ -75,7 +75,7 @@ services:
         - DM_CSC_BASE_GIT
 
   ccarchiver:
-    image: lsstts/ccarchiver:${DM_CCARCHIVER_VERSION}
+    image: lsstts/ccarchiver:${DM_CCARCHIVER_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./ccarchiver
       args:
@@ -85,7 +85,7 @@ services:
       - ccbase
 
   cccontroller:
-    image: lsstts/cccontroller:${DM_CCARCHIVER_VERSION}
+    image: lsstts/cccontroller:${DM_CCARCHIVER_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./cccontroller
       args:
