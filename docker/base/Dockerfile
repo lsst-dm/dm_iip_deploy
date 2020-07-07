@@ -26,8 +26,10 @@ RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf && \
                    git \
                    make \
                    wget \
-                   gcc-c++ \
-                   OpenSpliceDDS-6.9.0-1
+                   gcc-c++
+
+ARG OPENSPLICE_VERSION
+RUN yum install -y $OPENSPLICE_VERSION
 
 COPY setup.sh /home/ARC/setup.sh
 
@@ -44,16 +46,11 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
 ARG TS_SALOBJ_VERSION
 ARG TS_IDL_VERSION
 ARG TS_XML_VERSION
-RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-salobj="${TS_SALOBJ_VERSION}" cython ts-idl="${TS_IDL_VERSION}_${TS_XML_VERSION}"
+ARG DDS_VERSION
+RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-dds=${DDS_VERSION} ts-salobj="${TS_SALOBJ_VERSION}" cython ts-idl="${TS_IDL_VERSION}_${TS_XML_VERSION}"
 
-RUN source ~/miniconda3/bin/activate && \
-    source $OSPL_HOME/release.com && \
-    mkdir dds && \
-    cd dds && \
-    tar xvzf /opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/tools/python-support.tgz && \
-    cd python/src && \
-    python setup.py install
 
 RUN chmod 755 /home/ARC
 
 USER ARC
+
