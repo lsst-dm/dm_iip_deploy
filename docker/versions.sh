@@ -10,15 +10,15 @@ export DDS_VERSION="v6.9.190925_7"
 # set an alias for this combination
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tags/2.1.1
+export DM_CSC_BASE_GIT=tags/2.2.0
 #
 export DM_CONFIG_AT_GIT=tags/2.0.0
-export DM_ATARCHIVER_GIT=tags/2.1.1
+export DM_ATARCHIVER_GIT=tags/2.2.0
 #
 export CTRL_OODS_GIT=tags/2.2.0
 #
-export DM_CONFIG_CC_GIT=tags/1.0.0-rc1
-export DM_CCARCHIVER_GIT=tags/1.1.1
+export DM_CONFIG_CC_GIT=tags/1.0.0
+export DM_CCARCHIVER_GIT=tags/1.2.0
 #
 export DM_CONFIG_CATCHUP_GIT=tickets/DM-24077
 export DM_CATCHUPARCHIVER_GIT=tickets/DM-24077
