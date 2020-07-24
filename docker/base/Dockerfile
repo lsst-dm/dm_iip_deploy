@@ -47,7 +47,7 @@ ARG TS_SALOBJ_VERSION
 ARG TS_IDL_VERSION
 ARG TS_XML_VERSION
 ARG DDS_VERSION
-RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-dds=${DDS_VERSION} ts-salobj="${TS_SALOBJ_VERSION}" cython ts-idl="${TS_IDL_VERSION}_${TS_XML_VERSION}"
+RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-dds=${DDS_VERSION} ts-salobj="${TS_SALOBJ_VERSION}" cython ts-idl="${TS_IDL_VERSION}"
 
 
 RUN chmod 755 /home/ARC

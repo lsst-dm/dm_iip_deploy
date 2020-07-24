@@ -1,11 +1,14 @@
 #!/bin/bash
 #
 # set the ts_salobj, ts_idl, ts_xml versions
-export TS_SALOBJ_VERSION="5.15.0"
-export TS_IDL_VERSION="1.2.2_4.1.1"
-export TS_XML_VERSION="6.0.0"
+export TS_SALOBJ_VERSION="5.17.0"
+export TS_IDL_PACKAGE="1.3.0"
+export TS_XML_PACKAGE="6.1.0"
+export TS_SAL_PACKAGE="4.1.4"
+export TS_IDL_VERSION=${TS_IDL_PACKAGE}_${TS_XML_PACKAGE}_${TS_SAL_PACKAGE}
+export TS_XML_VERSION="6.1.0"
 
-export OPENSPLICE_VERSION="OpenSpliceDDS-6.9.0-7"
+export OPENSPLICE_VERSION="OpenSpliceDDS-6.9.0-8"
 export DDS_VERSION="v6.9.190925_7"
 # set an alias for this combination
 
@@ -24,7 +27,7 @@ export DM_CONFIG_CATCHUP_GIT=tickets/DM-24077
 export DM_CATCHUPARCHIVER_GIT=tickets/DM-24077
 #
 export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_25
-export LSSTTS_DEPLOY_ENV_VERSION=salobj_${TS_SALOBJ_VERSION}_idl_${TS_IDL_VERSION}_xml_${TS_XML_VERSION}
+export LSSTTS_DEPLOY_ENV_VERSION=ts_salobj_${TS_SALOBJ_VERSION}_ts_idl_${TS_IDL_VERSION}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
 #
