@@ -31,7 +31,7 @@ ROOT:
 
   BASE_BROKER_ADDR: 10.0.100.128:5672/%2ftest_at
   ARCHIVE:
-    ARCHIVE_LOGIN: ARC
+    ARCHIVE_LOGIN: arc
     ARCHIVE_IP: 10.0.100.128
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
     FORWARDER_STAGING: /data/staging/atforwarder

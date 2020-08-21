@@ -14,26 +14,26 @@ LABEL name="CCArchiver Runtime Environment" \
 USER root
 RUN yum install -y which file
 
-USER ARC
-RUN source /home/ARC/miniconda3/bin/activate && \
+USER arc
+RUN source /home/arc/miniconda3/bin/activate && \
     pip install pika redis pyyaml && \
     conda install conda-build
 
-RUN chmod 777 /home/ARC
+RUN chmod 777 /home/arc
 
-WORKDIR /home/ARC
+WORKDIR /home/arc
 ARG DM_CONFIG_CC_GIT
 RUN git clone https://github.com/lsst-dm/dm_config_cc && \
     cd dm_config_cc && \
     git checkout ${DM_CONFIG_CC_GIT}
 
-WORKDIR /home/ARC
+WORKDIR /home/arc
 ARG DM_CSC_BASE_GIT
 RUN git clone https://github.com/lsst-dm/dm_csc_base && \
     cd dm_csc_base && \
     git checkout ${DM_CSC_BASE_GIT}
 
-WORKDIR /home/ARC
+WORKDIR /home/arc
 ARG DM_CCARCHIVER_GIT
 RUN git clone https://github.com/lsst-dm/dm_CCArchiver && \
     cd dm_CCArchiver && \

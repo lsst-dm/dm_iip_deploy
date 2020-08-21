@@ -7,6 +7,6 @@ LABEL name="CCController Runtime Environment" \
     license="GPLv3" \
     lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION}
 
-COPY run_cccontroller.sh /home/ARC/run_cccontroller.sh
+COPY run_cccontroller.sh /home/arc/run_cccontroller.sh
 
-ENTRYPOINT ["/bin/bash", "/home/ARC/run_cccontroller.sh"]
+ENTRYPOINT ["/bin/bash", "/home/arc/run_cccontroller.sh"]

@@ -5,7 +5,7 @@ After=at-archiver.service
 
 [Service]
 Type=simple
-User=ARC
+User=arc
 Environment="DM_ATARCHIVER_DIR=/opt/lsst/dm_ATArchiver"
 PassEnvironment=DM_ATARCHIVER_DIR
 WorkingDirectory=/opt/lsst/dm_ATArchiver
