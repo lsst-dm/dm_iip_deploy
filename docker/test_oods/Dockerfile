@@ -18,7 +18,7 @@ COPY lsst-ts.repo /tmp/lsst-ts.repo
 RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf
 
 RUN groupadd arc && \
-    useradd -G arc arc
+    useradd -g arc arc
 
 USER root
 RUN chmod 755 /home/arc

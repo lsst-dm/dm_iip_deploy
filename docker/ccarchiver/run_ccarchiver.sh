@@ -3,7 +3,9 @@ source /home/arc/miniconda3/bin/activate
 source $OSPL_HOME/release.com
 # replace AUTO in General/NetworkInterfaceAddress to the given internet address or network interface name
 # NETWORK_INTERFACE_ADDRESS is initialized as part of the docker container startup
-python /home/arc/mod_ospl.py $OSPL_URI /tmp/ospl.xml $NETWORK_INTERFACE_ADDRESS
+# replace 0 in Domain/Id to the given Id
+# DOMAIN_ID is initialized as part of the docker container startup
+python /home/arc/mod_ospl.py $OSPL_URI /tmp/ospl.xml $NETWORK_INTERFACE_ADDRESS $DOMAIN_ID
 # point at the re-written ospl.xml file
 export OSPL_URI=file:///tmp/ospl.xml
 export PYTHONPATH=/home/arc/dm_csc_base/python:/home/arc/dm_CCArchiver/python:$PYTHONPATH
