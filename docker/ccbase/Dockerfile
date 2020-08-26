@@ -14,9 +14,12 @@ LABEL name="CCArchiver Runtime Environment" \
 USER root
 RUN yum install -y which file
 
+ARG PIKA_VERSION
+ARG REDIS_VERSION
 USER arc
 RUN source /home/arc/miniconda3/bin/activate && \
-    pip install pika redis pyyaml && \
+    pip install pika==$PIKA_VERSION && \
+    pip install redis==$REDIS_VERSION && \
     conda install conda-build
 
 RUN chmod 777 /home/arc

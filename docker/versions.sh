@@ -10,7 +10,9 @@ export TS_XML_VERSION="6.1.0"
 
 export OPENSPLICE_VERSION="OpenSpliceDDS-6.9.0-8"
 export DDS_VERSION="v6.9.190925_7"
-# set an alias for this combination
+# redis and pika versions
+export PIKA_VERSION=1.1.0
+export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
 export DM_CSC_BASE_GIT=tags/2.2.1
