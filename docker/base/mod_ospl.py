@@ -26,4 +26,9 @@ if __name__ == "__main__":
     type_tag = root.find('DDSI2Service/General/NetworkInterfaceAddress')
     type_tag.text = sys.argv[3]
     
+    if len(sys.argv) == 5:
+        type_tag = root.find('Domain/Id')
+        type_tag.text = sys.argv[4]
+
+
     tree.write(sys.argv[2])

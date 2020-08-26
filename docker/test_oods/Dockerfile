@@ -17,11 +17,11 @@ COPY lsst-ts.repo /tmp/lsst-ts.repo
 
 RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf
 
-RUN groupadd ARCHIVE && \
-    useradd -G ARCHIVE ARC
+RUN groupadd arc && \
+    useradd -g arc arc
 
 USER root
-RUN chmod 755 /home/ARC
+RUN chmod 755 /home/arc
 RUN chmod 755 /home/lsst
 
 WORKDIR /opt/lsst
@@ -47,6 +47,6 @@ WORKDIR /home/lsst
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
     pip install redis pika asynctest
 
-USER ARC
+USER arc
 
 CMD tail -f /dev/null
