@@ -13,12 +13,12 @@ LABEL name="CatchupArchiver Runtime Environment" \
     dm_csc_base_git=$DM_CSC_BASE_GIT \
     dm_catchuparchiver_git=$DM_CATCHUPARCHIVER_GIT
 
-USER ARC
-RUN source /home/ARC/miniconda3/bin/activate && \
-    pip install pika redis pyyaml && \
+USER arc
+RUN source /home/arc/miniconda3/bin/activate && \
+    pip install pika redis pyyaml pandas lsst-efd-client && \
     conda install conda-build
 
-RUN chmod 777 /home/ARC
+RUN chmod 777 /home/arc
 
 RUN git clone https://github.com/lsst-dm/dm_config_catchup && \
     cd dm_config_catchup && \
