@@ -10,10 +10,12 @@ export TS_XML_VERSION="6.1.0"
 
 export OPENSPLICE_VERSION="OpenSpliceDDS-6.9.0-8"
 export DDS_VERSION="v6.9.190925_7"
-# set an alias for this combination
+# redis and pika versions
+export PIKA_VERSION=1.1.0
+export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tags/2.2.0
+export DM_CSC_BASE_GIT=tags/2.2.1
 #
 export DM_CONFIG_AT_GIT=tags/2.0.0
 export DM_ATARCHIVER_GIT=tags/2.2.0
@@ -21,12 +23,12 @@ export DM_ATARCHIVER_GIT=tags/2.2.0
 export CTRL_OODS_GIT=tags/2.2.0
 #
 export DM_CONFIG_CC_GIT=tags/1.0.0
-export DM_CCARCHIVER_GIT=tags/1.2.0
+export DM_CCARCHIVER_GIT=tags/1.2.1
 #
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_30
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_33
 export LSSTTS_DEPLOY_ENV_VERSION=ts_salobj_${TS_SALOBJ_VERSION}_ts_idl_${TS_IDL_VERSION}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers

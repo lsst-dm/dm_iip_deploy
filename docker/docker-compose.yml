@@ -44,6 +44,8 @@ services:
         - DM_CONFIG_AT_GIT
         - DM_ATARCHIVER_GIT
         - DM_CSC_BASE_GIT
+        - PIKA_VERSION
+        - REDIS_VERSION
 
   atarchiver:
     image: lsstts/atarchiver:${DM_ATARCHIVER_CONTAINER}
@@ -74,6 +76,8 @@ services:
         - DM_CONFIG_CC_GIT
         - DM_CCARCHIVER_GIT
         - DM_CSC_BASE_GIT
+        - PIKA_VERSION
+        - REDIS_VERSION
 
   ccarchiver:
     image: lsstts/ccarchiver:${DM_CCARCHIVER_CONTAINER}
@@ -104,6 +108,8 @@ services:
         - DM_CONFIG_CATCHUP_GIT
         - DM_CATCHUPARCHIVER_GIT
         - DM_CSC_BASE_GIT
+        - PIKA_VERSION
+        - REDIS_VERSION
 
   catchuparchiver:
     image: lsstts/catchuparchiver:${DM_CATCHUPARCHIVER_CONTAINER}

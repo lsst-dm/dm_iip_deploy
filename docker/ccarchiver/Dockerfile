@@ -7,6 +7,6 @@ LABEL name="CCArchiver CSC Runtime Environment" \
     license="GPLv3" \
     lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION}
 
-COPY run_ccarchiver.sh /home/ARC/run_ccarchiver.sh
+COPY run_ccarchiver.sh /home/arc/run_ccarchiver.sh
 
-ENTRYPOINT ["/bin/bash", "/home/ARC/run_ccarchiver.sh"]
+ENTRYPOINT ["/bin/bash", "/home/arc/run_ccarchiver.sh"]

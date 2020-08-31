@@ -17,10 +17,16 @@ fi
 lsst_dds_domain=$1
 container_version=$2
 network_interface_address=$3
+domain_id="0"
+if [ -n $4 ];
+then
+    domain_id=$4
+fi
 
 docker run -d \
     -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
     --network=host \
+    -e "DOMAIN_ID=$domain_id" \
     -e "NETWORK_INTERFACE_ADDRESS=$network_interface_address" \
     -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config" \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
