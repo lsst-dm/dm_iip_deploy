@@ -1,14 +1,12 @@
 ARG LSSTTS_DEPLOY_ENV_VERSION
 FROM lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
 
-ARG DM_CONFIG_AT_GIT
 ARG DM_CSC_BASE_GIT
 ARG DM_ATARCHIVER_GIT
 LABEL name="ATArchiver Runtime Environment" \
     vendor="LSST" \
     license="GPLv3" \
     lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION} \
-    dm_config_at=$DM_CONFIG_AT_GIT \
     dm_csc_base_git=$DM_CSC_BASE_GIT \
     dm_atarchiver_git=$DM_ATARCHIVER_GIT
 
@@ -24,12 +22,6 @@ RUN source /home/arc/miniconda3/bin/activate && \
     conda install conda-build
 
 RUN chmod 755 /home/arc
-
-WORKDIR /home/arc
-ARG DM_CONFIG_AT_GIT
-RUN git clone https://github.com/lsst-dm/dm_config_at && \
-    cd dm_config_at && \
-    git checkout ${DM_CONFIG_AT_GIT}
 
 WORKDIR /home/arc
 ARG DM_CSC_BASE_GIT
