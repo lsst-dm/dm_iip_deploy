@@ -15,15 +15,13 @@ export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tags/2.2.1
+export DM_CSC_BASE_GIT=tags/3.0.0
 #
-export DM_CONFIG_AT_GIT=tags/2.0.0
-export DM_ATARCHIVER_GIT=tags/2.2.0
+export DM_ATARCHIVER_GIT=tags/3.0.0
 #
 export CTRL_OODS_GIT=tags/2.2.0
 #
-export DM_CONFIG_CC_GIT=tags/1.0.0
-export DM_CCARCHIVER_GIT=tags/1.2.1
+export DM_CCARCHIVER_GIT=tags/2.0.0
 #
 export DM_CONFIG_CATCHUP_GIT=tickets/DM-24077
 export DM_CATCHUPARCHIVER_GIT=tickets/DM-24077
@@ -34,11 +32,9 @@ export LSSTTS_DEPLOY_ENV_VERSION=ts_salobj_${TS_SALOBJ_VERSION}_ts_idl_${TS_IDL_
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
 #
 export DEPLOY_SUFFIX=${LSSTTS_DEPLOY_ENV_VERSION}
-export DM_CONFIG_AT_VERSION=${DM_CONFIG_AT_GIT#*/}
 export DM_ATARCHIVER_VERSION=${DM_ATARCHIVER_GIT#*/}
 export DM_CSC_BASE_VERSION=${DM_CSC_BASE_GIT#*/}
 export OODS_VERSION=${CTRL_OODS_GIT#*/}
-export DM_CONFIG_CC_VERSION=${DM_CONFIG_CC_GIT#*/}
 export DM_CCARCHIVER_VERSION=${DM_CCARCHIVER_GIT#*/}
 
 export DM_CONFIG_CATCHUP_VERSION=${DM_CONFIG_CATCHUP_GIT#*/}
