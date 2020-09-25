@@ -131,6 +131,15 @@ services:
     depends_on:
       - catchupbase
 
+  redis:
+    image: redis
+    container_name: redis
+    hostname: my-redis
+    ports:
+      - "6379:6379"
+    networks:
+      hostnet: {}
+
 networks:
   hostnet:
     external: true
