@@ -1,5 +1,5 @@
-ARG DM_CSC_BASE_VERSION
-FROM lsstts/catchupbase:${DM_CSC_BASE_VERSION}
+ARG DM_CSC_BASE_CONTAINER
+FROM lsstts/catchupbase:${DM_CSC_BASE_CONTAINER}
 
 ARG LSSTTS_DEPLOY_ENV_VERSION
 LABEL name="CatchupArchiver CSC Runtime Environment" \
@@ -9,4 +9,4 @@ LABEL name="CatchupArchiver CSC Runtime Environment" \
 
 COPY run_catchuparchiver.sh /home/arc/run_catchuparchiver.sh
 
-ENTRYPOINT ["/bin/bash", "/home/arc/run_catchuparchiver.sh"]
+CMD ["/bin/bash", "/home/arc/run_catchuparchiver.sh"]

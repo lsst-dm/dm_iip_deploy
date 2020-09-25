@@ -19,6 +19,7 @@ USER arc
 RUN source /home/arc/miniconda3/bin/activate && \
     pip install pika==$PIKA_VERSION && \
     pip install redis==$REDIS_VERSION && \
+    pip install pyyaml pandas lsst-efd-client && \
     conda install conda-build
 
 RUN chmod 777 /home/arc
