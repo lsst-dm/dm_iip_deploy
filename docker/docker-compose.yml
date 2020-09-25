@@ -2,6 +2,16 @@
 version: "3.7"
 
 services:
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+    container_name: rabbitmq
+    hostname: my-rabbit
+    ports:
+      - "5672:5672"
+    networks:
+      hostnet: {}
+
   oods:
     image: lsstts/oods:${OODS_CONTAINER_VERSION}
     build:
