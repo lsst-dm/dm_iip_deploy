@@ -2,6 +2,16 @@
 version: "3.7"
 
 services:
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+    container_name: rabbitmq
+    hostname: my-rabbit
+    ports:
+      - "5672:5672"
+    networks:
+      hostnet: {}
+
   oods:
     image: lsstts/oods:${OODS_CONTAINER_VERSION}
     build:
@@ -41,7 +51,6 @@ services:
       context: ./atbase
       args:
         - LSSTTS_DEPLOY_ENV_VERSION
-        - DM_CONFIG_AT_GIT
         - DM_ATARCHIVER_GIT
         - DM_CSC_BASE_GIT
         - PIKA_VERSION
@@ -73,7 +82,6 @@ services:
       context: ./ccbase
       args:
         - LSSTTS_DEPLOY_ENV_VERSION
-        - DM_CONFIG_CC_GIT
         - DM_CCARCHIVER_GIT
         - DM_CSC_BASE_GIT
         - PIKA_VERSION
@@ -148,6 +156,15 @@ services:
       - /home/${USER}/.lsst:/home/${USER}/.lsst
       - /var/log/iip:/var/log/iip
       - /data:/data
+    networks:
+      hostnet: {}
+      
+  redis:
+    image: redis
+    container_name: redis
+    hostname: my-redis
+    ports:
+      - "6379:6379"
     networks:
       hostnet: {}
 
