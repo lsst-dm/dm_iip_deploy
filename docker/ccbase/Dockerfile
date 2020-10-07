@@ -1,5 +1,7 @@
-ARG LSSTTS_DEPLOY_ENV_VERSION
-FROM lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
+ARG CYCLE_TAG
+FROM ts-dockerhub.lsst.org/deploy-env:${CYCLE_TAG}
+
+ENV OSPL_HOME=/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux
 
 ARG DM_CSC_BASE_GIT
 ARG DM_CCARCHIVER_GIT
@@ -14,22 +16,32 @@ RUN yum install -y which file
 
 ARG PIKA_VERSION
 ARG REDIS_VERSION
-USER arc
-RUN source /home/arc/miniconda3/bin/activate && \
+ARG TS_IDL_VERSION
+USER saluser
+RUN source /opt/lsst/software/stack/miniconda/bin/activate && \
     pip install pika==$PIKA_VERSION && \
     pip install redis==$REDIS_VERSION && \
-    conda install conda-build
+    conda install conda-build && \
+    conda install -c lsstts ts-idl=${TS_IDL_VERSION}
 
-RUN chmod 777 /home/arc
+RUN chmod 777 /home/saluser
 
-WORKDIR /home/arc
+WORKDIR /home/saluser
 ARG DM_CSC_BASE_GIT
 RUN git clone https://github.com/lsst-dm/dm_csc_base && \
     cd dm_csc_base && \
     git checkout ${DM_CSC_BASE_GIT}
 
-WORKDIR /home/arc
+WORKDIR /home/saluser
 ARG DM_CCARCHIVER_GIT
 RUN git clone https://github.com/lsst-dm/dm_CCArchiver && \
     cd dm_CCArchiver && \
     git checkout ${DM_CCARCHIVER_GIT}
+
+WORKDIR /home/saluser
+ARG TS_IDL_PACKAGE
+RUN git clone --depth 1 --branch ${TS_IDL_PACKAGE} http://github.com/lsst-ts/ts_idl
+
+ENV LSST_DDS_QOS=file:///home/saluser/ts_idl/qos/QoS.xml
+
+COPY mod_ospl.py /home/saluser/mod_ospl.py

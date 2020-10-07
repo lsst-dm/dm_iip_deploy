@@ -81,6 +81,8 @@ services:
     build:
       context: ./ccbase
       args:
+        - CYCLE_TAG
+        - TS_IDL_PACKAGE
         - LSSTTS_DEPLOY_ENV_VERSION
         - DM_CCARCHIVER_GIT
         - DM_CSC_BASE_GIT
@@ -107,6 +109,29 @@ services:
     depends_on:
       - ccbase
 
+  ospl-daemon:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      # NOTE: the docker_tmp directory must exist and be readable and writeable
+      # by the UID/GID of the associated container.
+      - /tmp/docker_tmp/:/tmp/
+      # Necessary if you override parameters in the OSPL config file
+      - ./etc/ospl-6.10.4-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+    tty: true
+    ipc: host
+    pid: host
+    # Only necessary if you assign specific IPs to containers.
+    #networks:
+    #    [network label]:
+    #        ipv4_address: "x.x.x.x"
+    network_mode: "host"
+      
+
   catchupbase:
     image: lsstts/catchupbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
@@ -130,7 +155,7 @@ services:
     environment:
         - IIP_CONFIG_DIR=/home/${USER}/config
         - IIP_CREDENTIAL_DIR=/home/${USER}/.lsst
-        - LSST_DDS_DOMAIN
+        - LSST_DDS_PARTITION_PREFIX
     volumes:
       - /home/${USER}/config:/home/${USER}/config
       - /home/${USER}/.lsst:/home/${USER}/.lsst
