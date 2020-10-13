@@ -17,11 +17,11 @@ COPY lsst-ts.repo /tmp/lsst-ts.repo
 
 RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf
 
-RUN groupadd arc && \
-    useradd -g arc arc
+RUN groupadd -g 73006 saluser && \
+    useradd -u 73006 -g saluser saluser
 
 USER root
-RUN chmod 755 /home/arc
+RUN chmod 755 /home/saluser
 RUN chmod 755 /home/lsst
 
 WORKDIR /opt/lsst
@@ -57,7 +57,7 @@ RUN source /opt/lsst/software/stack/loadLSST.bash && \
     cd /opt/lsst/ctrl_oods && \
     scons
 
-USER arc
+USER saluser
 
 
 ENTRYPOINT ["/bin/bash", "/opt/lsst/run_oods.sh"]

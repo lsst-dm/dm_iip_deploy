@@ -2,15 +2,27 @@
 version: "3.7"
 
 services:
-  rabbitmq:
-    build:
-      context: ./rabbitmq
-    container_name: rabbitmq
-    hostname: my-rabbit
-    ports:
-      - "5672:5672"
-    networks:
-      hostnet: {}
+  ospl-daemon:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      # NOTE: the docker_tmp directory must exist and be readable and writeable
+      # by the UID/GID of the associated container.
+      - /tmp/docker_tmp/:/tmp/
+      # Necessary if you override parameters in the OSPL config file
+      - ./etc/ospl-6.10.4-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+    tty: true
+    ipc: host
+    pid: host
+    # Only necessary if you assign specific IPs to containers.
+    #networks:
+    #    [network label]:
+    #        ipv4_address: "x.x.x.x"
+    network_mode: "host"
 
   oods:
     image: lsstts/oods:${OODS_CONTAINER_VERSION}
@@ -21,6 +33,12 @@ services:
         - CTRL_OODS_GIT
         - DM_CSC_BASE_GIT
 
+  at-oods:
+    image: lsstts/oods:${OODS_CONTAINER_VERSION}
+
+  cc-oods:
+    image: lsstts/oods:${OODS_CONTAINER_VERSION}
+
   test_oods:
     image: lsstts/test_oods
     build:
@@ -28,12 +46,6 @@ services:
       args:
         - LSST_STACK_VERSION
         - DM_CSC_BASE_GIT
-
-  at-oods:
-    image: lsstts/oods:${OODS_CONTAINER_VERSION}
-
-  cc-oods:
-    image: lsstts/oods:${OODS_CONTAINER_VERSION}
 
   base:
     image: lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
@@ -63,8 +75,6 @@ services:
       args:
         - DM_CSC_BASE_CONTAINER
         - LSSTTS_DEPLOY_ENV_VERSION
-    depends_on:
-      - atbase
 
   atcontroller:
     image: lsstts/atcontroller:${DM_ATARCHIVER_CONTAINER}
@@ -73,8 +83,6 @@ services:
       args:
         - DM_CSC_BASE_CONTAINER
         - LSSTTS_DEPLOY_ENV_VERSION
-    depends_on:
-      - atbase
 
   ccbase:
     image: lsstts/ccbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
@@ -96,41 +104,24 @@ services:
       args:
         - DM_CSC_BASE_CONTAINER
         - LSSTTS_DEPLOY_ENV_VERSION
-    depends_on:
-      - ccbase
 
   cccontroller:
     image: lsstts/cccontroller:${DM_CCARCHIVER_CONTAINER}
+    container_name: cc_controller
+    environment:
+      - IIP_CONFIG_DIR=/home/saluser/config
+      - IIP_CREDENTIAL_DIR=/home/saluser/.lsst
+    volumes:
+      - /home/saluser/config:/home/saluser/config
+      - /home/saluser/.lsst:/home/saluser/.lsst
+      - /var/log/iip:/var/log/iip
+      - /data:/data
     build:
       context: ./cccontroller
       args:
         - DM_CSC_BASE_CONTAINER
         - LSSTTS_DEPLOY_ENV_VERSION
-    depends_on:
-      - ccbase
-
-  ospl-daemon:
-    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
-    container_name: ospl-daemon
-    environment:
-      - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
-      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
-    volumes:
-      # NOTE: the docker_tmp directory must exist and be readable and writeable
-      # by the UID/GID of the associated container.
-      - /tmp/docker_tmp/:/tmp/
-      # Necessary if you override parameters in the OSPL config file
-      - ./etc/ospl-6.10.4-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
-    tty: true
-    ipc: host
-    pid: host
-    # Only necessary if you assign specific IPs to containers.
-    #networks:
-    #    [network label]:
-    #        ipv4_address: "x.x.x.x"
     network_mode: "host"
-      
 
   catchupbase:
     image: lsstts/catchupbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
@@ -192,6 +183,17 @@ services:
       - "6379:6379"
     networks:
       hostnet: {}
+
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+    container_name: rabbitmq
+    hostname: my-rabbit
+    ports:
+      - "5672:5672"
+    networks:
+      hostnet: {}
+
 
 networks:
   hostnet:

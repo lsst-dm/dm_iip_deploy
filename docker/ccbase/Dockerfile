@@ -13,6 +13,7 @@ LABEL name="CCArchiver Runtime Environment" \
 
 USER root
 RUN yum install -y which file
+RUN yum install -y net-tools
 
 ARG PIKA_VERSION
 ARG REDIS_VERSION

@@ -24,9 +24,9 @@ source $OSPL_HOME/release.com
 ## NETWORK_INTERFACE_ADDRESS is initialized as part of the docker container startup
 ## replace 0 in Domain/Id to the given Id
 ## DOMAIN_ID is initialized as part of the docker container startup
-python /home/saluser/mod_ospl.py $OSPL_URI /tmp/ospl.xml $NETWORK_INTERFACE_ADDRESS $DOMAIN_ID
+# python /home/saluser/mod_ospl.py $OSPL_URI /tmp/ospl.xml $NETWORK_INTERFACE_ADDRESS $DOMAIN_ID
 ## point at the re-written ospl.xml file
-export OSPL_URI=file:///tmp/ospl.xml
+#export OSPL_URI=file:///tmp/ospl.xml
 
 export PYTHONPATH=/home/saluser/dm_csc_base/python:/home/saluser/dm_CCArchiver/python:$PYTHONPATH
 export PATH=/home/saluser/dm_csc_base/bin:/home/saluser/dm_CCArchiver/bin:$PATH
