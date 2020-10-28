@@ -43,6 +43,9 @@ WORKDIR /home/saluser
 ARG TS_IDL_PACKAGE
 RUN git clone --depth 1 --branch ${TS_IDL_PACKAGE} http://github.com/lsst-ts/ts_idl
 
+ARG TS_DDSCONFIG_PACKAGE
+RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
+
 ENV LSST_DDS_QOS=file:///home/saluser/ts_idl/qos/QoS.xml
 
 COPY mod_ospl.py /home/saluser/mod_ospl.py

@@ -1,12 +1,13 @@
 #!/bin/bash
 #
 # set the ts_salobj, ts_idl, ts_xml versions
-export TS_SALOBJ_VERSION="6.0.2"
-export TS_IDL_PACKAGE="v2.0.0"
-export TS_XML_PACKAGE="v6.1.0"
-export TS_SAL_PACKAGE="v5.0.0"
+export TS_SALOBJ_VERSION="6.0.3"
+export TS_IDL_PACKAGE="v2.1.0"
+export TS_XML_PACKAGE="v6.2.1"
+export TS_SAL_PACKAGE="v5.0.1"
+export TS_DDSCONFIG_PACKAGE="v0.1.0"
 export TS_IDL_VERSION=${TS_IDL_PACKAGE}_${TS_XML_PACKAGE}_${TS_SAL_PACKAGE}
-export CYCLE_TAG="c0014"
+export CYCLE_TAG="c0015"
 export SITE_PREFIX="ncsa"
 export OSPL_XML_FILE=etc/ospl-6.10.4-shmem.xml
 
@@ -17,18 +18,18 @@ export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tickets/DM-26611
+export DM_CSC_BASE_GIT=tags/4.0.0
 #
 export DM_ATARCHIVER_GIT=tags/3.0.0
 #
 export CTRL_OODS_GIT=tags/2.2.0
 #
-export DM_CCARCHIVER_GIT=tickets/DM-26611
+export DM_CCARCHIVER_GIT=tags/3.0.0
 #
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_40
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_43
 export LSSTTS_DEPLOY_ENV_VERSION=ts_salobj_${TS_SALOBJ_VERSION}_ts_idl_${TS_IDL_VERSION}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers

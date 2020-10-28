@@ -8,6 +8,7 @@ LABEL name="CCArchiver CSC Runtime Environment" \
     lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION}
 
 COPY ccsetup.sh /home/saluser/ccsetup.sh
+
 COPY run_ccarchiver.sh /home/saluser/run_ccarchiver.sh
 
 ENTRYPOINT ["/bin/bash", "/home/saluser/run_ccarchiver.sh"]

@@ -36,4 +36,4 @@ LOGPATH=/tmp/ospl_logs.$$
 mkdir $LOGPATH
 export OSPL_LOGPATH=$LOGPATH
 export HOME=/tmp
-
+export OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml

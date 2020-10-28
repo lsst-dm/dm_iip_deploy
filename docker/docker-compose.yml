@@ -91,6 +91,7 @@ services:
       args:
         - CYCLE_TAG
         - TS_IDL_PACKAGE
+        - TS_DDSCONFIG_PACKAGE
         - LSSTTS_DEPLOY_ENV_VERSION
         - DM_CCARCHIVER_GIT
         - DM_CSC_BASE_GIT

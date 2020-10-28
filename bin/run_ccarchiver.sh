@@ -36,7 +36,7 @@ docker run \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
     -e "LSST_DDS_PARTITION_PREFIX=$lsst_dds_partition_prefix" \
     -e "LSST_DDS_QOS=file://home/$ARCHIVE_USER/ts_idl/qos/QoS.xml" \
-    -v /home/saluser/etc/ospl-6.10.4-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml \
+    -e "LSST_DDS_INTERFACE=p3p2" \
     -v /home/saluser/config:/home/$ARCHIVE_USER/config \
     -v /home/saluser/.lsst:/home/$ARCHIVE_USER/.lsst \
     -v /var/log/iip:/var/log/iip \
