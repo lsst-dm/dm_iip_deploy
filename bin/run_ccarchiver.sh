@@ -35,7 +35,7 @@ docker run \
     -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config" \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
     -e "LSST_DDS_PARTITION_PREFIX=$lsst_dds_partition_prefix" \
-    -e "LSST_DDS_QOS=file://home/$ARCHIVE_USER/ts_idl/qos/QoS.xml" \
+    -e "LSST_DDS_QOS=file:///home/$ARCHIVE_USER/ts_idl/qos/QoS.xml" \
     -e "LSST_DDS_INTERFACE=p3p2" \
     -v /home/saluser/config:/home/$ARCHIVE_USER/config \
     -v /home/saluser/.lsst:/home/$ARCHIVE_USER/.lsst \

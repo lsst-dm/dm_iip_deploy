@@ -1,56 +1,38 @@
-FROM centos:7
+ARG CYCLE_TAG
+FROM ts-dockerhub.lsst.org/deploy-env:${CYCLE_TAG}
 
-ARG PYTHON_VERSION=3.7m
-ARG CONDA_VERSION=4.5.4
+ENV OSPL_HOME=/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux
 
-ENV OSPL_HOME=/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux
-ENV LSST_DDS_DOMAIN=citest
-ENV PYTHON_BUILD_VERSION=${PYTHON_VERSION}
-ENV PYTHON_BUILD_LOCATION=/home/arc/miniconda3
-
-ARG TS_SALOBJ_VERSION
-ARG TS_IDL_VERSION
-ARG TS_XML_VERSION
-LABEL ts_salobj_version=$TS_SALOBJ_VERSION \
-      ts_idl_version=$TS_IDL_VERSION \
-      ts_xml_version=$TS_XML_VERSION
+ARG DM_CSC_BASE_GIT
+ARG DM_CCARCHIVER_GIT
+LABEL name="CCArchiver Runtime Environment" \
+    vendor="LSST" \
+    license="GPLv3" \
+    dm_csc_base_git=$DM_CSC_BASE_GIT \
+    dm_ccarchiver_git=$DM_CCARCHIVER_GIT
 
 USER root
+RUN yum install -y which file
+RUN yum install -y net-tools
 
-RUN adduser -u 1004 -m -s /bin/bash arc
-
-COPY lsst-ts.repo /tmp/lsst-ts.repo
-
-RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf && \
-    yum install -y wget \
-                   git \
-                   make \
-                   wget \
-                   gcc-c++
-
-ARG OPENSPLICE_VERSION
-RUN yum install -y $OPENSPLICE_VERSION
-
-COPY setup.sh /home/arc/setup.sh
-
-RUN chown arc /home/arc/setup.sh
-
-COPY mod_ospl.py /home/arc/mod_ospl.py
-RUN chown arc /home/arc/mod_ospl.py
-
-USER arc
-WORKDIR /home/arc
-
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && chmod +x miniconda.sh && ./miniconda.sh -b
-
-ARG TS_SALOBJ_VERSION
+ARG PIKA_VERSION
+ARG REDIS_VERSION
 ARG TS_IDL_VERSION
-ARG TS_XML_VERSION
-ARG DDS_VERSION
-RUN source ~/miniconda3/bin/activate && conda config --add channels conda-forge && conda install -c lsstts python=3.7 ts-dds=${DDS_VERSION} ts-salobj="${TS_SALOBJ_VERSION}" cython ts-idl="${TS_IDL_VERSION}"
+USER saluser
+RUN source /opt/lsst/software/stack/miniconda/bin/activate && \
+    pip install pika==$PIKA_VERSION && \
+    pip install redis==$REDIS_VERSION && \
+    conda install conda-build
 
+RUN chmod 777 /home/saluser
 
-RUN chmod 755 /home/arc
+WORKDIR /home/saluser
+ARG DM_CSC_BASE_GIT
+RUN git clone https://github.com/lsst-dm/dm_csc_base && \
+    cd dm_csc_base && \
+    git checkout ${DM_CSC_BASE_GIT}
 
-USER arc
+ARG TS_DDSCONFIG_PACKAGE
+RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
 
+ENV LSST_DDS_QOS=file:///home/saluser/ts_idl/qos/QoS.xml
