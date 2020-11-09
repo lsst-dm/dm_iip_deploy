@@ -52,10 +52,11 @@ services:
     build:
       context: ./base
       args:
-        - TS_SALOBJ_VERSION
+        - CYCLE_TAG
+        - PIKA_VERSION
+        - REDIS_VERSION
         - TS_IDL_VERSION
-        - TS_XML_VERSION
-        - OPENSPLICE_VERSION
+        - TS_DDSCONFIG_PACKAGE
 
   atbase:
     image: lsstts/atbase:${DM_CSC_BASE_CONTAINER}
