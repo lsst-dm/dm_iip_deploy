@@ -7,6 +7,6 @@ LABEL name="ATController Runtime Environment" \
     license="GPLv3" \
     lsstts_deploy_env=${LSSTTS_DEPLOY_ENV_VERSION}
 
-COPY run_atcontroller.sh /home/arc/run_atcontroller.sh
+COPY run_atcontroller.sh /home/saluser/run_atcontroller.sh
 
-ENTRYPOINT ["/bin/bash", "/home/arc/run_atcontroller.sh"]
+ENTRYPOINT ["/bin/bash", "/home/saluser/run_atcontroller.sh"]

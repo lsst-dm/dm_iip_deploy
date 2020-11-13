@@ -36,3 +36,5 @@ ARG TS_DDSCONFIG_PACKAGE
 RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
 
 ENV LSST_DDS_QOS=file:///home/saluser/ts_idl/qos/QoS.xml
+
+COPY setup.sh /home/saluser/setup.sh
