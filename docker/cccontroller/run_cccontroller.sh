@@ -1,6 +1,5 @@
 #!/bin/bash
 source /opt/lsst/software/stack/miniconda/bin/activate
-source $OSPL_HOME/release.com
 export PYTHONPATH=/home/saluser/dm_csc_base/python:/home/saluser/dm_CCArchiver/python:$PYTHONPATH
 export PATH=/home/saluser/dm_csc_base/bin:/home/saluser/dm_CCArchiver/bin:$PATH
 export DM_CSC_BASE_DIR=/home/saluser/dm_csc_base
