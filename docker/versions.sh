@@ -29,7 +29,7 @@ export DM_CCARCHIVER_GIT=tags/3.0.0
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_45
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_46
 export LSSTTS_DEPLOY_ENV_VERSION=ts_salobj_${TS_SALOBJ_VERSION}_ts_idl_${TS_IDL_VERSION}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
