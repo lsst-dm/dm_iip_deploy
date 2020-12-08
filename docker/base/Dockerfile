@@ -4,12 +4,10 @@ FROM ts-dockerhub.lsst.org/deploy-env:${CYCLE_TAG}
 ENV OSPL_HOME=/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux
 
 ARG DM_CSC_BASE_GIT
-ARG DM_CCARCHIVER_GIT
 LABEL name="CCArchiver Runtime Environment" \
     vendor="LSST" \
     license="GPLv3" \
-    dm_csc_base_git=$DM_CSC_BASE_GIT \
-    dm_ccarchiver_git=$DM_CCARCHIVER_GIT
+    dm_csc_base_git=$DM_CSC_BASE_GIT
 
 USER root
 RUN yum install -y which file
@@ -17,7 +15,6 @@ RUN yum install -y net-tools
 
 ARG PIKA_VERSION
 ARG REDIS_VERSION
-ARG TS_IDL_VERSION
 USER saluser
 RUN source /opt/lsst/software/stack/miniconda/bin/activate && \
     pip install pika==$PIKA_VERSION && \
