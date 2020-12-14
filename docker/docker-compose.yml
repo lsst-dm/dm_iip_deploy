@@ -48,22 +48,22 @@ services:
         - DM_CSC_BASE_GIT
 
   base:
-    image: lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
+    image: lsstts/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./base
       args:
         - CYCLE_TAG
         - PIKA_VERSION
         - REDIS_VERSION
-        - TS_IDL_VERSION
         - TS_DDSCONFIG_PACKAGE
+        - DM_CSC_BASE_GIT
 
   atbase:
     image: lsstts/atbase:${DM_CSC_BASE_CONTAINER}
     build:
       context: ./atbase
       args:
-        - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CSC_BASE_CONTAINER
         - DM_ATARCHIVER_GIT
         - DM_CSC_BASE_GIT
         - PIKA_VERSION
@@ -86,7 +86,7 @@ services:
         - LSSTTS_DEPLOY_ENV_VERSION
 
   ccbase:
-    image: lsstts/ccbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
+    image: lsstts/ccbase:${DM_CSC_BASE_CONTAINER}
     build:
       context: ./ccbase
       args:
@@ -94,6 +94,7 @@ services:
         - TS_IDL_PACKAGE
         - TS_DDSCONFIG_PACKAGE
         - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CSC_BASE_CONTAINER
         - DM_CCARCHIVER_GIT
         - DM_CSC_BASE_GIT
         - PIKA_VERSION
