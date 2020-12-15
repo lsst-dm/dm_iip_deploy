@@ -6,6 +6,7 @@ services:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
     container_name: ospl-daemon
     environment:
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=${LSST_DDS_RESPONSIVENESS_TIMEOUT}
       - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log

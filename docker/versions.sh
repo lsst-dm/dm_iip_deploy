@@ -2,9 +2,9 @@
 #
 # t&s base container version
 export CYCLE_TAG="c0016"
+export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
 
-export TS_SALOBJ_VERSION="6.0.3"
-export TS_DDSCONFIG_PACKAGE="v0.1.0"
+export TS_DDSCONFIG_PACKAGE="v0.4.0"
 export SITE_PREFIX="ncsa"
 export OSPL_XML_FILE=etc/ospl-6.10.4-shmem.xml
 
