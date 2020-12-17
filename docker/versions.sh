@@ -4,7 +4,7 @@
 export CYCLE_TAG="c0016"
 export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
 
-export TS_DDSCONFIG_PACKAGE="v0.4.0"
+export TS_DDSCONFIG_PACKAGE="v0.4.1"
 export SITE_PREFIX="ncsa"
 export OSPL_XML_FILE=etc/ospl-6.10.4-shmem.xml
 
