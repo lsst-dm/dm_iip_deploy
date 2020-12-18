@@ -8,9 +8,10 @@ services:
     environment:
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=${LSST_DDS_RESPONSIVENESS_TIMEOUT}
       - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
+      - LSST_DDS_INTERFACE=${LSST_DDS_INTERFACE}
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
-      - OSPL_URI=/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+      - OSPL_URI=file:///opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
     volumes:
       # NOTE: the docker_tmp directory must exist and be readable and writeable
       # by the UID/GID of the associated container.
