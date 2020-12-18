@@ -7,7 +7,8 @@ ARG DM_CSC_BASE_GIT
 LABEL name="CCArchiver Runtime Environment" \
     vendor="LSST" \
     license="GPLv3" \
-    dm_csc_base_git=$DM_CSC_BASE_GIT
+    dm_csc_base_git=$DM_CSC_BASE_GIT \
+    ts_ddsconfig_package=$TS_DDSCONFIG_PACKAGE
 
 USER root
 RUN yum install -y which file
@@ -33,5 +34,7 @@ ARG TS_DDSCONFIG_PACKAGE
 RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
 
 ENV LSST_DDS_QOS=file:///home/saluser/ts_idl/qos/QoS.xml
+ENV OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml
+
 
 COPY setup.sh /home/saluser/setup.sh

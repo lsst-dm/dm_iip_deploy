@@ -6,15 +6,18 @@ services:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
     container_name: ospl-daemon
     environment:
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=${LSST_DDS_RESPONSIVENESS_TIMEOUT}
       - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
+      - LSST_DDS_INTERFACE=${LSST_DDS_INTERFACE}
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+      - OSPL_URI=file:///opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
     volumes:
       # NOTE: the docker_tmp directory must exist and be readable and writeable
       # by the UID/GID of the associated container.
       - /tmp/docker_tmp/:/tmp/
       # Necessary if you override parameters in the OSPL config file
-      - ./etc/ospl-6.10.4-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+      - ./etc/ospl-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
     tty: true
     ipc: host
     pid: host
