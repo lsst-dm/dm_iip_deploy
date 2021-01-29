@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # t&s base container version
-export CYCLE_TAG="c0016"
+export CYCLE_TAG="c0017"
 export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
 
 export LSST_DDS_INTERFACE=p3p2
@@ -27,7 +27,7 @@ export DM_CCARCHIVER_GIT=tags/3.0.0
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2020_49
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2021_05
 export LSSTTS_DEPLOY_ENV_VERSION=${CYCLE_TAG}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
