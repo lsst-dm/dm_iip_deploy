@@ -5,11 +5,10 @@ export TS_SALOBJ_VERSION="6.0.3"
 export TS_IDL_PACKAGE="v2.1.0"
 export TS_XML_PACKAGE="v6.2.1"
 export TS_SAL_PACKAGE="v5.0.1"
-export TS_DDSCONFIG_PACKAGE="v0.1.0"
+export TS_DDSCONFIG_PACKAGE="v0.4.1"
 export TS_IDL_VERSION=${TS_IDL_PACKAGE}_${TS_XML_PACKAGE}_${TS_SAL_PACKAGE}
-export CYCLE_TAG="c0015"
+export CYCLE_TAG="c0017"
 export SITE_PREFIX="ncsa"
-export OSPL_XML_FILE=etc/ospl-6.10.4-shmem.xml
 
 export OPENSPLICE_VERSION="OpenSpliceDDS-6.10.4-5"
 export DDS_VERSION="v6.9.190925_7"
@@ -18,9 +17,9 @@ export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tags/4.0.0
+export DM_CSC_BASE_GIT=tags/4.1.0
 #
-export DM_ATARCHIVER_GIT=tags/3.0.0
+export DM_ATARCHIVER_GIT=tags/4.0.0
 #
 export CTRL_OODS_GIT=tags/3.0.0
 #
