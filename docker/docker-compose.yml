@@ -6,15 +6,18 @@ services:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
     container_name: ospl-daemon
     environment:
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=${LSST_DDS_RESPONSIVENESS_TIMEOUT}
       - LSST_DDS_PARTITION_PREFIX=${SITE_PREFIX}
+      - LSST_DDS_INTERFACE=${LSST_DDS_INTERFACE}
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+      - OSPL_URI=file:///opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
     volumes:
       # NOTE: the docker_tmp directory must exist and be readable and writeable
       # by the UID/GID of the associated container.
       - /tmp/docker_tmp/:/tmp/
       # Necessary if you override parameters in the OSPL config file
-      - ./etc/ospl-6.10.4-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+      - ./etc/ospl-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
     tty: true
     ipc: host
     pid: host
@@ -48,22 +51,22 @@ services:
         - DM_CSC_BASE_GIT
 
   base:
-    image: lsstts/base:${LSSTTS_DEPLOY_ENV_VERSION}
+    image: lsstts/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./base
       args:
         - CYCLE_TAG
         - PIKA_VERSION
         - REDIS_VERSION
-        - TS_IDL_VERSION
         - TS_DDSCONFIG_PACKAGE
+        - DM_CSC_BASE_GIT
 
   atbase:
     image: lsstts/atbase:${DM_CSC_BASE_CONTAINER}
     build:
       context: ./atbase
       args:
-        - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CSC_BASE_CONTAINER
         - DM_ATARCHIVER_GIT
         - DM_CSC_BASE_GIT
         - PIKA_VERSION
@@ -86,7 +89,7 @@ services:
         - LSSTTS_DEPLOY_ENV_VERSION
 
   ccbase:
-    image: lsstts/ccbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
+    image: lsstts/ccbase:${DM_CSC_BASE_CONTAINER}
     build:
       context: ./ccbase
       args:
@@ -94,6 +97,7 @@ services:
         - TS_IDL_PACKAGE
         - TS_DDSCONFIG_PACKAGE
         - LSSTTS_DEPLOY_ENV_VERSION
+        - DM_CSC_BASE_CONTAINER
         - DM_CCARCHIVER_GIT
         - DM_CSC_BASE_GIT
         - PIKA_VERSION

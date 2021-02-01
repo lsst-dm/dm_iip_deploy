@@ -11,7 +11,6 @@ fi
 container_version=$1
 
 docker run -d \
-    -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
     --network host \
     -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/at_oods.yaml" \
     -v /data:/data \

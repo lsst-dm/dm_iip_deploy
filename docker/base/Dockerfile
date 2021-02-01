@@ -35,4 +35,5 @@ RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-
 
 ENV OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml
 
+
 COPY setup.sh /home/saluser/setup.sh

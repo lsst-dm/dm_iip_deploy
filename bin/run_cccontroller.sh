@@ -8,7 +8,7 @@ then
     exit 1
 fi
 
-container_version=$2
+container_version=$1
 
 docker run -d \
     --network=host \
