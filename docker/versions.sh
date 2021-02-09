@@ -18,11 +18,11 @@ export REDIS_VERSION=3.5.3
 # set all the git tags or tickets for the versions you want to use for the containers
 export DM_CSC_BASE_GIT=tags/4.1.0
 #
-export DM_ATARCHIVER_GIT=tags/4.0.0
+export DM_ATARCHIVER_GIT=tags/4.1.0
 #
 export CTRL_OODS_GIT=tags/3.0.0
 #
-export DM_CCARCHIVER_GIT=tags/3.0.0
+export DM_CCARCHIVER_GIT=tags/3.1.0
 #
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
