@@ -1,5 +1,5 @@
 ARG DM_CSC_BASE_CONTAINER
-FROM lsstts/catchupbase:${DM_CSC_BASE_CONTAINER}
+FROM ts-dockerhub.lsst.org/lsstdm/catchupbase:${DM_CSC_BASE_CONTAINER}
 
 ARG LSSTTS_DEPLOY_ENV_VERSION
 LABEL name="CatchupArchiver CSC Runtime Environment" \

@@ -42,4 +42,4 @@ docker run \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
     -v /tmp/docker_tmp:/tmp \
-    lsstts/atarchiver:$container_version
+    ts-dockerhub.lsst.org/lsstdm/atarchiver:$container_version

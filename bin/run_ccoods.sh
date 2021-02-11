@@ -15,5 +15,5 @@ docker run -d \
     -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/cc_oods.yaml" \
     -v /data:/data \
     -v /home/$ARCHIVE_USER/config:/home/$ARCHIVE_USER/config \
-    lsstts/cc-oods:$container_version
+    ts-dockerhub.lsst.org/lsstdm/cc-oods:$container_version
 
