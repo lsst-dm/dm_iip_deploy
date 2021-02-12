@@ -28,7 +28,7 @@ services:
     network_mode: "host"
 
   oods:
-    image: lsstts/oods:${OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
     build:
       context: ./oods
       args:
@@ -37,13 +37,13 @@ services:
         - DM_CSC_BASE_GIT
 
   at-oods:
-    image: lsstts/oods:${OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
 
   cc-oods:
-    image: lsstts/oods:${OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
 
   test_oods:
-    image: lsstts/test_oods
+    image: ts-dockerhub.lsst.org/lsstdm/test_oods
     build:
       context: ./test_oods
       args:
@@ -51,7 +51,7 @@ services:
         - DM_CSC_BASE_GIT
 
   base:
-    image: lsstts/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./base
       args:
@@ -62,7 +62,7 @@ services:
         - DM_CSC_BASE_GIT
 
   atbase:
-    image: lsstts/atbase:${DM_CSC_BASE_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/atbase:${DM_CSC_BASE_CONTAINER}
     build:
       context: ./atbase
       args:
@@ -73,7 +73,7 @@ services:
         - REDIS_VERSION
 
   atarchiver:
-    image: lsstts/atarchiver:${DM_ATARCHIVER_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/atarchiver:${DM_ATARCHIVER_CONTAINER}
     build:
       context: ./atarchiver
       args:
@@ -81,7 +81,7 @@ services:
         - LSSTTS_DEPLOY_ENV_VERSION
 
   atcontroller:
-    image: lsstts/atcontroller:${DM_ATARCHIVER_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/atcontroller:${DM_ATARCHIVER_CONTAINER}
     build:
       context: ./atcontroller
       args:
@@ -89,7 +89,7 @@ services:
         - LSSTTS_DEPLOY_ENV_VERSION
 
   ccbase:
-    image: lsstts/ccbase:${DM_CSC_BASE_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/ccbase:${DM_CSC_BASE_CONTAINER}
     build:
       context: ./ccbase
       args:
@@ -104,7 +104,7 @@ services:
         - REDIS_VERSION
 
   ccarchiver:
-    image: lsstts/ccarchiver:${DM_CCARCHIVER_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/ccarchiver:${DM_CCARCHIVER_CONTAINER}
     build:
       context: ./ccarchiver
       args:
@@ -112,7 +112,7 @@ services:
         - LSSTTS_DEPLOY_ENV_VERSION
 
   cccontroller:
-    image: lsstts/cccontroller:${DM_CCARCHIVER_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/cccontroller:${DM_CCARCHIVER_CONTAINER}
     container_name: cc_controller
     environment:
       - IIP_CONFIG_DIR=/home/saluser/config
@@ -130,7 +130,7 @@ services:
     network_mode: "host"
 
   catchupbase:
-    image: lsstts/catchupbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/catchupbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
     build:
       context: ./catchupbase
       args:
@@ -142,7 +142,7 @@ services:
         - REDIS_VERSION
 
   catchuparchiver:
-    image: lsstts/catchuparchiver:${DM_CATCHUPARCHIVER_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/catchuparchiver:${DM_CATCHUPARCHIVER_CONTAINER}
     container_name: catchuparchiver
     build:
       context: ./catchuparchiver
@@ -164,7 +164,7 @@ services:
       - catchupbase
 
   catchupcontroller:
-    image: lsstts/catchupcontroller:${DM_CATCHUPARCHIVER_CONTAINER}
+    image: ts-dockerhub.lsst.org/lsstdm/catchupcontroller:${DM_CATCHUPARCHIVER_CONTAINER}
     container_name: catchupcontroller
     build:
       context: ./catchupcontroller

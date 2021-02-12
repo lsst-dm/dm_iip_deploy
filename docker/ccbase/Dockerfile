@@ -1,5 +1,5 @@
 ARG DM_CSC_BASE_CONTAINER
-FROM lsstts/base:${DM_CSC_BASE_CONTAINER}
+FROM ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_CONTAINER}
 
 WORKDIR /home/saluser
 ARG DM_CCARCHIVER_GIT

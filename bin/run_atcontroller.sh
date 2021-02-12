@@ -18,4 +18,4 @@ docker run -d \
     -v /home/$ARCHIVE_USER/.lsst:/home/$ARCHIVE_USER/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
-    lsstts/atcontroller:$container_version
+    ts-dockerhub.lsst.org/lsstdm/atcontroller:$container_version
