@@ -29,14 +29,14 @@ ROOT:
         SECONDS_TO_EXPIRE: 10
         SECONDS_TO_UPDATE: 3
 
-  BASE_BROKER_ADDR: 139.229.170.34:5672/%2ftest_at
+  BASE_BROKER_ADDR: atarchiver.cp.lsst.org:5672/%2ftest_at
   ARCHIVE:
-    ARCHIVE_LOGIN: arc
-    ARCHIVE_IP: 139.227.170.34
+    ARCHIVE_LOGIN: saluser
+    ARCHIVE_IP: atarchiver.cp.lsst.org
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
-    FORWARDER_STAGING: /data/staging/atforwarder
-    OODS_STAGING: /data/staging/oods
+    FORWARDER_STAGING: /data/staging/auxtel/forwarder
+    OODS_STAGING: /data/staging/auxtel/oods
     DBB_STAGING: /data/staging/dbb
   ATS:
     WFS_RAFT: "00"
-    WFS_CCD: [ "00" ]
+    WFS_CCD: [ "00/0" ]

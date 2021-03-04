@@ -43,12 +43,19 @@ services:
     image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
 
   test_oods:
-    image: ts-dockerhub.lsst.org/lsstdm/test_oods
+    image: ts-dockerhub.lsst.org/lsstdm/test_oods:${TEST_OODS_CONTAINER_VERSION}
     build:
       context: ./test_oods
       args:
         - LSST_STACK_VERSION
         - DM_CSC_BASE_GIT
+    environment:
+        - OODS_CONFIG_FILE=/home/saluser/config/cc_oods.yaml
+    volumes:
+        - /data:/data
+        - /home/saluser/config:/home/saluser/config
+    network_mode: "host"
+    user: "63001:63001"
 
   base:
     image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}

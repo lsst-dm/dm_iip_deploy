@@ -8,15 +8,24 @@ ingester:
     FILE_INGEST_REQUEST: CC_FILE_INGEST_REQUEST
     CONSUME_QUEUE: cc_publish_to_oods
     PUBLISH_QUEUE: oods_publish_to_cc
-    directories:
-        - /data/staging/comcam/oods
+    forwarderStagingDirectory: /data/staging/comcam/oods
     baseBrokerAddr: localhost/%2ftest_cc
-    badFileDirectory: /data/lsstdata/NTS/comcam/oods/badfiles
-    butler:
-        class:
-            import : lsst.ctrl.oods.gen2ButlerIngester
-            name : Gen2ButlerIngester
-        repoDirectory : /data/lsstdata/NTS/comcam/oods/butler/repo
+    butlers: 
+        - butler:
+            class:
+                import : lsst.ctrl.oods.gen2ButlerIngester
+                name : Gen2ButlerIngester
+            stagingDirectory:  /data/lsstdata/NTS/comcam/oods/butler/staging
+            badFileDirectory: /data/lsstdata/NTS/comcam/oods/butler/badfiles
+            repoDirectory : /data/lsstdata/NTS/comcam/oods/butler/repo
+        - butler:
+            instrument: lsst.obs.lsst.LsstComCam
+            class:
+                import : lsst.ctrl.oods.gen3ButlerIngester
+                name : Gen3ButlerIngester
+            stagingDirectory : /data/lsstdata/NTS/comcam/oods/gen3butler/staging
+            badFileDirectory: /data/lsstdata/NTS/comcam/oods/gen3butler/badfiles
+            repoDirectory : /data/lsstdata/NTS/comcam/oods/gen3butler/repo
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -25,8 +34,12 @@ ingester:
 cacheCleaner:
     directories:
         - /data/lsstdata/NTS/comcam/oods/butler/repo/raw
-        - /data/lsstdata/NTS/comcam/oods/badfiles
-        - /data/staging/cc_oods
+        - /data/lsstdata/NTS/comcam/oods/butler/badfiles
+        - /data/lsstdata/NTS/comcam/oods/butler/staging
+        - /data/lsstdata/NTS/comcam/oods/gen3butler/repo/raw
+        - /data/lsstdata/NTS/comcam/oods/gen3butler/badfiles
+        - /data/lsstdata/NTS/comcam/oods/gen3butler/staging
+        - /data/staging/comcam/oods
     scanInterval:
         <<: *interval
         seconds: 30

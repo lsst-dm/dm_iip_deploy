@@ -8,15 +8,24 @@ ingester:
     FILE_INGEST_REQUEST: AT_FILE_INGEST_REQUEST
     CONSUME_QUEUE: at_publish_to_oods
     PUBLISH_QUEUE: oods_publish_to_at
-    directories:
-        - /data/staging/oods
+    forwarderStagingDirectory: /data/staging/auxtel/oods
     baseBrokerAddr: localhost/%2ftest_at
-    badFileDirectory: /data/staging/badfiles
-    butler:
-        class:
-            import : lsst.ctrl.oods.gen2ButlerIngester
-            name : Gen2ButlerIngester
-        repoDirectory : /data/butler/repo
+    butlers:
+        - butler:
+            class:
+                import : lsst.ctrl.oods.gen2ButlerIngester
+                name : Gen2ButlerIngester
+            stagingDirectory:  /data/lsstdata/base/auxtel/oods/butler/staging
+            badFileDirectory: /data/lsstdata/base/auxtel/oods/butler/badfiles
+            repoDirectory : /data/lsstdata/base/auxtel/oods/butler/repo
+        - butler:
+            instrument: lsst.obs.lsst.Latiss
+            class:
+                import : lsst.ctrl.oods.gen3ButlerIngester
+                name : Gen3ButlerIngester
+            stagingDirectory : /data/lsstdata/base/auxtel/oods/gen3butler/staging
+            badFileDirectory: /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
+            repoDirectory : /data/lsstdata/base/auxtel/oods/gen3butler/repo
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -24,13 +33,19 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/butler/repo/raw
+        - /data/lsstdata/base/auxtel/oods/butler/repo/raw
+        - /data/lsstdata/base/auxtel/oods/butler/badfiles
+        - /data/lsstdata/base/auxtel/oods/butler/staging
+        - /data/lsstdata/base/auxtel/oods/gen3butler/repo/raw
+        - /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
+        - /data/lsstdata/base/auxtel/oods/gen3butler/staging
+        - /data/staging/auxtel/oods
     scanInterval:
         <<: *interval
         seconds: 30
     filesOlderThan:
         <<: *interval
-        days: 30 
+        days: 30
     directoriesEmptyForMoreThan:
         <<: *interval
-        days: 1
+        days: 2

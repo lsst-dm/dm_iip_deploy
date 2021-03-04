@@ -8,15 +8,24 @@ ingester:
     FILE_INGEST_REQUEST: AT_FILE_INGEST_REQUEST
     CONSUME_QUEUE: at_publish_to_oods
     PUBLISH_QUEUE: oods_publish_to_at
-    directories:
-        - /data/staging/auxTel/oods
+    forwarderStagingDirectory: /data/staging/auxTel/oods
     baseBrokerAddr: localhost/%2ftest_at
-    badFileDirectory: /data/lsstdata/NTS/auxTel/oods/badfiles
-    butler:
-        class:
-            import : lsst.ctrl.oods.gen2ButlerIngester
-            name : Gen2ButlerIngester
-        repoDirectory : /data/lsstdata/NTS/auxTel/oods/butler/repo
+    butlers: 
+        - butler:
+            class:
+                import : lsst.ctrl.oods.gen2ButlerIngester
+                name : Gen2ButlerIngester
+            stagingDirectory:  /data/lsstdata/NTS/auxTel/oods/butler/staging
+            badFileDirectory: /data/lsstdata/NTS/auxTel/oods/butler/badfiles
+            repoDirectory : /data/lsstdata/NTS/auxTel/oods/butler/repo
+        - butler:
+            instrument: lsst.obs.lsst.Latiss
+            class:
+                import : lsst.ctrl.oods.gen3ButlerIngester
+                name : Gen3ButlerIngester
+            stagingDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/staging
+            badFileDirectory: /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
+            repoDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/repo
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -25,8 +34,12 @@ ingester:
 cacheCleaner:
     directories:
         - /data/lsstdata/NTS/auxTel/oods/butler/repo/raw
-        - /data/lsstdata/NTS/auxTel/oods/badfiles
-        - /data/staging/at_oods
+        - /data/lsstdata/NTS/auxTel/oods/butler/badfiles
+        - /data/lsstdata/NTS/auxTel/oods/butler/staging
+        - /data/lsstdata/NTS/auxTel/oods/gen3butler/repo/raw
+        - /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
+        - /data/lsstdata/NTS/auxTel/oods/gen3butler/staging
+        - /data/staging/auxTel/oods
     scanInterval:
         <<: *interval
         seconds: 30
