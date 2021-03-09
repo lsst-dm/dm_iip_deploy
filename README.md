@@ -1,6 +1,6 @@
 # How to start CSCs
 
-## first launch opsl-daemon.sh
+## Launch opsl-daemon
 
 You must specify the platform and device you wish to control when launching.
 This sets up the correct networking interface for the ospl_daemon to use.
