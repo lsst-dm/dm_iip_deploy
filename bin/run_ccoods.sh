@@ -2,7 +2,7 @@
 loc="`dirname \"$0\"`"
 source $loc/base_init.sh
 
-error_msg = "$0: missing argument: -p [summit|ncsa] -c container_version"
+error_msg="$0: missing argument: -p [summit|ncsa] -c container_version"
 
 export CONTAINER_VERSION=
 export ARCHIVE_SITE=

@@ -38,6 +38,8 @@ if [[ -z $ARCHIVE_SITE ]] || [[ -z $ARCHIVE_DEVICE ]]; then
 fi
 
 
+export LSST_DDS_INTERFACE=
+
 if [ "$ARCHIVE_SITE" = "summit" ]; then
     if [ "$ARCHIVE_DEVICE" = "comcam" ]; then
         LSST_DDS_INTERFACE=em2
@@ -54,4 +56,4 @@ fi
 
 export LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE
 
-docker-compose up -f $loc/../docker/docker-compose-ospl.yml -d ospl_daemon
+docker-compose -f docker-compose-ospl.yml up -d ospl-daemon
