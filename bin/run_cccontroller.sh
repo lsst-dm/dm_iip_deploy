@@ -32,9 +32,8 @@ fi
 docker run -d \
     --network=host \
     -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
-    -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config" \
+    -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config/$ARCHIVE_SITE" \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
-    -v $HOME/dm_iip_deploy/etc/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
     -v /home/$ARCHIVE_USER/.lsst:/home/$ARCHIVE_USER/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
