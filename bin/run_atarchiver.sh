@@ -41,7 +41,7 @@ docker run \
     --network=host \
     --pid=host \
     --ipc=host \
-    -u `id -u $ARCHIVE_USER`:`id - $ARCHIVE_USER` \
+    -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
     -e "DOMAIN_ID=0" \
     -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config/$ARCHIVE_SITE" \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
