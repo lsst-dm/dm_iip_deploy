@@ -15,7 +15,7 @@ export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tickets/DM-28948
+export DM_CSC_BASE_GIT=tags/4.2.0
 #
 export DM_ATARCHIVER_GIT=tags/4.1.0
 #
