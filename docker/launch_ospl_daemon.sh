@@ -17,7 +17,7 @@ p)
     if [ "$OPTARG" = "summit" ] || [ "$OPTARG" = "ncsa" ]; then
         ARCHIVE_SITE=$OPTARG
     else
-        echo "-p argument must be summit or ncsa"
+        echo "-p argument must be 'summit' or 'ncsa'"
         exit 1
     fi;;
         
