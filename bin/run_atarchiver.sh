@@ -20,7 +20,7 @@ p)
         ARCHIVE_SITE=$OPTARG
         LSST_DDS_INTERFACE=p3p2
     else
-        echo "argument must be summit or ncsa"
+        echo "argument must be 'summit' or 'ncsa'"
         exit 1
     fi;;
 c) CONTAINER_VERSION=${OPTARG};;
