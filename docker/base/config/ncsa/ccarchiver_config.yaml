@@ -22,20 +22,20 @@ ROOT:
   FWDR_END_READOUT: CC_FWDR_END_READOUT
   FWDR_HEADER_READY: CC_FWDR_HEADER_READY
 
-  ACK_TIMEOUT: 10
+  ACK_TIMEOUT: 60
 
   CSC:
     BEACON:
         SECONDS_TO_EXPIRE: 10
         SECONDS_TO_UPDATE: 3
 
-  BASE_BROKER_ADDR: 10.0.100.128:5672/%2ftest_cc
+  BASE_BROKER_ADDR: 141.142.238.15:5672/%2ftest_cc
   ARCHIVE:
-    ARCHIVE_LOGIN: arc
-    ARCHIVE_IP: 10.0.100.128
+    ARCHIVE_LOGIN: saluser
+    ARCHIVE_IP: 141.142.238.15
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
-    FORWARDER_STAGING: /data/staging/cc_forwarder
-    OODS_STAGING: /data/staging/cc_oods
+    FORWARDER_STAGING: /data/staging/comcam/forwarder
+    OODS_STAGING: /data/staging/comcam/oods
     DBB_STAGING: /data/staging/cc_dbb
   ATS:
     WFS_RAFT: "00"

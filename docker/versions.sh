@@ -1,22 +1,21 @@
 #!/bin/bash
 #
+
 # t&s base container version
-export CYCLE_TAG="c0017"
+export CYCLE_TAG="c0018"
 export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
 
-export LSST_DDS_INTERFACE=p3p2
-export TS_DDSCONFIG_PACKAGE="v0.4.1"
-export SITE_PREFIX="ncsa"
+export TS_DDSCONFIG_PACKAGE="v0.5.1"
 export OSPL_XML_FILE=etc/ospl-6.10.4-shmem.xml
 
-export OPENSPLICE_VERSION="OpenSpliceDDS-6.10.4-5"
+export OPENSPLICE_VERSION="OpenSpliceDDS-6.10.4-6"
 export DDS_VERSION="v6.9.190925_7"
 # redis and pika versions
 export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export DM_CSC_BASE_GIT=tags/4.1.0
+export DM_CSC_BASE_GIT=tags/4.2.0
 #
 export DM_ATARCHIVER_GIT=tags/4.1.0
 #
@@ -27,7 +26,7 @@ export DM_CCARCHIVER_GIT=tags/3.1.0
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2021_05
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2021_09
 export LSSTTS_DEPLOY_ENV_VERSION=${CYCLE_TAG}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
@@ -53,3 +52,4 @@ export DM_CATCHUPARCHIVER_CONTAINER=cu${DM_CATCHUPARCHIVER_VERSION}_base_${DM_CS
 export DM_CATCHUPCONTROLLER_CONTAINER=${DM_CATCHUPARCHIVER_CONTAINER}
 
 export OODS_CONTAINER_VERSION=${OODS_VERSION}-${LSST_STACK_VERSION#*-*-lsst_distrib-}
+export TEST_OODS_CONTAINER_VERSION=test_${OODS_CONTAINER_VERSION}
