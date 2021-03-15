@@ -7,7 +7,7 @@ error_msg="$0: missing argument: -p [summit|ncsa] -d [comcam|auxtel]"
 source versions.sh
 
 export ARCHIVE_SITE=
-export ARCHIVE_DEVICE==
+export ARCHIVE_DEVICE=
 
 while getopts p:d: option
 do
