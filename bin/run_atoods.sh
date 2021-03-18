@@ -1,5 +1,11 @@
 #!/bin/bash
-loc="`dirname \"$0\"`"
+
+# get the directory from which this script was executed
+loc=$(dirname -- "$(realpath -- "$0")")  
+
+# get full path of directory above the directory were the script is executed
+root_dir=$(dirname -- "$(realpath -- "$loc")")
+
 source $loc/base_init.sh
 
 error_msg="$0: missing argument: -p [summit|ncsa] -c container_version"
@@ -33,5 +39,5 @@ docker run -d \
     --network host \
     -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/at_oods.yaml" \
     -v /data:/data \
-    -v $HOME/dm_iip_deploy/etc/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
+    -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
     ts-dockerhub.lsst.org/lsstdm/at-oods:$CONTAINER_VERSION
