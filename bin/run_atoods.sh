@@ -39,5 +39,6 @@ docker run -d \
     --network host \
     -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/at_oods.yaml" \
     -v /data:/data \
+    -v /repo:/repo \
     -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
     ts-dockerhub.lsst.org/lsstdm/at-oods:$CONTAINER_VERSION

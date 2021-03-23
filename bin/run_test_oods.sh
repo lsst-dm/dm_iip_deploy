@@ -40,7 +40,7 @@ docker run -d \
     --network host \
     -u `id -u $USER`:`id -g $USER` \
     -v /home/$USER:/home/$USER \
-    -e "OODS_CONFIG_FILE=/config" \
     -v /data:/data \
+    -v /repo:/repo \
     -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/config \
     ts-dockerhub.lsst.org/lsstdm/test_oods:$CONTAINER_VERSION
