@@ -37,7 +37,6 @@ cacheCleaner:
         - /data/lsstdata/base/comcam/oods/butler/badfiles
         - /data/lsstdata/base/comcam/oods/butler/staging
         - /data/lsstdata/base/comcam/oods/gen3butler/raw
-        - /data/lsstdata/base/comcam/oods/gen3butler/repo/raw
         - /data/lsstdata/base/comcam/oods/gen3butler/repo/LSSTComCam/raw
         - /data/lsstdata/base/comcam/oods/gen3butler/badfiles
         - /data/lsstdata/base/comcam/oods/gen3butler/staging
