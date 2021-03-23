@@ -23,9 +23,9 @@ ingester:
             class:
                 import : lsst.ctrl.oods.gen3ButlerIngester
                 name : Gen3ButlerIngester
-            stagingDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/staging
+            stagingDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/raw
             badFileDirectory: /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
-            repoDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/repo
+            repoDirectory : /repo/LATISS
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -36,7 +36,8 @@ cacheCleaner:
         - /data/lsstdata/NTS/auxTel/oods/butler/repo/raw
         - /data/lsstdata/NTS/auxTel/oods/butler/badfiles
         - /data/lsstdata/NTS/auxTel/oods/butler/staging
-        - /data/lsstdata/NTS/auxTel/oods/gen3butler/repo/raw
+        - /data/lsstdata/NTS/auxTel/oods/gen3butler/raw
+        - /data/lsstdata/NTS/auxTel/oods/gen3butler/repo/LATISS/raw
         - /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
         - /data/lsstdata/NTS/auxTel/oods/gen3butler/staging
         - /data/staging/auxTel/oods

@@ -19,7 +19,7 @@ export DM_CSC_BASE_GIT=tags/4.2.0
 #
 export DM_ATARCHIVER_GIT=tags/4.1.0
 #
-export CTRL_OODS_GIT=tags/3.0.0
+export CTRL_OODS_GIT=tags/4.0.0
 #
 export DM_CCARCHIVER_GIT=tags/3.1.0
 #
