@@ -23,9 +23,9 @@ ingester:
             class:
                 import : lsst.ctrl.oods.gen3ButlerIngester
                 name : Gen3ButlerIngester
-            stagingDirectory : /data/lsstdata/base/comcam/oods/gen3butler/staging
+            stagingDirectory : /data/lsstdata/base/comcam/oods/gen3butler/raw
             badFileDirectory: /data/lsstdata/base/comcam/oods/gen3butler/badfiles
-            repoDirectory : /data/lsstdata/base/comcam/oods/gen3butler/repo
+            repoDirectory : /repo/LSSTComCam
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -36,7 +36,8 @@ cacheCleaner:
         - /data/lsstdata/base/comcam/oods/butler/repo/raw
         - /data/lsstdata/base/comcam/oods/butler/badfiles
         - /data/lsstdata/base/comcam/oods/butler/staging
-        - /data/lsstdata/base/comcam/oods/gen3butler/repo/raw
+        - /data/lsstdata/base/comcam/oods/gen3butler/raw
+        - /data/lsstdata/base/comcam/oods/gen3butler/repo/LSSTComCam/raw
         - /data/lsstdata/base/comcam/oods/gen3butler/badfiles
         - /data/lsstdata/base/comcam/oods/gen3butler/staging
         - /data/staging/comcam/oods

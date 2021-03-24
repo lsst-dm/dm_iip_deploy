@@ -36,10 +36,11 @@ if [[ -z $ARCHIVE_SITE ]] || [[ -z $CONTAINER_VERSION ]]; then
 fi
 
 
-
 docker run -d \
     --network host \
-    -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/cc_oods.yaml" \
+    -u `id -u $USER`:`id -g $USER` \
+    -v /home/$USER:/home/$USER \
     -v /data:/data \
-    -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
+    -v /repo:/repo \
+    -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/config \
     ts-dockerhub.lsst.org/lsstdm/test_oods:$CONTAINER_VERSION
