@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 loc="`dirname \"$0\"`"
+source $loc/versions.sh
 
 error_msg="$0: missing argument: -p [summit|ncsa] -d [comcam|auxtel]"
 
