@@ -33,7 +33,7 @@ RUN git clone https://github.com/lsst-dm/dm_csc_base && \
 ARG TS_DDSCONFIG_PACKAGE
 RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
 
-ENV LSST_DDS_QOS=file:///home/saluser/ts_dds_config/qos/QoS.xml
+ENV LSST_DDS_QOS=file:///home/saluser/ts_ddsconfig/qos/QoS.xml
 ENV OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml
 
 
