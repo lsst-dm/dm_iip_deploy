@@ -47,7 +47,6 @@ docker run \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
     -e "LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE" \
     -e "LSST_DDS_INTERFACE=$LSST_DDS_INTERFACE" \
-    -v $HOME/dm_iip_deploy/docker/etc:/home/$ARCHIVE_USER/ts_ddsconfig/config \
     -v /home/$ARCHIVE_USER/.lsst:/home/$ARCHIVE_USER/.lsst \
     -v /var/log/iip:/var/log/iip \
     -v /data:/data \
