@@ -7,6 +7,9 @@ export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
 
 export TS_DDSCONFIG_PACKAGE="v0.6.1"
 
+
+export OPENSPLICE_VERSION="V6.11.0"
+
 # redis and pika versions
 export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
