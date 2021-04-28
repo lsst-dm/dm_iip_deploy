@@ -42,6 +42,7 @@ services:
         - REDIS_VERSION
         - TS_DDSCONFIG_PACKAGE
         - DM_CSC_BASE_GIT
+        - OPENSPLICE_VERSION
 
   atbase:
     image: ts-dockerhub.lsst.org/lsstdm/atbase:${DM_CSC_BASE_CONTAINER}

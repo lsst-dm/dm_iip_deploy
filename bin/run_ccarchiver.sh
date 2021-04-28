@@ -42,7 +42,7 @@ docker run \
     --pid=host \
     --ipc=host \
     -u `id -u $ARCHIVE_USER`:`id -g $ARCHIVE_USER` \
-    -e "DOMAIN_ID=0" \
+    -e "LSST_DDS_DOMAIN_ID=0" \
     -e "IIP_CONFIG_DIR=/home/$ARCHIVE_USER/config/$ARCHIVE_SITE" \
     -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
     -e "LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE" \

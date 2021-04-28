@@ -1,7 +1,8 @@
 ARG CYCLE_TAG
 FROM ts-dockerhub.lsst.org/deploy-env:${CYCLE_TAG}
 
-ENV OSPL_HOME=/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux
+ARG OPENSPLICE_VERSION
+ENV OSPL_HOME="/opt/OpenSpliceDDS/$OPENSPLICE_VERSION/HDE/x86_64.linux"
 
 ARG DM_CSC_BASE_GIT
 LABEL name="CCArchiver Runtime Environment" \
