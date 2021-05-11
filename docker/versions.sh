@@ -2,13 +2,11 @@
 #
 
 # t&s base container version
-export CYCLE_TAG="c0019"
-export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
-
+export CYCLE_TAG="c0020"
 export TS_DDSCONFIG_PACKAGE="v0.6.1"
+export OPENSPLICE_VERSION="V6.10.4"
 
-
-export OPENSPLICE_VERSION="V6.11.0"
+export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
 
 # redis and pika versions
 export PIKA_VERSION=1.1.0
