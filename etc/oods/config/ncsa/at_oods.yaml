@@ -26,10 +26,18 @@ ingester:
             stagingDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/raw
             badFileDirectory: /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
             repoDirectory : /repo/LATISS
+            collections:
+                - LATISS/raw/all
+            scanInterval:
+                <<: *interval
+                minutes: 1
+            filesOlderThan:
+                <<: *interval
+                days: 30
     batchSize: 20
     scanInterval:
         <<: *interval
-        seconds: 1
+        seconds: 2
 
 cacheCleaner:
     directories:
