@@ -36,11 +36,9 @@ cacheCleaner:
         - /data/lsstdata/base/auxtel/oods/butler/repo/raw
         - /data/lsstdata/base/auxtel/oods/butler/badfiles
         - /data/lsstdata/base/auxtel/oods/butler/staging
-        - /data/lsstdata/base/auxtel/oods/gen3butler/raw
-        - /data/lsstdata/base/auxtel/oods/gen3butler/repo/LATISS/raw
         - /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
-        - /data/lsstdata/base/auxtel/oods/gen3butler/staging
         - /data/staging/auxtel/oods
+        - /data/staging/auxtel/forwarder
     scanInterval:
         <<: *interval
         seconds: 30
