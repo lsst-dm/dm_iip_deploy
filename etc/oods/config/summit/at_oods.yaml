@@ -26,6 +26,14 @@ ingester:
             stagingDirectory : /data/lsstdata/base/auxtel/oods/gen3butler/raw
             badFileDirectory: /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
             repoDirectory : /repo/LATISS
+            collections:
+                - LATISS/raw/all
+            scanInterval:
+                <<: *interval
+                minutes: 1
+            filesOlderThan:
+                <<: *interval
+                days: 30
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -36,11 +44,9 @@ cacheCleaner:
         - /data/lsstdata/base/auxtel/oods/butler/repo/raw
         - /data/lsstdata/base/auxtel/oods/butler/badfiles
         - /data/lsstdata/base/auxtel/oods/butler/staging
-        - /data/lsstdata/base/auxtel/oods/gen3butler/raw
-        - /data/lsstdata/base/auxtel/oods/gen3butler/repo/LATISS/raw
         - /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
-        - /data/lsstdata/base/auxtel/oods/gen3butler/staging
         - /data/staging/auxtel/oods
+        - /data/staging/auxtel/forwarder
     scanInterval:
         <<: *interval
         seconds: 30

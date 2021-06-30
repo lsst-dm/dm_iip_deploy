@@ -26,6 +26,14 @@ ingester:
             stagingDirectory : /data/lsstdata/base/comcam/oods/gen3butler/raw
             badFileDirectory: /data/lsstdata/base/comcam/oods/gen3butler/badfiles
             repoDirectory : /repo/LSSTComCam
+            collections:
+                - LSSTComCam/raw/all
+            scanInterval:
+                <<: *interval
+                minutes: 1
+            filesOlderThan:
+                <<: *interval
+                days: 30
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -36,11 +44,9 @@ cacheCleaner:
         - /data/lsstdata/base/comcam/oods/butler/repo/raw
         - /data/lsstdata/base/comcam/oods/butler/badfiles
         - /data/lsstdata/base/comcam/oods/butler/staging
-        - /data/lsstdata/base/comcam/oods/gen3butler/raw
-        - /data/lsstdata/base/comcam/oods/gen3butler/repo/LSSTComCam/raw
         - /data/lsstdata/base/comcam/oods/gen3butler/badfiles
-        - /data/lsstdata/base/comcam/oods/gen3butler/staging
         - /data/staging/comcam/oods
+        - /data/staging/comcam/forwarder
     scanInterval:
         <<: *interval
         seconds: 30
