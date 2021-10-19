@@ -2,7 +2,7 @@
 loc="`dirname \"$0\"`"
 source $loc/base_init.sh
 
-error_msg="$0: missing argument: -p [summit|ncsa] -c container_version"
+error_msg="$0: missing argument: -p [summit|tucson|ncsa] -c container_version"
 
 export CONTAINER_VERSION=
 export ARCHIVE_SITE=
@@ -13,14 +13,15 @@ do
 case "${option}"
 in
 p)
+    ARCHIVE_SITE=$OPTARG
     if [ "$OPTARG" = "summit" ]; then
-        ARCHIVE_SITE=$OPTARG
         LSST_DDS_INTERFACE=em2.1201
+    elif [ "$OPTARG" = "tucson" ]; then
+        LSST_DDS_INTERFACE=dds
     elif [ "$OPTARG" = "ncsa" ]; then
-        ARCHIVE_SITE=$OPTARG
         LSST_DDS_INTERFACE=p3p2
     else
-        echo "argument must be 'summit' or 'ncsa'"
+        echo "argument must be 'summit', 'tucson' or 'ncsa'"
         exit 1
     fi;;
 c) CONTAINER_VERSION=${OPTARG};;
