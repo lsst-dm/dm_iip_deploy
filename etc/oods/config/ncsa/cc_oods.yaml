@@ -12,13 +12,6 @@ ingester:
     baseBrokerAddr: localhost/%2ftest_cc
     butlers: 
         - butler:
-            class:
-                import : lsst.ctrl.oods.gen2ButlerIngester
-                name : Gen2ButlerIngester
-            stagingDirectory:  /data/lsstdata/NTS/comcam/oods/butler/staging
-            badFileDirectory: /data/lsstdata/NTS/comcam/oods/butler/badfiles
-            repoDirectory : /data/lsstdata/NTS/comcam/oods/butler/repo
-        - butler:
             instrument: lsst.obs.lsst.LsstComCam
             class:
                 import : lsst.ctrl.oods.gen3ButlerIngester
