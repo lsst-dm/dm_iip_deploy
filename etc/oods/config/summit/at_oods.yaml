@@ -12,13 +12,6 @@ ingester:
     baseBrokerAddr: localhost/%2ftest_at
     butlers:
         - butler:
-            class:
-                import : lsst.ctrl.oods.gen2ButlerIngester
-                name : Gen2ButlerIngester
-            stagingDirectory:  /data/lsstdata/base/auxtel/oods/butler/staging
-            badFileDirectory: /data/lsstdata/base/auxtel/oods/butler/badfiles
-            repoDirectory : /data/lsstdata/base/auxtel/oods/butler/repo
-        - butler:
             instrument: lsst.obs.lsst.Latiss
             class:
                 import : lsst.ctrl.oods.gen3ButlerIngester
