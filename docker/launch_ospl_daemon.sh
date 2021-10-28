@@ -49,7 +49,6 @@ if [ "$ARCHIVE_SITE" = "summit" ]; then
     fi
 elif [ "$ARCHIVE_SITE" = "tucson" ]; then
         LSST_DDS_INTERFACE=dds
-    fi
 elif [ "$ARCHIVE_SITE" = "ncsa" ]; then
     if [ "$ARCHIVE_DEVICE" = "comcam" ]; then
         LSST_DDS_INTERFACE=p3p2
