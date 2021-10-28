@@ -33,7 +33,7 @@ services:
     user: "63001:63001"
 
   base:
-    image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${DEPLOY_SUFFIX}
     build:
       context: ./base
       args:
