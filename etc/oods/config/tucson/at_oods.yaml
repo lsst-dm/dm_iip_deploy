@@ -34,9 +34,6 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/lsstdata/TTS/auxtel/oods/butler/repo/raw
-        - /data/lsstdata/TTS/auxtel/oods/butler/badfiles
-        - /data/lsstdata/TTS/auxtel/oods/butler/staging
         - /data/lsstdata/TTS/auxtel/oods/gen3butler/badfiles
         - /data/staging/auxtel/oods
         - /data/staging/auxtel/forwarder
