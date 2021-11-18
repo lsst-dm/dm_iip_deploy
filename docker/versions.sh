@@ -2,7 +2,7 @@
 #
 
 # t&s base container version
-export CYCLE_TAG="c0022"
+export CYCLE_TAG="c0023"
 export TS_DDSCONFIG_PACKAGE="v0.9.0"
 export OPENSPLICE_VERSION="V6.10.4"
 
