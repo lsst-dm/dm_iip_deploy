@@ -33,7 +33,7 @@ services:
     user: "63001:63001"
 
   base:
-    image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
+    image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${DEPLOY_SUFFIX}
     build:
       context: ./base
       args:
@@ -164,26 +164,6 @@ services:
     networks:
       hostnet: {}
       
-  redis:
-    image: redis
-    container_name: redis
-    hostname: my-redis
-    ports:
-      - "6379:6379"
-    networks:
-      hostnet: {}
-
-  rabbitmq:
-    build:
-      context: ./rabbitmq
-    container_name: rabbitmq
-    hostname: my-rabbit
-    ports:
-      - "5672:5672"
-    networks:
-      hostnet: {}
-
-
 networks:
   hostnet:
     external: true

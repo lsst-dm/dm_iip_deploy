@@ -8,7 +8,7 @@ root_dir=$(dirname -- "$(realpath -- "$loc")")
 
 source $loc/base_init.sh
 
-error_msg="$0: missing argument: -p [summit|ncsa] -c container_version"
+error_msg="$0: missing argument: -p [summit|tucson|ncsa] -c container_version"
 
 export CONTAINER_VERSION=
 export ARCHIVE_SITE=
@@ -20,10 +20,12 @@ in
 p)
     if [ "$OPTARG" = "summit" ]; then
        ARCHIVE_SITE=$OPTARG
+    elif [ "$OPTARG" = "tucson" ]; then
+       ARCHIVE_SITE=$OPTARG
     elif [ "$OPTARG" = "ncsa" ]; then
        ARCHIVE_SITE=$OPTARG
     else
-        echo "-p argument must be 'summit' or 'ncsa'"
+        echo "-p argument must be 'summit', 'tucson' or 'ncsa'"
         exit 1
     fi;;
 c) CONTAINER_VERSION=${OPTARG};;
