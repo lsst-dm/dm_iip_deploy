@@ -15,7 +15,7 @@ do
 case "${option}"
 in
 p)
-    if [ "$OPTARG" = "summit" ] || [ "$OPTARG" = "tucson" ] || [ "$OPTARG" = "ncsa"]; then
+    if [ "$OPTARG" = "summit" ] || [ "$OPTARG" = "tucson" ] || [ "$OPTARG" = "ncsa"  ]; then
         ARCHIVE_SITE=$OPTARG
     else
         echo "-p argument must be 'summit', 'tucson' or 'ncsa'"
