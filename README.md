@@ -21,7 +21,7 @@ services to use.
 
 ## AuxTel:
 
-usage: bin/run_atarchiver.sh -p [summit|ncsa] -c container_version
+usage: bin/run_atarchiver.sh -p [summit|ncsa|tucson] -c container_version
 
 example: bin/run_atarchiver.sh -p ncsa -c 4.1.0_base_4.2.0_c0023
 
@@ -31,9 +31,9 @@ example: bin/run_atcontroller.sh -p ncsa -c 4.1.0_base_4.2.0_c0023
 
 ## ComCam:
 
-usage: bin/run_ccarchiver.sh -p [summit|ncsa] -c container_version
+usage: bin/run_ccarchiver.sh -p [summit|ncsa|tucson] -c container_version
 
-example: bin/run_ccatarchiver.sh -p ncsa -c 3.1.0_base_4.2.0_c0023
+example: bin/run_ccarchiver.sh -p ncsa -c 3.1.0_base_4.2.0_c0023
 
 usage: bin/run_cccontroller.sh -p ncsa -c container_version
 
