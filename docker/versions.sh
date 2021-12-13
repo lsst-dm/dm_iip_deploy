@@ -29,7 +29,7 @@ export LSSTTS_DEPLOY_ENV_VERSION=${CYCLE_TAG}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
 #
-export DEPLOY_SUFFIX=${LSSTTS_DEPLOY_ENV_VERSION}_tucson
+export DEPLOY_SUFFIX=${LSSTTS_DEPLOY_ENV_VERSION}
 export DM_ATARCHIVER_VERSION=${DM_ATARCHIVER_GIT#*/}
 export DM_CSC_BASE_VERSION=${DM_CSC_BASE_GIT#*/}
 export OODS_VERSION=${CTRL_OODS_GIT#*/}
