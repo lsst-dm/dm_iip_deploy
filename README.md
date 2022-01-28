@@ -23,18 +23,30 @@ services to use.
 
 usage: bin/run_atarchiver.sh -p [summit|ncsa|tucson] -c container_version
 
-example: bin/run_atarchiver.sh -p ncsa -c 4.1.0_base_4.2.0_c0023
+example: bin/run_atarchiver.sh -p ncsa -c 4.1.0_base_4.2.0_c0024
 
 usage: bin/run_atcontroller.sh -p ncsa -c container_version
 
-example: bin/run_atcontroller.sh -p ncsa -c 4.1.0_base_4.2.0_c0023
+example: bin/run_atcontroller.sh -p ncsa -c 4.1.0_base_4.2.0_c0024
 
 ## ComCam:
 
 usage: bin/run_ccarchiver.sh -p [summit|ncsa|tucson] -c container_version
 
-example: bin/run_ccarchiver.sh -p ncsa -c 3.1.0_base_4.2.0_c0023
+example: bin/run_ccarchiver.sh -p ncsa -c 3.1.0_base_4.2.0_c0024
 
 usage: bin/run_cccontroller.sh -p ncsa -c container_version
 
-example: bin/run_cccontroller.sh -p ncsa -c 3.1.0_base_4.2.0_c0023
+example: bin/run_cccontroller.sh -p ncsa -c 3.1.0_base_4.2.0_c0024
+
+## OODS
+
+usage: bin/run_atoods.sh -p [summit|ncsa|tucson] -c container_version
+
+example: bin/run_atoods.sh -p ncsa -c 4.2.1-w_2022_05
+
+usage: bin/run_ccoods.sh -p [summit|ncsa|tucson] -c container_version
+
+example: bin/run_ccoods.sh -p ncsa -c 4.2.1-w_2022_05
+
+
