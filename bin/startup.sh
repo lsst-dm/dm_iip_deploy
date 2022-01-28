@@ -23,10 +23,9 @@ p)
 esac
 done
 
-echo $root_dir/bin/run_atoods.sh -p $RUN_SITE -c $OODS_CONTAINER_VERSION
-echo $root_dir/bin/run_ccoods.sh -p $RUN_SITE -c $OODS_CONTAINER_VERSION
-echo $root_dir/bin/run_atcontroller.sh -p $RUN_SITE -c $DM_ATARCHIVER_CONTAINER
-echo $root_dir/bin/run_cccontroller.sh -p $RUN_SITE -c $DM_CCARCHIVER_CONTAINER
-echo $root_dir/bin/run_atarchiver.sh -p $RUN_SITE -c $DM_ATCONTROLLER_CONTAINER
-echo $root_dir/bin/run_ccarchiver.sh -p $RUN_SITE -c $DM_CCCONTROLLER_CONTAINER
-
+$root_dir/bin/run_atoods.sh -p $RUN_SITE -c $OODS_CONTAINER_VERSION
+$root_dir/bin/run_ccoods.sh -p $RUN_SITE -c $OODS_CONTAINER_VERSION
+$root_dir/bin/run_atcontroller.sh -p $RUN_SITE -c $DM_ATARCHIVER_CONTAINER
+$root_dir/bin/run_cccontroller.sh -p $RUN_SITE -c $DM_CCARCHIVER_CONTAINER
+$root_dir/bin/run_atarchiver.sh -p $RUN_SITE -c $DM_ATCONTROLLER_CONTAINER
+$root_dir/bin/run_ccarchiver.sh -p $RUN_SITE -c $DM_CCCONTROLLER_CONTAINER
