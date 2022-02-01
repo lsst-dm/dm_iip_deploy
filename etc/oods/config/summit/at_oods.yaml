@@ -34,18 +34,16 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/lsstdata/base/auxtel/oods/butler/repo/raw
-        - /data/lsstdata/base/auxtel/oods/butler/badfiles
-        - /data/lsstdata/base/auxtel/oods/butler/staging
-        - /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
         - /data/staging/auxtel/oods
+        - /data/lsstdata/base/auxtel/oods/gen3butler/raw
+        - /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
         - /data/staging/auxtel/forwarder
     scanInterval:
         <<: *interval
         seconds: 30
     filesOlderThan:
         <<: *interval
-        days: 30
+        days: 31
     directoriesEmptyForMoreThan:
         <<: *interval
         days: 2

@@ -34,19 +34,16 @@ ingester:
 
 cacheCleaner:
     directories:
-        - /data/lsstdata/NTS/comcam/oods/butler/repo/raw
-        - /data/lsstdata/NTS/comcam/oods/butler/badfiles
-        - /data/lsstdata/NTS/comcam/oods/butler/staging
-        - /data/lsstdata/NTS/comcam/oods/gen3butler/badfiles
-        - /data/lsstdata/NTS/comcam/oods/gen3butler/staging
         - /data/staging/comcam/oods
+        - /data/lsstdata/NTS/comcam/oods/gen3butler/raw
+        - /data/lsstdata/NTS/comcam/oods/gen3butler/badfiles
         - /data/staging/comcam/forwarder
     scanInterval:
         <<: *interval
         seconds: 30
     filesOlderThan:
         <<: *interval
-        days: 30 
+        days: 31 
     directoriesEmptyForMoreThan:
         <<: *interval
         days: 2
