@@ -34,6 +34,7 @@ ingester:
 
 cacheCleaner:
     directories:
+        - /data/lsstdata/TTS/comcam/oods/gen3butler/raw
         - /data/lsstdata/TTS/comcam/oods/gen3butler/badfiles
         - /data/staging/comcam/oods
         - /data/staging/comcam/forwarder
@@ -42,7 +43,7 @@ cacheCleaner:
         seconds: 30
     filesOlderThan:
         <<: *interval
-        days: 30 
+        days: 31 
     directoriesEmptyForMoreThan:
         <<: *interval
         days: 2
