@@ -17,14 +17,14 @@ export DM_CSC_BASE_GIT=tags/4.2.0
 #
 export DM_ATARCHIVER_GIT=tags/4.1.0
 #
-export CTRL_OODS_GIT=tags/4.2.1
+export CTRL_OODS_GIT=tags/5.0.1
 #
 export DM_CCARCHIVER_GIT=tags/3.1.0
 #
 export DM_CONFIG_CATCHUP_GIT=master
 export DM_CATCHUPARCHIVER_GIT=master
 #
-export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2022_05
+export LSST_STACK_VERSION=7-stack-lsst_distrib-w_2022_06
 export LSSTTS_DEPLOY_ENV_VERSION=${CYCLE_TAG}
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers

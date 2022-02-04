@@ -35,7 +35,6 @@ ingester:
 cacheCleaner:
     directories:
         - /data/staging/comcam/oods
-        - /data/lsstdata/base/comcam/oods/gen3butler/raw
         - /data/lsstdata/base/comcam/oods/gen3butler/badfiles
         - /data/staging/comcam/forwarder
     scanInterval:
