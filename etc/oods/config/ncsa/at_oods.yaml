@@ -35,7 +35,6 @@ ingester:
 cacheCleaner:
     directories:
         - /data/staging/auxTel/oods
-        - /data/lsstdata/NTS/auxTel/oods/gen3butler/raw
         - /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
         - /data/staging/auxTel/forwarder
     scanInterval:
