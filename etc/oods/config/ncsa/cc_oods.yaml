@@ -5,11 +5,7 @@ defaultInterval: &interval
     seconds: 0
 
 ingester:
-    FILE_INGEST_REQUEST: CC_FILE_INGEST_REQUEST
-    CONSUME_QUEUE: cc_publish_to_oods
-    PUBLISH_QUEUE: oods_publish_to_cc
-    forwarderStagingDirectory: /data/staging/comcam/oods
-    baseBrokerAddr: localhost/%2ftest_cc
+    imageStagingDirectory: /data/staging/comcam/oods
     butlers: 
         - butler:
             instrument: lsst.obs.lsst.LsstComCam
@@ -33,7 +29,11 @@ ingester:
         seconds: 2
 
 cacheCleaner:
-    directories:
+    # ONLY clean out empty directories here, never files
+    clearEmptyDirectories:
+        - /data/lsstdata/NTS/comcam/oods/gen3butler/raw
+    # clean out empty directories and old files from these directories
+    clearEmptyDirectoriesAndOldFiles:
         - /data/staging/comcam/oods
         - /data/lsstdata/NTS/comcam/oods/gen3butler/badfiles
         - /data/staging/comcam/forwarder

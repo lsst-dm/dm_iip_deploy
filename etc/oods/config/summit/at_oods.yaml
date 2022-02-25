@@ -5,11 +5,7 @@ defaultInterval: &interval
     seconds: 0
 
 ingester:
-    FILE_INGEST_REQUEST: AT_FILE_INGEST_REQUEST
-    CONSUME_QUEUE: at_publish_to_oods
-    PUBLISH_QUEUE: oods_publish_to_at
-    forwarderStagingDirectory: /data/staging/auxtel/oods
-    baseBrokerAddr: localhost/%2ftest_at
+    imageStagingDirectory: /data/staging/auxtel/oods
     butlers:
         - butler:
             instrument: lsst.obs.lsst.Latiss
@@ -33,7 +29,11 @@ ingester:
         seconds: 1
 
 cacheCleaner:
-    directories:
+    # ONLY clean out empty directories here, never files
+    clearEmptyDirectories:
+        - /data/lsstdata/base/auxtel/oods/gen3butler/raw
+    # clean out empty directories and old files from these directories
+    clearEmptyDirectoriesAndOldFiles:
         - /data/staging/auxtel/oods
         - /data/lsstdata/base/auxtel/oods/gen3butler/badfiles
         - /data/staging/auxtel/forwarder

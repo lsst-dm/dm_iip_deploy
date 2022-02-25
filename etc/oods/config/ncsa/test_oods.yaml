@@ -5,24 +5,24 @@ defaultInterval: &interval
     seconds: 0
 
 ingester:
-    imageStagingDirectory: /data/staging/auxTel/oods
+    imageStagingDirectory: /tmp/data/staging/auxTel/oods
     butlers: 
         - butler:
             instrument: lsst.obs.lsst.Latiss
             class:
                 import : lsst.ctrl.oods.gen3ButlerIngester
                 name : Gen3ButlerIngester
-            stagingDirectory : /data/lsstdata/NTS/auxTel/oods/gen3butler/raw
-            badFileDirectory: /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
-            repoDirectory : /repo/LATISS
+            stagingDirectory : /tmp/data/lsstdata/NTS/auxTel/oods/gen3butler/raw
+            badFileDirectory: /tmp/data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
+            repoDirectory : /tmp/repo/LATISS
             collections:
                 - LATISS/raw/all
             scanInterval:
                 <<: *interval
-                minutes: 1
+                seconds: 20
             filesOlderThan:
                 <<: *interval
-                days: 30
+                seconds: 30
     batchSize: 20
     scanInterval:
         <<: *interval
@@ -31,12 +31,12 @@ ingester:
 cacheCleaner:
     # ONLY clean out empty directories here, never files
     clearEmptyDirectories:
-        - /data/lsstdata/NTS/auxTel/oods/gen3butler/raw
+        - /tmp/data/lsstdata/NTS/auxTel/oods/gen3butler/raw
     # clean out empty directories and old files from these directories
     clearEmptyDirectoriesAndOldFiles:
-        - /data/staging/auxTel/oods
-        - /data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
-        - /data/staging/auxTel/forwarder
+        - /tmp/data/staging/auxTel/oods
+        - /tmp/data/lsstdata/NTS/auxTel/oods/gen3butler/badfiles
+        - /tmp/data/staging/auxTel/forwarder
     scanInterval:
         <<: *interval
         seconds: 30
