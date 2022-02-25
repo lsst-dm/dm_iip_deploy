@@ -1,5 +1,6 @@
 ARG LSST_STACK_VERSION
-FROM lsstsqre/centos:${LSST_STACK_VERSION}
+#FROM lsstsqre/centos:${LSST_STACK_VERSION}
+FROM ts-dockerhub.lsst.org/develop-env:c0024.000
 
 ARG LSST_STACK_VERSION
 ARG CTRL_OODS_GIT
@@ -17,9 +18,6 @@ COPY lsst-ts.repo /tmp/lsst-ts.repo
 
 RUN cat /tmp/lsst-ts.repo >> /etc/yum.conf
 
-
-RUN groupadd -g 73006 saluser && \
-    useradd -u 73006 -g saluser saluser
 
 USER root
 RUN chmod 755 /home/saluser
@@ -42,12 +40,18 @@ RUN chmod a+rx /opt/lsst/at_oods.yaml && \
     chown lsst.lsst /opt/lsst/cc_oods.yaml
 
 USER lsst
-
 WORKDIR /home/lsst
 
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
     pip install redis pika asynctest
 
 USER saluser
+WORKDIR /home/saluser
 
-CMD tail -f /dev/null
+ARG TS_DDSCONFIG_PACKAGE
+RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
+
+ENV LSST_DDS_QOS=file:///home/saluser/ts_ddsconfig/qos/QoS.xml
+ENV OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml
+
+ENTRYPOINT [ "/usr/bin/tail", "-f", "/dev/null" ]

@@ -22,6 +22,7 @@ services:
     build:
       context: ./test_oods
       args:
+        - TS_DDSCONFIG_PACKAGE
         - LSST_STACK_VERSION
         - DM_CSC_BASE_GIT
     environment:
