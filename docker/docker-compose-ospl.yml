@@ -14,6 +14,8 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
       - OSPL_URI=file:///opt/OpenSpliceDDS/${OPENSPLICE_VERSION}/HDE/x86_64.linux/etc/config/ospl.xml
+      - LSST_DDS_ALIGNER=true
+      - OSPL_MASTER_PRIORITY=10
     volumes:
       # NOTE: the docker_tmp directory must exist and be readable and writeable
       # by the UID/GID of the associated container.
