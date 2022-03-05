@@ -39,11 +39,11 @@ RUN chmod a+rx /opt/lsst/at_oods.yaml && \
     chmod a+rx /opt/lsst/cc_oods.yaml && \
     chown lsst.lsst /opt/lsst/cc_oods.yaml
 
-USER lsst
-WORKDIR /home/lsst
+USER root
+WORKDIR /opt/lsst
 
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
-    pip install redis pika asynctest
+    pip install isort
 
 USER saluser
 WORKDIR /home/saluser

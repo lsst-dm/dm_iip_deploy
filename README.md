@@ -7,46 +7,15 @@ This sets up the correct networking interface for the ospl_daemon to use.
 
 usage: cd docker;./launch_ospl_daemon.sh -p [summit|ncsa] -d [comcam|auxtel]
 
-example: cd docker;./launch_ospl_daemon.sh -p ncsa -d auxtel
-
-## Starting Archiving Services:
+## Starting OODS Services:
 
 You must specify the platform and container version you wish to control when launching.
 
-Each archiver consists of two services, the archiver CSC and a companion service which 
-is used to coordinate files sent by the Forwarder and sent to the OODS.
-
 The scripts sets up the correct networking interface and configuration file for the archiver 
 services to use.
-
-## AuxTel:
-
-usage: bin/run_atarchiver.sh -p [summit|ncsa|tucson] -c container_version
-
-example: bin/run_atarchiver.sh -p ncsa -c 4.1.0_base_4.2.0_c0024
-
-usage: bin/run_atcontroller.sh -p ncsa -c container_version
-
-example: bin/run_atcontroller.sh -p ncsa -c 4.1.0_base_4.2.0_c0024
-
-## ComCam:
-
-usage: bin/run_ccarchiver.sh -p [summit|ncsa|tucson] -c container_version
-
-example: bin/run_ccarchiver.sh -p ncsa -c 3.1.0_base_4.2.0_c0024
-
-usage: bin/run_cccontroller.sh -p ncsa -c container_version
-
-example: bin/run_cccontroller.sh -p ncsa -c 3.1.0_base_4.2.0_c0024
 
 ## OODS
 
 usage: bin/run_atoods.sh -p [summit|ncsa|tucson] -c container_version
 
-example: bin/run_atoods.sh -p ncsa -c 4.2.1-w_2022_05
-
 usage: bin/run_ccoods.sh -p [summit|ncsa|tucson] -c container_version
-
-example: bin/run_ccoods.sh -p ncsa -c 4.2.1-w_2022_05
-
-

@@ -29,7 +29,7 @@ USER lsst
 WORKDIR /home/lsst
 
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
-    pip install redis pika asynctest && \
+    pip install asynctest && \
     setup sconsUtils && \
     setup utils && \
     setup -r /opt/lsst/ctrl_oods && \
@@ -39,12 +39,12 @@ RUN source /opt/lsst/software/stack/loadLSST.bash && \
 USER saluser
 WORKDIR /home/saluser
 
+COPY --chown=saluser:saluser setup.sh /home/saluser
+
 ARG TS_DDSCONFIG_PACKAGE
 RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
 
 ENV LSST_DDS_QOS=file:///home/saluser/ts_ddsconfig/qos/QoS.xml
 ENV OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml
 
-
-#ENTRYPOINT ["/bin/bash", "/opt/lsst/run_atoods.sh"]
 ENTRYPOINT [ "/usr/bin/tail", "-f", "/dev/null" ]
