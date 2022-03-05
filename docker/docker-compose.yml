@@ -7,23 +7,29 @@ services:
     build:
       context: ./oods
       args:
-        - LSST_STACK_VERSION
         - CTRL_OODS_GIT
-        - DM_CSC_BASE_GIT
+        - TS_DDSCONFIG_PACKAGE
 
-  at-oods:
-    image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
+  atoods:
+    image: ts-dockerhub.lsst.org/lsstdm/atoods:${OODS_CONTAINER_VERSION}
+    build:
+      context: ./atoods
+      args:
+        - OODS_CONTAINER_VERSION
 
-  cc-oods:
-    image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
+  ccoods:
+    image: ts-dockerhub.lsst.org/lsstdm/ccoods:${OODS_CONTAINER_VERSION}
+    build:
+      context: ./ccoods
+      args:
+        - OODS_CONTAINER_VERSION
 
-  test_oods:
-    image: ts-dockerhub.lsst.org/lsstdm/test_oods:${TEST_OODS_CONTAINER_VERSION}
+  test-oods:
+    image: ts-dockerhub.lsst.org/lsstdm/test-oods:${TEST_OODS_CONTAINER_VERSION}
     build:
       context: ./test_oods
       args:
-        - LSST_STACK_VERSION
-        - DM_CSC_BASE_GIT
+        - TS_DDSCONFIG_PACKAGE
     environment:
         - OODS_CONFIG_FILE=/home/saluser/config/cc_oods.yaml
     volumes:
@@ -31,140 +37,3 @@ services:
         - /home/saluser/config:/home/saluser/config
     network_mode: "host"
     user: "63001:63001"
-
-  base:
-    image: ts-dockerhub.lsst.org/lsstdm/base:${DM_CSC_BASE_VERSION}_${DEPLOY_SUFFIX}
-    build:
-      context: ./base
-      args:
-        - CYCLE_TAG
-        - PIKA_VERSION
-        - REDIS_VERSION
-        - TS_DDSCONFIG_PACKAGE
-        - DM_CSC_BASE_GIT
-        - OPENSPLICE_VERSION
-
-  atbase:
-    image: ts-dockerhub.lsst.org/lsstdm/atbase:${DM_CSC_BASE_CONTAINER}
-    build:
-      context: ./atbase
-      args:
-        - DM_CSC_BASE_CONTAINER
-        - DM_ATARCHIVER_GIT
-        - DM_CSC_BASE_GIT
-        - PIKA_VERSION
-        - REDIS_VERSION
-
-  atarchiver:
-    image: ts-dockerhub.lsst.org/lsstdm/atarchiver:${DM_ATARCHIVER_CONTAINER}
-    build:
-      context: ./atarchiver
-      args:
-        - DM_CSC_BASE_CONTAINER
-        - LSSTTS_DEPLOY_ENV_VERSION
-
-  atcontroller:
-    image: ts-dockerhub.lsst.org/lsstdm/atcontroller:${DM_ATARCHIVER_CONTAINER}
-    build:
-      context: ./atcontroller
-      args:
-        - DM_CSC_BASE_CONTAINER
-        - LSSTTS_DEPLOY_ENV_VERSION
-
-  ccbase:
-    image: ts-dockerhub.lsst.org/lsstdm/ccbase:${DM_CSC_BASE_CONTAINER}
-    build:
-      context: ./ccbase
-      args:
-        - CYCLE_TAG
-        - TS_IDL_PACKAGE
-        - TS_DDSCONFIG_PACKAGE
-        - LSSTTS_DEPLOY_ENV_VERSION
-        - DM_CSC_BASE_CONTAINER
-        - DM_CCARCHIVER_GIT
-        - DM_CSC_BASE_GIT
-        - PIKA_VERSION
-        - REDIS_VERSION
-
-  ccarchiver:
-    image: ts-dockerhub.lsst.org/lsstdm/ccarchiver:${DM_CCARCHIVER_CONTAINER}
-    build:
-      context: ./ccarchiver
-      args:
-        - DM_CSC_BASE_CONTAINER
-        - LSSTTS_DEPLOY_ENV_VERSION
-
-  cccontroller:
-    image: ts-dockerhub.lsst.org/lsstdm/cccontroller:${DM_CCARCHIVER_CONTAINER}
-    container_name: cc_controller
-    environment:
-      - IIP_CONFIG_DIR=/home/saluser/config
-      - IIP_CREDENTIAL_DIR=/home/saluser/.lsst
-    volumes:
-      - /home/saluser/config:/home/saluser/config
-      - /home/saluser/.lsst:/home/saluser/.lsst
-      - /var/log/iip:/var/log/iip
-      - /data:/data
-    build:
-      context: ./cccontroller
-      args:
-        - DM_CSC_BASE_CONTAINER
-        - LSSTTS_DEPLOY_ENV_VERSION
-    network_mode: "host"
-
-  catchupbase:
-    image: ts-dockerhub.lsst.org/lsstdm/catchupbase:${DM_CSC_BASE_VERSION}_${LSSTTS_DEPLOY_ENV_VERSION}
-    build:
-      context: ./catchupbase
-      args:
-        - LSSTTS_DEPLOY_ENV_VERSION
-        - DM_CONFIG_CATCHUP_GIT
-        - DM_CATCHUPARCHIVER_GIT
-        - DM_CSC_BASE_GIT
-        - PIKA_VERSION
-        - REDIS_VERSION
-
-  catchuparchiver:
-    image: ts-dockerhub.lsst.org/lsstdm/catchuparchiver:${DM_CATCHUPARCHIVER_CONTAINER}
-    container_name: catchuparchiver
-    build:
-      context: ./catchuparchiver
-      args:
-        - DM_CSC_BASE_CONTAINER
-        - LSSTTS_DEPLOY_ENV_VERSION
-    environment:
-        - IIP_CONFIG_DIR=/home/${USER}/config
-        - IIP_CREDENTIAL_DIR=/home/${USER}/.lsst
-        - LSST_DDS_PARTITION_PREFIX
-    volumes:
-      - /home/${USER}/config:/home/${USER}/config
-      - /home/${USER}/.lsst:/home/${USER}/.lsst
-      - /var/log/iip:/var/log/iip
-      - /data:/data
-    networks:
-      hostnet: {}
-    depends_on:
-      - catchupbase
-
-  catchupcontroller:
-    image: ts-dockerhub.lsst.org/lsstdm/catchupcontroller:${DM_CATCHUPARCHIVER_CONTAINER}
-    container_name: catchupcontroller
-    build:
-      context: ./catchupcontroller
-      args:
-        - DM_CATCHUPARCHIVER_CONTAINER
-    environment:
-        - IIP_CONFIG_DIR=/home/${USER}/config
-        - IIP_CREDENTIAL_DIR=/home/${USER}/.lsst
-    volumes:
-      - /home/${USER}/config:/home/${USER}/config
-      - /home/${USER}/.lsst:/home/${USER}/.lsst
-      - /var/log/iip:/var/log/iip
-      - /data:/data
-    networks:
-      hostnet: {}
-      
-networks:
-  hostnet:
-    external: true
-    name: host

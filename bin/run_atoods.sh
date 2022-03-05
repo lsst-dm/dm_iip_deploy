@@ -12,6 +12,7 @@ error_msg="$0: missing argument: -p [summit|tucson|ncsa] -c container_version"
 
 export CONTAINER_VERSION=
 export ARCHIVE_SITE=
+export LSST_DDS_INTERFACE=
 
 while getopts p:c: option
 do
@@ -20,10 +21,13 @@ in
 p)
     if [ "$OPTARG" = "summit" ]; then
        ARCHIVE_SITE=$OPTARG
+        LSST_DDS_INTERFACE=em2.1201
     elif [ "$OPTARG" = "tucson" ]; then
        ARCHIVE_SITE=$OPTARG
+        LSST_DDS_INTERFACE=dds
     elif [ "$OPTARG" = "ncsa" ]; then
        ARCHIVE_SITE=$OPTARG
+        LSST_DDS_INTERFACE=p3p2
     else
         echo "-p argument must be 'summit', 'tucson' or 'ncsa'"
         exit 1
@@ -37,10 +41,24 @@ if [[ -z $ARCHIVE_SITE ]] || [[ -z $CONTAINER_VERSION ]]; then
     exit 1
 fi
 
-docker run -d \
-    --network host \
-    -e "OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/at_oods.yaml" \
+docker run \
+    -d \
+    -t \
+    --name="atoods" \
+    --network=host \
+    --pid=host \
+    --ipc=host \
+    -e "OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml" \
+    -e "CTRL_OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/at_oods.yaml" \
+    -e "LSST_DDS_DOMAIN_ID=0" \
+    -e "LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE" \
+    -e "LSST_DDS_INTERFACE=$LSST_DDS_INTERFACE" \
+    -e "LSST_DDS_RESPONSIVENESS_TIMEOUT=$LSST_DDS_RESPONSIVENESS_TIMEOUT" \
+    -e "LSST_DDSI2_SERVICE_TRACING_VERBOSITY=finer" \
+    -e "LSST_ENABLE_DURABILITY_SERVICE_TRACING=TRUE" \
     -v /data:/data \
     -v /repo:/repo \
-    -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
-    ts-dockerhub.lsst.org/lsstdm/at-oods:$CONTAINER_VERSION
+    -v /tmp/docker_tmp:/tmp \
+    -v $root_dir/docker/etc/oods/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
+    ts-dockerhub.lsst.org/lsstdm/atoods:$CONTAINER_VERSION
+

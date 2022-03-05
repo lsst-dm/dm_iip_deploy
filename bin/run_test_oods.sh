@@ -40,9 +40,20 @@ fi
 
 docker run -d \
     --network host \
+    --pid=host \
+    --ipc=host \
+    -e "OSPL_URI=file:///home/saluser/srp/ts_ddsconfig/config/ospl-shmem.xml" \
+    -e "LSST_DDS_DOMAIN_ID=0" \
+    -e "IIP_CREDENTIAL_DIR=/home/$ARCHIVE_USER/.lsst" \
+    -e "LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE" \
+    -e "LSST_DDS_INTERFACE=p3p2" \
+    -e "LSST_DDS_RESPONSIVENESS_TIMEOUT=$LSST_DDS_RESPONSIVENESS_TIMEOUT" \
+    -e "LSST_DDSI2_SERVICE_TRACING_VERBOSITY=finer" \
+    -e "LSST_ENABLE_DURABILITY_SERVICE_TRACING=TRUE" \
     -u `id -u $USER`:`id -g $USER` \
     -v /home/$USER:/home/$USER \
     -v /data:/data \
     -v /repo:/repo \
+    -v /tmp/docker_tmp:/tmp \
     -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/config \
-    ts-dockerhub.lsst.org/lsstdm/test_oods:$CONTAINER_VERSION
+    ts-dockerhub.lsst.org/lsstdm/test-oods:$CONTAINER_VERSION
