@@ -29,10 +29,10 @@ ROOT:
         SECONDS_TO_EXPIRE: 10
         SECONDS_TO_UPDATE: 3
 
-  BASE_BROKER_ADDR: comcam-arctl01.cp.lsst.org:5672/%2ftest_cc
+  BASE_BROKER_ADDR: comcam-archiver.cp.lsst.org:5672/%2ftest_cc
   ARCHIVE:
     ARCHIVE_LOGIN: saluser
-    ARCHIVE_IP: comcam-arctl01.cp.lsst.org
+    ARCHIVE_IP: comcam-archiver.cp.lsst.org
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
     FORWARDER_STAGING: /data/staging/comcam/forwarder
     OODS_STAGING: /data/staging/comcam/oods

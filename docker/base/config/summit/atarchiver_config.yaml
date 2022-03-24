@@ -29,10 +29,10 @@ ROOT:
         SECONDS_TO_EXPIRE: 10
         SECONDS_TO_UPDATE: 3
 
-  BASE_BROKER_ADDR: atarchiver.cp.lsst.org:5672/%2ftest_at
+  BASE_BROKER_ADDR: auxtel-archiver.cp.lsst.org:5672/%2ftest_at
   ARCHIVE:
     ARCHIVE_LOGIN: saluser
-    ARCHIVE_IP: atarchiver.cp.lsst.org
+    ARCHIVE_IP: auxtel-archiver.cp.lsst.org
     CHECKSUM_TYPE: MD5   # Current available options: MD5, CRC-32 
     FORWARDER_STAGING: /data/staging/auxtel/forwarder
     OODS_STAGING: /data/staging/auxtel/oods
