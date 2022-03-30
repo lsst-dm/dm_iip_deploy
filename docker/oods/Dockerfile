@@ -1,4 +1,5 @@
-FROM ts-dockerhub.lsst.org/deploy-sqre:c0024
+ARG CYCLE_TAG
+FROM ts-dockerhub.lsst.org/deploy-sqre:${CYCLE_TAG}
 
 ARG CTRL_OODS_GIT
 LABEL name="OODS Runtime Environment" \
