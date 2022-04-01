@@ -7,6 +7,7 @@ services:
     build:
       context: ./oods
       args:
+        - CYCLE_TAG
         - CTRL_OODS_GIT
         - TS_DDSCONFIG_PACKAGE
 

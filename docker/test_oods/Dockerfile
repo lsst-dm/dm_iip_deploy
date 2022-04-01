@@ -1,6 +1,5 @@
 ARG LSST_STACK_VERSION
-#FROM lsstsqre/centos:${LSST_STACK_VERSION}
-FROM ts-dockerhub.lsst.org/develop-env:c0024.000
+FROM ts-dockerhub.lsst.org/develop-env:${CYCLE_TAG}.000
 
 ARG LSST_STACK_VERSION
 ARG CTRL_OODS_GIT
