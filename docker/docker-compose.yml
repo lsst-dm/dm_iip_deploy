@@ -30,6 +30,7 @@ services:
     build:
       context: ./test_oods
       args:
+        - CYCLE_TAG
         - TS_DDSCONFIG_PACKAGE
     environment:
         - OODS_CONFIG_FILE=/home/saluser/config/cc_oods.yaml

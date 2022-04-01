@@ -1,4 +1,4 @@
-ARG LSST_STACK_VERSION
+ARG CYCLE_TAG
 FROM ts-dockerhub.lsst.org/develop-env:${CYCLE_TAG}.000
 
 ARG LSST_STACK_VERSION
