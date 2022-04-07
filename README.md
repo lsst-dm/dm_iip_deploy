@@ -5,7 +5,7 @@
 You must specify the platform and device you wish to control when launching.
 This sets up the correct networking interface for the ospl_daemon to use.
 
-usage: cd docker;./launch_ospl_daemon.sh -p [summit|ncsa] -d [comcam|auxtel]
+usage: cd docker;./launch_ospl_daemon.sh -p [summit|ncsa|tucson] -d [comcam|auxtel]
 
 ## Starting OODS Services:
 
