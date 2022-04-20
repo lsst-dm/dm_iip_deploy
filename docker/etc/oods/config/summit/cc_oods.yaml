@@ -19,14 +19,14 @@ ingester:
                 - LSSTComCam/raw/all
             scanInterval:
                 <<: *interval
-                minutes: 1
+                hours: 1
             filesOlderThan:
                 <<: *interval
                 days: 30
     batchSize: 20
     scanInterval:
         <<: *interval
-        seconds: 1
+        seconds: 2
 
 cacheCleaner:
     # ONLY clean out empty directories here, never files
@@ -39,7 +39,7 @@ cacheCleaner:
         - /data/staging/comcam/forwarder
     scanInterval:
         <<: *interval
-        seconds: 30
+        hours: 1
     filesOlderThan:
         <<: *interval
         days: 31
