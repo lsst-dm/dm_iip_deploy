@@ -11,6 +11,7 @@ services:
       - LSST_DDS_INTERFACE=${LSST_DDS_INTERFACE}
       - LSST_DDSI2_SERVICE_TRACING_VERBOSITY=finer
       - LSST_ENABLE_DURABILITY_SERVICE_TRACING=TRUE
+      - LSST_DURABILITY_SERVICE_TRACING_VERBOSITY=FINER
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
       - OSPL_URI=file:///opt/OpenSpliceDDS/${OPENSPLICE_VERSION}/HDE/x86_64.linux/etc/config/ospl.xml
