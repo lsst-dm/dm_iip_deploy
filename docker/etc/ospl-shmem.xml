@@ -1,10 +1,10 @@
 <OpenSplice>
     <Domain>
-        <Name>ospl_sp_ddsi</Name>
+        <Name>${LSST_DDS_DOMAIN_NAME:-ospl_sp_ddsi}</Name>
         <Id>${LSST_DDS_DOMAIN_ID:-0}</Id>
         <Description>Federated deployment using shared-memory and standard DDSI networking.</Description>
         <Database>
-            <Size>504857600</Size>
+            <Size>${LSST_DDS_SHMEM_SIZE:-504857600}</Size>
         </Database>
         <Report verbosity="${LSST_DDS_REPORT_LEVEL:-INFO}"/>
         <Service name="ddsi2">
@@ -57,13 +57,6 @@
                 </Scheduling>
                 <StackSize>6000000</StackSize>
             </ResendManager>
-            <Heartbeat>
-                <Scheduling>
-                    <Class>Default</Class>
-                    <Priority>0</Priority>
-                </Scheduling>
-                <StackSize>6000000</StackSize>
-            </Heartbeat>
         </Daemon>
         <Listeners>
             <StackSize>6000000</StackSize>
@@ -81,7 +74,6 @@
         </Compatibility>
         <Discovery>
             <ParticipantIndex>none</ParticipantIndex>
-            <DSGracePeriod>60s</DSGracePeriod>
         </Discovery>
         <Internal>
             <Watermarks>
@@ -124,7 +116,9 @@
                     aligner="${LSST_DDS_ALIGNER:-false}"
                     durability="Durable"
                     masterPriority="${OSPL_MASTER_PRIORITY:-1}"
-                    nameSpace="defaultNamespace"/>
+                    nameSpace="defaultNamespace">
+                <Merge scope="*" type="${LSST_DDS_MERGE_POLICY:-Ignore}"/>
+            </Policy>
         </NameSpaces>
     </DurabilityService>
     <TunerService name="cmsoap">

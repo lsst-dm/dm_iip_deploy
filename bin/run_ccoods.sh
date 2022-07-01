@@ -48,7 +48,7 @@ docker run \
     --network=host \
     --pid=host \
     --ipc=host \
-    -e "OSPL_URI=file:///home/saluser/ts_ddsconfig/config/ospl-shmem.xml" \
+    -e "OSPL_URI=file:///home/saluser/ts_ddsconfig/python/lsst/ts/ddsconfig/data/config/ospl-shmem.xml" \
     -e "CTRL_OODS_CONFIG_FILE=/home/$ARCHIVE_USER/config/cc_oods.yaml" \
     -e "LSST_DDS_DOMAIN_ID=0" \
     -e "LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE" \
