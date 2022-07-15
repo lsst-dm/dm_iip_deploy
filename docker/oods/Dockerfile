@@ -41,6 +41,27 @@ WORKDIR /home/saluser
 
 COPY --chown=saluser:saluser setup.sh /home/saluser
 
+# BEGIN fix for DM-35518 - remove this on the next cycle upgrade
+ARG OBS_LSST_COMMIT_SHA
+ARG ASTRO_METADATA_TRANSLATOR_COMMIT_SHA
+RUN source /opt/lsst/software/stack/loadLSST.bash && \
+    cd /home/saluser && \
+    git clone https://github.com/lsst/astro_metadata_translator && \
+    cd astro_metadata_translator && \
+    git checkout ${ASTRO_METADATA_TRANSLATOR_COMMIT_SHA} && \
+    setup -r /home/saluser/astro_metadata_translator && \
+    scons
+
+RUN source /opt/lsst/software/stack/loadLSST.bash && \
+    cd /home/saluser && \
+    git clone https://github.com/lsst/obs_lsst && \
+    cd obs_lsst && \
+    git checkout ${OBS_LSST_COMMMIT_SHA} && \
+    setup -r /home/saluser/obs_lsst && \
+    setup -r /home/saluser/astro_metadata_translator && \
+    scons
+# END fix for DM-35518 - remove this on the next cycle upgrade
+
 ARG TS_DDSCONFIG_PACKAGE
 RUN git clone --depth 1 --branch ${TS_DDSCONFIG_PACKAGE} http://github.com/lsst-ts/ts_ddsconfig
 

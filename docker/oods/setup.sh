@@ -7,3 +7,5 @@ export OSPL_HOME=/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux
 source $OSPL_HOME/release.com
 source /opt/lsst/software/stack/loadLSST.bash
 setup -r /opt/lsst/ctrl_oods
+setup -r /home/saluser/obs_lsst
+setup -r /home/saluser/astro_metadata_translator
