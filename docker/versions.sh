@@ -19,12 +19,14 @@ export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
 export CTRL_OODS_GIT=tags/7.3.0
+export DM_IIP_DEPLOY_GIT=tags/7.4.1
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
 #
 export CTRL_OODS_VERSION=${CTRL_OODS_GIT#*/}
+export DM_IIP_DEPLOY_VERSION=${DM_IIP_DEPLOY_GIT#*/}
 
 # the OODS container is tagged with the OODS version and the version of the LSST stack the OODS uses
 
-export OODS_CONTAINER_VERSION=${CTRL_OODS_VERSION}_${CYCLE_TAG}_fix1
+export OODS_CONTAINER_VERSION=${DM_IIP_DEPLOY_VERSION}_${CYCLE_TAG}
 export TEST_OODS_CONTAINER_VERSION=test_${OODS_CONTAINER_VERSION}
