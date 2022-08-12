@@ -10,6 +10,8 @@ services:
         - CYCLE_TAG
         - CTRL_OODS_GIT
         - TS_DDSCONFIG_PACKAGE
+        - ASTRO_METADATA_TRANSLATOR_COMMIT_SHA
+        - OBS_LSST_COMMIT_SHA
 
   atoods:
     image: ts-dockerhub.lsst.org/lsstdm/atoods:${OODS_CONTAINER_VERSION}
