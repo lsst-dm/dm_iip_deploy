@@ -56,6 +56,7 @@ docker run \
     -e "LSST_DDS_RESPONSIVENESS_TIMEOUT=$LSST_DDS_RESPONSIVENESS_TIMEOUT" \
     -e "LSST_DDSI2_SERVICE_TRACING_VERBOSITY=finer" \
     -e "LSST_ENABLE_DURABILITY_SERVICE_TRACING=TRUE" \
+    -v /home/$ARCHIVE_USER/.lsst:/home/$ARCHIVE_USER/.lsst \
     -v /data:/data \
     -v /repo:/repo \
     -v /tmp/docker_tmp:/tmp \
