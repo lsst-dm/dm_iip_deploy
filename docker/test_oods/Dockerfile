@@ -1,5 +1,4 @@
 ARG CYCLE_TAG
-#FROM ts-dockerhub.lsst.org/develop-env:${CYCLE_TAG}
 FROM ts-dockerhub.lsst.org/deploy-sqre:${CYCLE_TAG}
 
 ARG LSST_STACK_VERSION
