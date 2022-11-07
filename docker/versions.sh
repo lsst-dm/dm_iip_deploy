@@ -19,7 +19,7 @@ export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
 export CTRL_OODS_GIT=tags/7.3.2
-export DM_IIP_DEPLOY_GIT=tags/7.4.2
+export DM_IIP_DEPLOY_GIT=tags/7.4.3
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
 #
