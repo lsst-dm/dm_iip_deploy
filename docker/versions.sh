@@ -2,8 +2,8 @@
 #
 
 # t&s base container version
-export CYCLE_TAG="c0026"
-export TS_DDSCONFIG_PACKAGE="v0.10.0"
+export CYCLE_TAG="c0027"
+export TS_DDSCONFIG_PACKAGE="v0.10.1"
 export OPENSPLICE_VERSION="V6.10.4"
 
 export LSST_DDS_RESPONSIVENESS_TIMEOUT="15s"
@@ -18,8 +18,8 @@ export PIKA_VERSION=1.1.0
 export REDIS_VERSION=3.5.3
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export CTRL_OODS_GIT=tags/7.3.1
-export DM_IIP_DEPLOY_GIT=tags/7.4.1
+export CTRL_OODS_GIT=tags/7.3.2
+export DM_IIP_DEPLOY_GIT=tags/7.4.3
 #
 # remove the "tags/" or "tickets/"; these new values will be used to label containers
 #
