@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: atoods
+spec:
+    containers:
+    - name: atoods
+      image: ts-dockerhub.lsst.org/lsstdm/test-oods:test_oods 
