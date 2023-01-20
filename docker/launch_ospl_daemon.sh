@@ -1,11 +1,8 @@
 #!/bin/bash
 #
 loc="`dirname \"$0\"`"
-source $loc/versions.sh
 
 error_msg="$0: missing argument: -p [summit|tucson|ncsa] -d [comcam|auxtel]"
-
-source versions.sh
 
 export ARCHIVE_SITE=
 export ARCHIVE_DEVICE=

@@ -3,7 +3,7 @@ version: "3.7"
 
 services:
   oods:
-    image: ts-dockerhub.lsst.org/lsstdm/oods:${OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/oods:${CYCLE_TAG}
     build:
       context: ./oods
       args:
@@ -12,21 +12,21 @@ services:
         - TS_DDSCONFIG_PACKAGE
 
   atoods:
-    image: ts-dockerhub.lsst.org/lsstdm/atoods:${OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/atoods:${CYCLE_TAG}
     build:
       context: ./atoods
       args:
-        - OODS_CONTAINER_VERSION
+        - CYCLE_TAG
 
   ccoods:
-    image: ts-dockerhub.lsst.org/lsstdm/ccoods:${OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/ccoods:${CYCLE_TAG}
     build:
       context: ./ccoods
       args:
-        - OODS_CONTAINER_VERSION
+        - CYCLE_TAG
 
   test-oods:
-    image: ts-dockerhub.lsst.org/lsstdm/test-oods:${TEST_OODS_CONTAINER_VERSION}
+    image: ts-dockerhub.lsst.org/test-oods:${CYCLE_TAG}
     build:
       context: ./test_oods
       args:
