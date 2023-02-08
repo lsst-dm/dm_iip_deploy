@@ -61,5 +61,4 @@ docker run \
     -v /repo:/repo \
     -v /tmp/docker_tmp:/tmp \
     -v $root_dir/docker/etc/oods/config/$ARCHIVE_SITE:/home/$ARCHIVE_USER/config \
-    ts-dockerhub.lsst.org/lsstdm/ccoods:$CONTAINER_VERSION
-
+    ts-dockerhub.lsst.org/ccoods:$CONTAINER_VERSION

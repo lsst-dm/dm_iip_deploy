@@ -23,13 +23,6 @@ RUN chmod 755 /home/saluser
 
 WORKDIR /opt/lsst
 
-ARG DM_CSC_BASE_GIT
-RUN git clone https://github.com/lsst-dm/dm_csc_base && \
-    cd /opt/lsst/dm_csc_base && \
-    git checkout ${DM_CSC_BASE_GIT} && \
-    chown -R saluser.saluser /opt/lsst/dm_csc_base
-    
-
 COPY at_oods.yaml /opt/lsst
 COPY cc_oods.yaml /opt/lsst
 RUN chmod a+rx /opt/lsst/at_oods.yaml && \

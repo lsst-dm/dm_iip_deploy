@@ -56,4 +56,4 @@ docker run -d \
     -v /repo:/repo \
     -v /tmp/docker_tmp:/tmp \
     -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/config \
-    ts-dockerhub.lsst.org/lsstdm/test-oods:$CONTAINER_VERSION
+    ts-dockerhub.lsst.org/oods:$CONTAINER_VERSION
