@@ -1,5 +1,5 @@
 # t&s base container version
-export CYCLE_TAG=c0029
+export CYCLE_TAG=c0029.001
 export TS_DDSCONFIG_PACKAGE=v0.10.1
 export OPENSPLICE_VERSION=V6.10.4
 export LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
