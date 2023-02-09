@@ -3,7 +3,7 @@
 loc="`dirname \"$0\"`"
 source $loc/versions.sh
 
-error_msg="$0: missing argument: -p [summit|tucson|ncsa] -d [comcam|auxtel]"
+error_msg="$0: missing argument: -p [summit|tucson] -d [comcam|auxtel]"
 
 source versions.sh
 
@@ -15,10 +15,10 @@ do
 case "${option}"
 in
 p)
-    if [ "$OPTARG" = "summit" ] || [ "$OPTARG" = "tucson" ] || [ "$OPTARG" = "ncsa"  ]; then
+    if [ "$OPTARG" = "summit" ] || [ "$OPTARG" = "tucson" ]; then
         ARCHIVE_SITE=$OPTARG
     else
-        echo "-p argument must be 'summit', 'tucson' or 'ncsa'"
+        echo "-p argument must be 'summit' or 'tucson'"
         exit 1
     fi;;
         
@@ -49,12 +49,6 @@ if [ "$ARCHIVE_SITE" = "summit" ]; then
     fi
 elif [ "$ARCHIVE_SITE" = "tucson" ]; then
         LSST_DDS_INTERFACE=dds
-elif [ "$ARCHIVE_SITE" = "ncsa" ]; then
-    if [ "$ARCHIVE_DEVICE" = "comcam" ]; then
-        LSST_DDS_INTERFACE=p3p2
-    elif [ "$ARCHIVE_DEVICE" = "auxtel" ]; then
-        LSST_DDS_INTERFACE=p3p2
-    fi
 fi
 
 export LSST_DDS_PARTITION_PREFIX=$ARCHIVE_SITE

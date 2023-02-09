@@ -8,7 +8,7 @@ root_dir=$(dirname -- "$(realpath -- "$loc")")
 
 source $loc/base_init.sh
 
-error_msg="$0: missing argument: -p [summit|tucson|ncsa] -c container_version"
+error_msg="$0: missing argument: -p [summit|tucson] -c container_version"
 
 export CONTAINER_VERSION=
 export ARCHIVE_SITE=
@@ -22,10 +22,8 @@ p)
        ARCHIVE_SITE=$OPTARG
     elif [ "$OPTARG" = "tucson" ]; then
        ARCHIVE_SITE=$OPTARG
-    elif [ "$OPTARG" = "ncsa" ]; then
-       ARCHIVE_SITE=$OPTARG
     else
-        echo "-p argument must be 'summit', 'tucson' or 'ncsa'"
+        echo "-p argument must be 'summit' or 'tucson'"
         exit 1
     fi;;
 c) CONTAINER_VERSION=${OPTARG};;
@@ -56,4 +54,4 @@ docker run -d \
     -v /repo:/repo \
     -v /tmp/docker_tmp:/tmp \
     -v $root_dir/etc/oods/config/$ARCHIVE_SITE:/config \
-    ts-dockerhub.lsst.org/lsstdm/test-oods:$CONTAINER_VERSION
+    ts-dockerhub.lsst.org/oods:$CONTAINER_VERSION
