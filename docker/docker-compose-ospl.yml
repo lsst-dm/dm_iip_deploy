@@ -3,7 +3,7 @@ version: "3.7"
 
 services:
   ospl-daemon:
-    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE_TAG}
+    image: ts-dockerhub.lsst.org/ospl-daemon:${OSPL_CYCLE_TAG}
     container_name: ospl-daemon
     environment:
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=${LSST_DDS_RESPONSIVENESS_TIMEOUT}
