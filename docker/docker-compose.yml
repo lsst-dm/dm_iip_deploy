@@ -16,6 +16,7 @@ services:
     build:
       context: ./atoods
       args:
+        - OODS_TAG_VERSION
         - CYCLE_TAG
 
   ccoods:
@@ -23,6 +24,7 @@ services:
     build:
       context: ./ccoods
       args:
+        - OODS_TAG_VERSION
         - CYCLE_TAG
 
   test-oods:
@@ -30,6 +32,7 @@ services:
     build:
       context: ./test_oods
       args:
+        - OODS_TAG_VERSION
         - CYCLE_TAG
         - TS_DDSCONFIG_PACKAGE
     environment:

@@ -1,5 +1,6 @@
+ARG OODS_TAG_VERSION
 ARG CYCLE_TAG
-FROM ts-dockerhub.lsst.org/deploy-sqre:${CYCLE_TAG}
+FROM ts-dockerhub.lsst.org/deploy-sqre:${OODS_TAG_VERSION}_${CYCLE_TAG}
 
 ARG LSST_STACK_VERSION
 ARG CTRL_OODS_GIT
