@@ -34,7 +34,7 @@ USER root
 WORKDIR /opt/lsst
 
 RUN source /opt/lsst/software/stack/loadLSST.bash && \
-    pip install isort
+    pip install isort asynctest
 
 USER saluser
 WORKDIR /home/saluser
