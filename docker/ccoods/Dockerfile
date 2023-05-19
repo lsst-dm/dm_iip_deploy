@@ -1,6 +1,5 @@
-ARG OODS_TAG_VERSION
 ARG CYCLE_TAG
-FROM ts-dockerhub.lsst.org/oods:${OODS_TAG_VERSION}_${CYCLE_TAG}
+FROM ts-dockerhub.lsst.org/oods:${CYCLE_TAG}
 
 COPY --chown=saluser:saluser ccoods.sh /home/saluser
 
