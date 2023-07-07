@@ -6,5 +6,5 @@ export OPENSPLICE_VERSION=V6.10.4
 export LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
 
 # set all the git tags or tickets for the versions you want to use for the containers
-export CTRL_OODS_GIT=tags/7.5.4
-export DM_IIP_DEPLOY_GIT=tags/7.5.6
+export CTRL_OODS_GIT=tags/7.6.0
+export DM_IIP_DEPLOY_GIT=tags/7.6.0
