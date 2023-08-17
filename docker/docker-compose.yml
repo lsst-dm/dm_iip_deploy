@@ -25,6 +25,14 @@ services:
       args:
         - CYCLE_TAG
 
+  mtoods:
+    image: ts-dockerhub.lsst.org/mtoods:${CYCLE_TAG}
+    build:
+      context: ./mtoods
+      args:
+        - CYCLE_TAG
+
+  test-oods:
   test-oods:
     image: ts-dockerhub.lsst.org/test-oods:${CYCLE_TAG}
     build:
@@ -33,7 +41,7 @@ services:
         - CYCLE_TAG
         - TS_DDSCONFIG_PACKAGE
     environment:
-        - OODS_CONFIG_FILE=/home/saluser/config/cc_oods.yaml
+        - OODS_CONFIG_FILE=/home/saluser/config/mt_oods.yaml
     volumes:
         - /data:/data
         - /home/saluser/config:/home/saluser/config
