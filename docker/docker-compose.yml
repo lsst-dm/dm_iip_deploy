@@ -12,19 +12,27 @@ services:
         - TS_DDSCONFIG_PACKAGE
 
   atoods:
-    image: ts-dockerhub.lsst.org/atoods:${CYCLE_TAG}
+    image: ts-dockerhub.lsst.org/atoods_test:${CYCLE_TAG}
     build:
       context: ./atoods
       args:
         - CYCLE_TAG
 
   ccoods:
-    image: ts-dockerhub.lsst.org/ccoods:${CYCLE_TAG}
+    image: ts-dockerhub.lsst.org/ccoods_test:${CYCLE_TAG}
     build:
       context: ./ccoods
       args:
         - CYCLE_TAG
 
+  mtoods:
+    image: ts-dockerhub.lsst.org/mtoods_test:${CYCLE_TAG}
+    build:
+      context: ./mtoods
+      args:
+        - CYCLE_TAG
+
+  test-oods:
   test-oods:
     image: ts-dockerhub.lsst.org/test-oods:${CYCLE_TAG}
     build:
