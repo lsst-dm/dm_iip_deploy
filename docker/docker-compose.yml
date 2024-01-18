@@ -33,7 +33,6 @@ services:
         - CYCLE_TAG
 
   test-oods:
-  test-oods:
     image: ts-dockerhub.lsst.org/test-oods:${CYCLE_TAG}
     build:
       context: ./test_oods
